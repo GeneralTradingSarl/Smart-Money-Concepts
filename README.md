@@ -49,16 +49,16 @@ This advanced tool brings you the edge of professional traders by highlighting k
 
 ## 📥 Installation
 
-1. Téléchargez le fichier `.ex5` de ce dépôt.
-2. Placez-le dans le dossier `Indicators` de votre plateforme MetaTrader 5.
-3. Redémarrez MetaTrader et ajoutez l'indicateur à votre graphique.
+1. Download the `.ex5` file from this repository.
+2. Place it in the `Indicators` folder of your MetaTrader 5 platform.
+3. Restart MetaTrader and add the indicator to your chart.
 
 ---
 
 ## 📚 Documentation
 
-- Paramètres détaillés dans le code source
-- [Wiki du projet](./wiki) *(à compléter pour les utilisateurs avancés)*
+- Detailed parameters are available in the source code.
+- [Project Wiki](./wiki) *(to be completed for advanced users)*
 
 ---
 
