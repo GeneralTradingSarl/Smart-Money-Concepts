@@ -1,42 +1,29 @@
-# 🚀 Smart Money Concepts Indicator for MetaTrader
+<div align="center">
 
-Unlock the power of institutional trading with the **Smart Money Concepts Indicator**!  
-This advanced tool brings you the edge of professional traders by highlighting key market structures, liquidity zones, order blocks, and premium/discount areas—directly on your MetaTrader charts.
+# Smart Money Concepts Indicator for MetaTrader 5
 
-**Why Smart Money Concepts?**
-- 📈 **Trade like the Pros:** Visualize market structure shifts, liquidity grabs, and institutional footprints.
-- 🧠 **Clarity & Precision:** Instantly spot order blocks, break of structure (BOS), and fair value gaps (FVG).
-- 🛠️ **Fully Customizable:** Clean, modern interface with intuitive settings for all levels of traders.
-- 🌍 **Open-Source & Free:** Join a global community of traders and contribute to the evolution of this project.
+Institutional-style market analysis rendered directly on your chart: order blocks, liquidity zones, market structure, and fair value gaps.
 
----
+![MQL5](https://img.shields.io/badge/MQL5-0B5FA5?style=flat-square)
+![MetaTrader 5](https://img.shields.io/badge/MetaTrader%205-0B5FA5?style=flat-square)
+![Open Source](https://img.shields.io/badge/Open%20Source-00C6FF?style=flat-square)
 
-## ✨ Features
+</div>
 
-- **Automatic detection** of market structure (BOS/CHoCH)
-- **Order block** and **liquidity zone** visualization
-- **Premium/Discount** price zones
-- **Fair Value Gap (FVG)** highlights
-- **Clean, modern interface** with customizable colors and labels
-- **Lightweight & fast** for all MetaTrader users
+## Overview
 
----
+The Smart Money Concepts (SMC) indicator brings institutional-style market structure analysis to MetaTrader 5: market structure shifts, liquidity grabs, order blocks, and fair value gaps, all rendered directly on your chart. Built for traders who follow Smart Money Concepts and ICT-style methodology on forex, indices, and crypto.
 
-## 💡 Get Involved
+## Features
 
-- ⭐ **Star** this repository to support the project!
-- 🗣️ **Share** with your trading friends and communities
-- 💬 **Open issues** for bugs, suggestions, or improvements
-- 🤝 **Contribute** with pull requests
+- Automatic market structure detection: Break of Structure (BOS) and Change of Character (CHoCH)
+- Order block and liquidity zone visualization
+- Premium / Discount price zones
+- Fair Value Gap (FVG) highlighting
+- Clean, customizable colors and labels
+- Lightweight and fast on any MetaTrader 5 chart
 
----
-
-> Made with ❤️ for the trading community.  
-> If you find this project useful, consider [donating here](https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID) to support further development!
-
----
-
-## 📸 Screenshots
+## Screenshots
 
 ![Screenshot 1](./Screenshot%202025-06-24%20130218.png)
 ![Screenshot 2](./dJDOnqZb.png)
@@ -45,23 +32,20 @@ This advanced tool brings you the edge of professional traders by highlighting k
 ![Screenshot 5](./jpoTA1Kd.png)
 ![Screenshot 6](./GkgIPkJH.png)
 
----
-
-## 📥 Installation
+## Installation
 
 1. Download the `.ex5` file from this repository.
-2. Place it in the `Indicators` folder of your MetaTrader 5 platform.
-3. Restart MetaTrader and add the indicator to your chart.
+2. Copy it into the `Indicators` folder of your MetaTrader 5 data folder.
+3. Restart MetaTrader 5 and attach the indicator to any chart.
 
----
+## Documentation
 
-## 📚 Documentation
+Indicator parameters are documented directly in the source code (`.mq5`).
 
-- Detailed parameters are available in the source code.
-- [Project Wiki](./wiki) *(to be completed for advanced users)*
+## Tags
 
----
+`smart-money-concepts` `order-blocks` `liquidity` `market-structure` `fair-value-gap` `ict-concepts` `forex` `metatrader5` `mql5` `trading-indicator` `open-source`
 
-## 🏷️ Tags
+## Author
 
-`smart-money-concepts` `order-blocks` `liquidity` `market-structure` `forex` `trading` `metatrader` `indicator` `open-source` 
+Built by [Ismael LADJOHOUNLOU](https://github.com/GeneralTradingSarl). Star the repository if you find it useful, and feel free to open issues or pull requests.
