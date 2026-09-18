@@ -6,7 +6,8 @@ Institutional-style market analysis rendered directly on your chart: order block
 
 ![MQL5](https://img.shields.io/badge/MQL5-0B5FA5?style=flat-square)
 ![MetaTrader 5](https://img.shields.io/badge/MetaTrader%205-0B5FA5?style=flat-square)
-![Open Source](https://img.shields.io/badge/Open%20Source-00C6FF?style=flat-square)
+![Free](https://img.shields.io/badge/price-free-2ea043?style=flat-square)
+![Source](https://img.shields.io/badge/.mq5%20source-free%20on%20request-00C6FF?style=flat-square)
 
 </div>
 
@@ -38,13 +39,27 @@ The Smart Money Concepts (SMC) indicator brings institutional-style market struc
 2. Copy it into the `Indicators` folder of your MetaTrader 5 data folder.
 3. Restart MetaTrader 5 and attach the indicator to any chart.
 
-## Documentation
+## Settings
 
-Indicator parameters are documented directly in the source code (`.mq5`).
+Every parameter is exposed in the indicator's **Inputs** tab in MetaTrader 5:
+attach the indicator to a chart, press `F7`, and each setting is listed there with
+its default. Structure detection, order blocks, liquidity zones, FVG display and
+all colours are configurable from that panel, with no recompilation needed.
+
+## Source code
+
+This repository ships the compiled `.ex5` so the indicator works out of the box
+with no MetaEditor step. The `.mq5` source is not committed here, but it is
+**free and available on request** — I am happy to send it to anyone who wants to
+read it, learn from it, or modify it.
+
+To get it, open an issue saying so, or email
+[general.trading.bot.2025@gmail.com](mailto:general.trading.bot.2025@gmail.com).
+No conditions, no charge.
 
 ## Tags
 
-`smart-money-concepts` `order-blocks` `liquidity` `market-structure` `fair-value-gap` `ict-concepts` `forex` `metatrader5` `mql5` `trading-indicator` `open-source`
+`smart-money-concepts` `order-blocks` `liquidity` `market-structure` `fair-value-gap` `ict-concepts` `forex` `metatrader5` `mql5` `trading-indicator`
 
 ## Author
 
