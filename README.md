@@ -46,6 +46,14 @@ Indicator parameters are documented directly in the source code (`.mq5`).
 
 `smart-money-concepts` `order-blocks` `liquidity` `market-structure` `fair-value-gap` `ict-concepts` `forex` `metatrader5` `mql5` `trading-indicator` `open-source`
 
+## Need something custom?
+
+This repository is a free reference. If you need an Expert Advisor built or fixed, an indicator ported from MQL4 to MQL5, a Telegram signal bot, or a trade copier, I build them to order and deliver the full source code.
+
+- Portfolio: https://ismael-portfolio-liard.vercel.app/en
+- All my work: https://github.com/GeneralTradingSarl
+- Email: general.trading.bot.2025@gmail.com
+
 ## Author
 
 Built by [Ismael LADJOHOUNLOU](https://github.com/GeneralTradingSarl). Star the repository if you find it useful, and feel free to open issues or pull requests.
