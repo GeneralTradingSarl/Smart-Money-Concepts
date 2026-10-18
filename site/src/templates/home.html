@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_viewer.html" import viewer %}
+{% block main %}
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">
+      {% for p in t.hero.pills %}<span class="pill">{% if loop.first %}<i class="dot"></i>{% endif %}{{ p }}</span>{% endfor %}
+    </div>
+    <div class="hero-grid">
+      <h1>{{ t.hero.h1 }}<span class="sub">{{ t.hero.h1_sub|safe }}</span></h1>
+      <div>
+        <p class="lead">{{ t.hero.lead|safe }}</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="{{ dl.ex5.url }}" data-dl="ex5">{{ icon('download') }}{{ t.hero.cta_ex5 }}</a>
+          <a class="btn btn-ghost" href="{{ dl.mq5.url }}" data-dl="mq5">{{ icon('code') }}{{ t.hero.cta_mq5 }}</a>
+        </div>
+        <div class="file-meta">{% for m in t.hero.meta %}<span>{{ m }}</span>{% endfor %}</div>
+      </div>
+    </div>
+    {{ viewer(t, 'B', 150, True, True, False, poster) }}
+  </div>
+</div>
+
+<section id="proof" aria-labelledby="proof-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">{{ t.proof.kicker }}</div>
+      <h2 id="proof-h">{{ t.proof.h2 }}</h2>
+      <p>{{ t.proof.p }}</p>
+    </div>
+    <div class="stats">
+      {% for s in t.proof.stats %}<div class="stat"><b>{% if loop.last %}<em>{{ s.v }}</em>{% else %}{{ s.v }}{% endif %}</b><span>{{ s.l }}</span></div>{% endfor %}
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>{% for h in t.proof.th %}<th scope="col">{{ h }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {% for c in ['A','B','C','D'] %}{% set r = parity[c] %}
+          <tr><td><span class="cfg">{{ c }}</span></td><td>{{ t.proof.rows[c] }}</td>
+            <td class="num"><span class="ok">{{ r.labels }}/{{ r.labels }}</span></td>
+            <td class="num"><span class="ok">{{ r.lines }}/{{ r.lines }}</span></td>
+            <td class="num"><span class="ok">{{ r.boxes }}/{{ r.boxes }}</span></td>
+            <td class="num"><span class="ok">{{ r.candles_fmt }}/{{ r.candles_fmt }}</span></td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="faint" style="margin-top:12px;font-size:14px">{{ t.proof.realtime }}</p>
+    <div class="note">{{ icon('info') }}<p>{{ t.proof.note }}</p></div>
+
+    <h3 style="margin-top:44px">{{ t.proof.shots_title }}</h3>
+    <div class="shots">
+      <figure class="shot">
+        <a href="/assets/img/proof-tradingview.webp"><img src="/assets/img/proof-tradingview.webp" width="1600" height="785" loading="lazy" decoding="async" alt="{{ t.proof.shot_tv }}"></a>
+        <figcaption><span class="tag tag-tv">TradingView</span>{{ t.proof.shot_tv }}</figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="/assets/img/proof-metatrader5.webp"><img src="/assets/img/proof-metatrader5.webp" width="1590" height="802" loading="lazy" decoding="async" alt="{{ t.proof.shot_mt }}"></a>
+        <figcaption><span class="tag tag-mt">MetaTrader 5</span>{{ t.proof.shot_mt }}</figcaption>
+      </figure>
+    </div>
+    <div class="links-row">
+      <a class="btn btn-ghost" href="/proof/">{{ icon('eye') }}{{ t.proof.link_viewer }}</a>
+      <a class="btn btn-ghost" href="{{ site.repo }}/tree/main/parity" rel="noopener">{{ icon('github') }}{{ t.proof.link_bench }}</a>
+    </div>
+  </div>
+</section>
+
+<section id="features" aria-labelledby="features-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">{{ t.features.kicker }}</div>
+      <h2 id="features-h">{{ t.features.h2 }}</h2>
+      <p>{{ t.features.p }}</p>
+    </div>
+    <div class="grid g3">
+      {% for f in t.features['items'] %}
+      <article class="card feature">
+        <div class="fig">{{ figs[f.id]|safe }}</div>
+        <h3>{{ f.t }}</h3>
+        <p>{{ f.d }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="engineering" aria-labelledby="eng-h">
+  <div class="wrap eng">
+    <div>
+      <div class="kicker">{{ t.eng.kicker }}</div>
+      <h2 id="eng-h">{{ t.eng.h2 }}</h2>
+      <p class="muted" style="margin-top:16px">{{ t.eng.p }}</p>
+      <p class="faint mono" style="margin:26px 0 10px;font-size:12px">{{ t.eng.code_title }}</p>
+<div class="code"><span class="c">// Pine: absolute tolerance of 1e-10</span>
+<span class="v">0.1</span> + <span class="v">0.2</span> == <span class="v">0.3</span>        <span class="c">// true</span>
+<span class="v">1</span> + <span class="v">0.9e-10</span> &gt; <span class="v">1</span>      <span class="c">// false</span>
+<span class="v">1</span> + <span class="v">1e-10</span>   &gt; <span class="v">1</span>      <span class="c">// true</span>
+
+<span class="c">// SmartMoneyConcepts.mq5, line 417</span>
+<span class="k">#define</span> PINE_EPS <span class="v">1e-10</span>
+<span class="k">bool</span> Gt(<span class="k">const double</span> a, <span class="k">const double</span> b)
+  { <span class="k">return</span> a - b &gt; PINE_EPS; }
+<span class="k">bool</span> Lt(<span class="k">const double</span> a, <span class="k">const double</span> b)
+  { <span class="k">return</span> b - a &gt; PINE_EPS; }</div>
+    </div>
+    <div class="eng-list">
+      {% for e in t.eng['items'] %}
+      <div class="eng-item"><span class="n">0{{ loop.index }}</span><div><h3>{{ e.t }}</h3><p>{{ e.d }}</p></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="install" aria-labelledby="install-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">{{ t.install.kicker }}</div>
+      <h2 id="install-h">{{ t.install.h2 }}</h2>
+    </div>
+    <ol class="steps" style="list-style:none;padding:0;margin:0">
+      {% for s in t.install.steps %}<li class="step"><p>{{ s|safe }}</p></li>{% endfor %}
+    </ol>
+    <p class="muted" style="margin-top:18px;font-size:15px">{{ t.install.note }} <a href="/install/">{{ t.install.link }} →</a></p>
+  </div>
+</section>
+
+<section id="download" aria-labelledby="download-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">{{ t.download.kicker }}</div>
+      <h2 id="download-h">{{ t.download.h2 }}</h2>
+      <p>{{ t.download.p }}</p>
+    </div>
+    <div class="dl">
+      {% for k in ['ex5','mq5','zip'] %}{% set f = dl[k] %}
+      <div class="dl-card{% if k == 'ex5' %} main{% endif %}">
+        <span class="ext">{{ f.name }} · {{ f.size }}</span>
+        <h3>{{ t.download[k].t }}</h3>
+        <p>{{ t.download[k].d }}</p>
+        <p class="hash">{{ t.download.sha }} {{ f.sha }}</p>
+        <a class="btn {% if k == 'ex5' %}btn-primary{% else %}btn-ghost{% endif %}" href="{{ f.url }}" data-dl="{{ k }}">{{ icon('download') }}{{ t.download[k].btn }}</a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="license">{{ icon('license') }}<p>{{ t.download.license }} <a href="{{ site.repo }}/releases" rel="noopener">{{ t.download.github }} →</a></p></div>
+  </div>
+</section>
+
+<section id="support" aria-labelledby="support-h">
+  <div class="wrap">
+    <div class="support">
+      <div class="section-head">
+        <div class="kicker">{{ t.support.kicker }}</div>
+        <h2 id="support-h">{{ t.support.h2 }}</h2>
+        <p>{{ t.support.p }}</p>
+      </div>
+      <div class="wallets">
+        {% for w in wallets %}
+        <div class="wallet">
+          <div class="qr" role="img" aria-label="{{ t.support.qr }}: {{ w.address }}">{{ w.qr|safe }}</div>
+          <div>
+            <h3><i style="background:{{ w.color }}"></i>{{ t.support[w.id].t }}</h3>
+            <p class="net">{{ t.support[w.id].net }}</p>
+            <div class="addr" translate="no">{{ w.address }}</div>
+            <button type="button" class="btn btn-ghost btn-s" data-copy="{{ w.address }}" data-copied="{{ t.support.copied }}">{{ icon('copy') }}<span data-copy-label>{{ t.support.copy_btn }}</span></button>
+            <p class="warn">{{ t.support[w.id].warn }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <p class="support-foot">{{ t.support.foot }}</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" aria-labelledby="services-h">
+  <div class="wrap services">
+    <div class="me">
+      <div class="kicker">{{ t.services.kicker }}</div>
+      <h2 id="services-h">{{ t.services.h2 }}</h2>
+      <p style="margin-top:16px">{{ t.services.p|safe }}</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:{{ site.email }}?subject={{ t.services.mail_subject|urlencode }}">{{ icon('send') }}{{ t.services.cta_mail }}</a>
+        <a class="btn btn-ghost" href="{{ site.repo }}/issues/new" rel="noopener">{{ icon('github') }}{{ t.services.cta_issue }}</a>
+      </div>
+      <ul class="contact-list">
+        <li><a href="mailto:{{ site.email }}">{{ icon('mail') }}{{ site.email }}</a></li>
+        <li><a href="{{ site.linkedin }}" rel="noopener">{{ icon('linkedin') }}{{ t.services.linkedin }}</a></li>
+        <li><a href="{{ site.mql5 }}" rel="noopener">{{ icon('chart') }}{{ t.services.mql5 }}</a></li>
+        <li><a href="{{ site.portfolio }}" rel="noopener">{{ icon('globe') }}{{ t.services.portfolio }}</a></li>
+      </ul>
+    </div>
+    <div class="svc">
+      {% set svc_icons = {'custom': 'sliders', 'pine': 'swap', 'ea': 'bot', 'bt': 'flask', 'tg': 'send'} %}
+      {% for s in t.services['items'] %}
+      <article class="card{% if loop.first %} hl{% endif %}">
+        <span class="ico">{{ icon(svc_icons[s.id]) }}</span>
+        <div>
+          <h3>{% if s.link %}<a href="/pine-script-to-mql5/">{{ s.t }}</a>{% else %}{{ s.t }}{% endif %}</h3>
+          <p>{{ s.d }}{% if s.link %} <a href="/pine-script-to-mql5/">{{ s.link }} →</a>{% endif %}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="more" aria-labelledby="more-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">{{ t.more.kicker }}</div>
+      <h2 id="more-h">{{ t.more.h2 }}</h2>
+      <p>{{ t.more.p }}</p>
+    </div>
+    <article class="product">
+      <div class="pic"><img src="/assets/img/structura.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Structura, Smart Money indicator for MetaTrader 5"></div>
+      <div class="body">
+        <span class="badge">{{ t.more.badge }}</span>
+        <h3 style="font-size:1.5rem;margin-bottom:12px">{{ t.more.t }}</h3>
+        <p>{{ t.more.d }}</p>
+        <ul>{% for b in t.more.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+        <div class="cta-row" style="margin:0">
+          <a class="btn btn-primary" href="{{ site.structura }}" rel="noopener">{{ t.more.btn_market }}</a>
+          <a class="btn btn-ghost" href="{{ site.structura_video }}" rel="noopener">{{ icon('play') }}{{ t.more.btn_video }}</a>
+        </div>
+      </div>
+    </article>
+    <p class="faint mono" style="margin:26px 0 0;font-size:12px;text-transform:uppercase;letter-spacing:.08em">{{ t.more.others_title }}</p>
+    <div class="mini">
+      {% for o in t.more.others %}<a href="{{ o.url }}" rel="noopener">{{ o.t }}<span>{{ o.d }}</span></a>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">{{ t.faq.kicker }}</div>
+      <h2 id="faq-h">{{ t.faq.h2 }}</h2>
+    </div>
+    <div class="faq">
+      {% for f in t.faq['items'] %}
+      <details{% if loop.first %} open{% endif %}><summary>{{ f.q }}</summary><div class="a"><p>{{ f.a }}</p></div></details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

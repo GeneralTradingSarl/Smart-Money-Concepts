@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smart-money-concepts-mt5.vercel.app/sitemap.xml

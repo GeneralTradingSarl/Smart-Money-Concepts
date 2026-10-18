@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Money Concepts MT5：免费的 LuxAlgo SMC 指标 MetaTrader 5 版（.ex5 + .mq5 源码）</title>
+<meta name="description" content="LuxAlgo Smart Money Concepts 指标的免费 MetaTrader 5 移植版：BOS、CHoCH、订单块、FVG、EQH/EQL、溢价区与折价区。经证明与 TradingView 完全一致。下载 .ex5 与 .mq5 源代码。">
+<meta name="keywords" content="smart money concepts mt5, smc 指标 mt5, luxalgo mt5, luxalgo mql5, 聪明钱概念 指标, 订单块 指标 mt5, bos choch 指标, 公允价值缺口 mt5, smc mq5 源码, 免费 smc 指标">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://smart-money-concepts-mt5.vercel.app/zh/">
+<link rel="alternate" hreflang="en" href="https://smart-money-concepts-mt5.vercel.app/">
+<link rel="alternate" hreflang="fr" href="https://smart-money-concepts-mt5.vercel.app/fr/">
+<link rel="alternate" hreflang="es" href="https://smart-money-concepts-mt5.vercel.app/es/">
+<link rel="alternate" hreflang="pt" href="https://smart-money-concepts-mt5.vercel.app/pt/">
+<link rel="alternate" hreflang="ru" href="https://smart-money-concepts-mt5.vercel.app/ru/">
+<link rel="alternate" hreflang="zh-Hans" href="https://smart-money-concepts-mt5.vercel.app/zh/">
+<link rel="alternate" hreflang="x-default" href="https://smart-money-concepts-mt5.vercel.app/">
+<meta name="author" content="Ismael Ladjohounlou">
+<meta name="theme-color" content="#07090d">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Smart Money Concepts MT5">
+<meta property="og:title" content="Smart Money Concepts MT5 版，经证明与 TradingView 上的 LuxAlgo 原版完全一致">
+<meta property="og:description" content="免费 .ex5 与完整 .mq5 源码。在 5,044 根K线上与 TradingView 逐一比对每个标签、线条和方框：100% 一致。">
+<meta property="og:url" content="https://smart-money-concepts-mt5.vercel.app/zh/">
+<meta property="og:image" content="https://smart-money-concepts-mt5.vercel.app/og/og-zh.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Smart Money Concepts MT5 版，经证明与 TradingView 上的 LuxAlgo 原版完全一致">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Smart Money Concepts MT5 版，经证明与 TradingView 上的 LuxAlgo 原版完全一致">
+<meta name="twitter:description" content="免费 .ex5 与完整 .mq5 源码。在 5,044 根K线上与 TradingView 逐一比对每个标签、线条和方框：100% 一致。">
+<meta name="twitter:image" content="https://smart-money-concepts-mt5.vercel.app/og/og-zh.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css?v=ed2d68997f">
+<link rel="preload" href="/assets/data/bars.json" as="fetch" crossorigin>
+<link rel="preload" href="/assets/data/parity-B.json" as="fetch" crossorigin>
+<script type="application/ld+json">{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;WebSite&#34;,&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#website&#34;,&#34;url&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/&#34;,&#34;name&#34;:&#34;Smart Money Concepts MT5&#34;,&#34;inLanguage&#34;:[&#34;en&#34;,&#34;fr&#34;,&#34;es&#34;,&#34;pt&#34;,&#34;ru&#34;,&#34;zh-Hans&#34;],&#34;publisher&#34;:{&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#author&#34;}}</script>
+<script type="application/ld+json">{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;SoftwareApplication&#34;,&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#software&#34;,&#34;name&#34;:&#34;Smart Money Concepts for MetaTrader 5&#34;,&#34;alternateName&#34;:[&#34;Smart Money Concepts MT5&#34;,&#34;LuxAlgo Smart Money Concepts MT5&#34;,&#34;SMC indicator MT5&#34;,&#34;SmartMoneyConcepts.mq5&#34;],&#34;description&#34;:&#34;LuxAlgo Smart Money Concepts 指标的免费 MetaTrader 5 移植版：BOS、CHoCH、订单块、FVG、EQH/EQL、溢价区与折价区。经证明与 TradingView 完全一致。下载 .ex5 与 .mq5 源代码。&#34;,&#34;url&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/zh/&#34;,&#34;inLanguage&#34;:&#34;zh-Hans&#34;,&#34;applicationCategory&#34;:&#34;FinanceApplication&#34;,&#34;applicationSubCategory&#34;:&#34;Trading indicator&#34;,&#34;operatingSystem&#34;:&#34;Windows, macOS, Linux (MetaTrader 5)&#34;,&#34;softwareRequirements&#34;:&#34;MetaTrader 5&#34;,&#34;softwareVersion&#34;:&#34;1.0.0&#34;,&#34;datePublished&#34;:&#34;2026-10-18&#34;,&#34;fileSize&#34;:&#34;88 KB&#34;,&#34;downloadUrl&#34;:[&#34;https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.ex5&#34;,&#34;https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.mq5&#34;,&#34;https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts-MT5-v1.0.0.zip&#34;],&#34;installUrl&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/install/&#34;,&#34;screenshot&#34;:[&#34;https://smart-money-concepts-mt5.vercel.app/assets/img/proof-metatrader5.webp&#34;,&#34;https://smart-money-concepts-mt5.vercel.app/assets/img/proof-tradingview.webp&#34;],&#34;image&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/og/og-en.png&#34;,&#34;license&#34;:&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;,&#34;isAccessibleForFree&#34;:true,&#34;offers&#34;:{&#34;@type&#34;:&#34;Offer&#34;,&#34;price&#34;:&#34;0&#34;,&#34;priceCurrency&#34;:&#34;USD&#34;,&#34;availability&#34;:&#34;https://schema.org/InStock&#34;},&#34;author&#34;:{&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#author&#34;},&#34;isBasedOn&#34;:{&#34;@type&#34;:&#34;SoftwareSourceCode&#34;,&#34;name&#34;:&#34;Smart Money Concepts (SMC) [LuxAlgo]&#34;,&#34;url&#34;:&#34;https://www.tradingview.com/script/CnB3fSph-Smart-Money-Concepts-SMC-LuxAlgo/&#34;,&#34;programmingLanguage&#34;:&#34;Pine Script&#34;,&#34;license&#34;:&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;,&#34;author&#34;:{&#34;@type&#34;:&#34;Organization&#34;,&#34;name&#34;:&#34;LuxAlgo&#34;,&#34;url&#34;:&#34;https://www.luxalgo.com&#34;}},&#34;keywords&#34;:&#34;smart money concepts mt5, smc 指标 mt5, luxalgo mt5, luxalgo mql5, 聪明钱概念 指标, 订单块 指标 mt5, bos choch 指标, 公允价值缺口 mt5, smc mq5 源码, 免费 smc 指标&#34;,&#34;featureList&#34;:[&#34;市场结构：BOS 与 CHoCH&#34;,&#34;内部与波段订单块&#34;,&#34;等高点与等低点&#34;,&#34;公允价值缺口（FVG）&#34;,&#34;溢价区、均衡区、折价区&#34;,&#34;强/弱高点与低点&#34;,&#34;前一日、前一周、前一月&#34;,&#34;趋势K线与 16 种警报&#34;,&#34;Historical / Present，Colored / Monochrome&#34;]}</script>
+<script type="application/ld+json">{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;SoftwareSourceCode&#34;,&#34;name&#34;:&#34;SmartMoneyConcepts.mq5&#34;,&#34;description&#34;:&#34;MQL5 source code of the MetaTrader 5 port of LuxAlgo&#39;s Smart Money Concepts indicator.&#34;,&#34;codeRepository&#34;:&#34;https://github.com/GeneralTradingSarl/Smart-Money-Concepts&#34;,&#34;programmingLanguage&#34;:&#34;MQL5&#34;,&#34;runtimePlatform&#34;:&#34;MetaTrader 5&#34;,&#34;license&#34;:&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;,&#34;author&#34;:{&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#author&#34;},&#34;isBasedOn&#34;:{&#34;@type&#34;:&#34;SoftwareSourceCode&#34;,&#34;name&#34;:&#34;Smart Money Concepts (SMC) [LuxAlgo]&#34;,&#34;url&#34;:&#34;https://www.tradingview.com/script/CnB3fSph-Smart-Money-Concepts-SMC-LuxAlgo/&#34;,&#34;programmingLanguage&#34;:&#34;Pine Script&#34;,&#34;license&#34;:&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;,&#34;author&#34;:{&#34;@type&#34;:&#34;Organization&#34;,&#34;name&#34;:&#34;LuxAlgo&#34;,&#34;url&#34;:&#34;https://www.luxalgo.com&#34;}},&#34;targetProduct&#34;:{&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#software&#34;}}</script>
+<script type="application/ld+json">{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;FAQPage&#34;,&#34;inLanguage&#34;:&#34;zh-Hans&#34;,&#34;mainEntity&#34;:[{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;真的免费吗？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;是的。编译好的 .ex5 和完整的 .mq5 源代码都可以免费下载、使用和修改，仅限非商业用途。无需账户、无需邮箱、无需许可证密钥。捐赠完全自愿。&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;这是 LuxAlgo 官方指标吗？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;不是。这是 LuxAlgo 开源脚本 Smart Money Concepts 的独立非官方 MQL5 移植版，以相同的 CC BY-NC-SA 4.0 许可发布并保留署名。LuxAlgo 并未认可它。&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;真的和 TradingView 完全一样吗？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;在测试数据上是的：四种配置和两次逐笔回放中，100% 的标签、线条、方框和K线颜色都一致。唯一的差别是周线和月线水平的价格，因为 TradingView 读取的是它自己的 W 与 M K线。您可以在对比查看器中检查，或在 GitHub 上重跑测试。&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;会重绘吗？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;行为与原版完全相同。结构在K线收盘后确认；正在形成的K线每个跳动都会重算，只在收盘时写入。波段点在其回看长度之后才确认，与 Pine 一样，所以标签会在枢轴点之后几根K线才出现。&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;适用于哪些市场和周期？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;MetaTrader 5 能显示的任何品种和周期：外汇、黄金（XAUUSD）、指数、加密货币和股票。日、周、月水平使用您经纪商的 D1、W1 和 MN1 数据。&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;我可以出售它或发布到 MQL5 Market 吗？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;不可以。许可证禁止商业用途，原版和本移植版都一样。您可以分享、修改并用于自己的交易，但须保留署名并使用相同许可。&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;可以在 EA 中使用吗？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;可以：开启 Color Candles 后，EA 可以通过 iCustom 从颜色缓冲区（缓冲区 4）读取趋势。如果您需要 BOS、CHoCH 或订单块的干净信号缓冲区，或基于它的完整 EA，我可以为您制作适合自动交易的版本。&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;有 MT4 版本吗？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;暂时没有。可以按需定制 MQL4 版本。&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;可以用其他币种捐赠吗？&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;TRON 网络上的任何资产都可以发到 TRON 地址，BNB Smart Chain 上的任何 BEP-20 代币都可以发到 BNB 地址。发送前务必确认网络：选错网络意味着资金丢失。&#34;}}]}</script>
+<script type="application/ld+json">{&#34;@type&#34;:&#34;Person&#34;,&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#author&#34;,&#34;name&#34;:&#34;Ismael Ladjohounlou&#34;,&#34;url&#34;:&#34;https://ismael-portfolio-liard.vercel.app/en&#34;,&#34;email&#34;:&#34;mailto:general.trading.bot.2025@gmail.com&#34;,&#34;jobTitle&#34;:&#34;Trading systems developer (MQL5, Pine Script, Python)&#34;,&#34;sameAs&#34;:[&#34;https://github.com/GeneralTradingSarl&#34;,&#34;https://www.linkedin.com/in/ismaelladjohounlou&#34;,&#34;https://www.mql5.com/en/users/ismael_financial_bot&#34;],&#34;knowsAbout&#34;:[&#34;MQL5&#34;,&#34;MQL4&#34;,&#34;Pine Script&#34;,&#34;MetaTrader 5&#34;,&#34;TradingView&#34;,&#34;Smart Money Concepts&#34;,&#34;Expert Advisors&#34;,&#34;Algorithmic trading&#34;,&#34;Python&#34;],&#34;@context&#34;:&#34;https://schema.org&#34;}</script>
+</head>
+<body class="lang-zh page-home">
+<a class="skip" href="#main">跳到正文</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/zh/" aria-label="Smart Money Concepts MT5"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0d141c"/><rect x=".5" y=".5" width="31" height="31" rx="7.5" fill="none" stroke="#ffffff" stroke-opacity=".14"/><path d="M8 9v14" stroke="#089981" stroke-width="1.6"/><rect x="6" y="12" width="4" height="7" rx="1" fill="#089981"/><path d="M16 6v14" stroke="#089981" stroke-width="1.6"/><rect x="14" y="8" width="4" height="8" rx="1" fill="#089981"/><path d="M24 11v15" stroke="#F23645" stroke-width="1.6"/><rect x="22" y="14" width="4" height="8" rx="1" fill="#F23645"/><path d="M6 8.5h20" stroke="#19d3a6" stroke-width="1.4" stroke-dasharray="2.4 1.8"/></svg><span>SMC · MT5</span><small>v1.0.0</small></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/proof/">证明</a>
+      <a href="/guide/">指南</a>
+      <a href="/install/">安装</a>
+      <a href="/zh/#services">定制开发</a>
+      <a href="/zh/#support">支持</a>
+      <a href="/zh/#faq">常见问题</a>
+    </nav>
+    <div class="nav-cta">
+      <details class="lang">
+        <summary aria-label="语言"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>中文</summary>
+        <ul>
+<li><a href="/" hreflang="en" lang="en">English</a></li>
+<li><a href="/fr/" hreflang="fr" lang="fr">Français</a></li>
+<li><a href="/es/" hreflang="es" lang="es">Español</a></li>
+<li><a href="/pt/" hreflang="pt" lang="pt">Português</a></li>
+<li><a href="/ru/" hreflang="ru" lang="ru">Русский</a></li>
+<li><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans" aria-current="true">简体中文</a></li>
+        </ul>
+      </details>
+      <a class="btn btn-ghost btn-s gh-btn" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg><span>GitHub</span></a>
+    </div>
+    <button class="menu-btn" type="button" data-menu aria-expanded="false" aria-label="菜单"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+  </div>
+</header>
+<main id="main">
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">
+<span class="pill"><i class="dot"></i>免费开源</span><span class="pill">MetaTrader 5</span><span class="pill">v1.0.0</span>    </div>
+    <div class="hero-grid">
+      <h1>Smart Money Concepts MetaTrader 5 版<span class="sub">LuxAlgo 的 SMC 指标，逐行移植到 MQL5，<b>并经证明与 TradingView 完全一致</b>。</span></h1>
+      <div>
+        <p class="lead">TradingView 上最受欢迎的 SMC 脚本的免费 MQL5 移植版：内部结构与波段结构（<b>BOS</b>、<b>CHoCH</b>）、<b>订单块</b>、等高点与等低点、<b>公允价值缺口</b>（FVG）、溢价区与折价区，以及前一日、前一周、前一月的高低点。在 5,044 根K线上与原版逐个对象比对：每个标签、线条和方框都一致。</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.ex5" data-dl="ex5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>下载 .ex5</a>
+          <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.mq5" data-dl="mq5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>获取 .mq5 源码</a>
+        </div>
+        <div class="file-meta"><span>88 KB</span><span>0 错误，0 警告</span><span>无 DLL，无需注册</span><span>CC BY-NC-SA 4.0</span></div>
+      </div>
+    </div>
+    <div class="viewer" data-viewer data-config="B" data-bars="150" data-autoblink data-eager  data-legend-tv="Smart Money Concepts [LuxAlgo] · TradingView" data-legend-mt5="SmartMoneyConcepts.ex5 · MetaTrader 5"
+  data-t-stat="屏幕上 {n} 个对象 · {same} 个完全一致" data-t-price="{n} 个周/月水平价差不到 1 美分（数据源）">
+  <div class="viewer-bar">
+    <div class="seg" role="group" aria-label="Platform">
+      <button type="button" data-side="tv" aria-pressed="false"><i class="sw" style="background:#5b8cff"></i>TradingView <small>LuxAlgo Pine</small></button>
+      <button type="button" data-side="mt5" aria-pressed="true"><i class="sw" style="background:#f0b90b"></i>MetaTrader 5 <small>本移植版</small></button>
+    </div>
+    <button type="button" class="chip" data-blink aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>闪烁对比</button>
+    <button type="button" class="chip" data-diff aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>差异</button>
+    <output class="viewer-stat" data-stat aria-live="polite"></output>
+  </div>
+  <div class="viewer-canvas">
+<img class="poster" src="/assets/img/hero-poster.webp" width="1770" height="780" alt="TradingView 与 MetaTrader 5 在同样的 AAPL 15 分钟K线上绘制的 Smart Money Concepts：订单块、BOS 与 CHoCH 标签、溢价区与折价区、周线与月线水平。" fetchpriority="high">    <canvas role="img" aria-label="TradingView 与 MetaTrader 5 在同样的 AAPL 15 分钟K线上绘制的 Smart Money Concepts：订单块、BOS 与 CHoCH 标签、溢价区与折价区、周线与月线水平。"></canvas>
+    <span class="loading">正在加载导出数据…</span>
+  </div>
+  <div class="viewer-foot"><span><b>同样的 AAPL 15 分钟K线，开启全部功能。</b>闪烁对比每秒在两个平台之间切换两次，画面纹丝不动。拖动可滚动，双击可复位。</span><span>在您的浏览器中，根据两个平台各自导出的对象绘制。</span></div>
+</div>
+  </div>
+</div>
+
+<section id="proof" aria-labelledby="proof-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01 · 证明</div>
+      <h2 id="proof-h">不是“相似”，而是逐个对象完全一致。</h2>
+      <p>LuxAlgo 的脚本在 TradingView 上运行，同样的 5,044 根K线载入 MetaTrader 5。两个平台的每个绘图都被导出，并按时间、价格、文本、颜色、样式和大小逐一比对。共四种配置，另外还逐笔回放了最后 44 根K线。</p>
+    </div>
+    <div class="stats">
+<div class="stat"><b>2,535</b><span>个绘图对象比对，全部一致</span></div><div class="stat"><b>20,176</b><span>根K线的趋势颜色，全部一致</span></div><div class="stat"><b>4 + 2</b><span>种配置，外加两次逐笔回放</span></div><div class="stat"><b><em>0</em></b><span>处逻辑差异</span></div>    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">配置</th><th scope="col">设置</th><th scope="col">标签</th><th scope="col">线条</th><th scope="col">方框</th><th scope="col">趋势色</th></tr></thead>
+        <tbody>
+          <tr><td><span class="cfg">A</span></td><td>默认设置</td>
+            <td class="num"><span class="ok">327/327</span></td>
+            <td class="num"><span class="ok">327/327</span></td>
+            <td class="num"><span class="ok">5/5</span></td>
+            <td class="num"><span class="ok">5,044/5,044</span></td></tr>
+          <tr><td><span class="cfg">B</span></td><td>全部功能：波段点、波段订单块、FVG、日/周/月水平、溢价折价区</td>
+            <td class="num"><span class="ok">409/409</span></td>
+            <td class="num"><span class="ok">333/333</span></td>
+            <td class="num"><span class="ok">47/47</span></td>
+            <td class="num"><span class="ok">5,044/5,044</span></td></tr>
+          <tr><td><span class="cfg">C</span></td><td>Present 模式、单色、共振过滤、累积平均波幅、收盘价失效、30 分钟 FVG</td>
+            <td class="num"><span class="ok">13/13</span></td>
+            <td class="num"><span class="ok">8/8</span></td>
+            <td class="num"><span class="ok">70/70</span></td>
+            <td class="num"><span class="ok">5,044/5,044</span></td></tr>
+          <tr><td><span class="cfg">D</span></td><td>配置 C 的历史模式，达到 Pine 的 500 个标签上限</td>
+            <td class="num"><span class="ok">500/500</span></td>
+            <td class="num"><span class="ok">426/426</span></td>
+            <td class="num"><span class="ok">70/70</span></td>
+            <td class="num"><span class="ok">5,044/5,044</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="faint" style="margin-top:12px;font-size:14px">A 与 B 再以实时方式运行：最后 44 根K线逐笔回放（176 个跳动），结果相同。</p>
+    <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><p>唯一的差异来自数据而非代码。在 TradingView 上，周线和月线水平取自其自身的 W 与 M K线（342.988），而 MT5 用图表上的K线重新计算（342.98，即这些K线真实的最高价）。锚点完全相同。在真实的 MT5 账户上，W1 与 MN1 和您的图表来自同一数据源。</p></div>
+
+    <h3 style="margin-top:44px">真实截图，相同K线，相同设置</h3>
+    <div class="shots">
+      <figure class="shot">
+        <a href="/assets/img/proof-tradingview.webp"><img src="/assets/img/proof-tradingview.webp" width="1600" height="785" loading="lazy" decoding="async" alt="TradingView 运行原版 Smart Money Concepts [LuxAlgo] 脚本，AAPL 15 分钟。"></a>
+        <figcaption><span class="tag tag-tv">TradingView</span>TradingView 运行原版 Smart Money Concepts [LuxAlgo] 脚本，AAPL 15 分钟。</figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="/assets/img/proof-metatrader5.webp"><img src="/assets/img/proof-metatrader5.webp" width="1590" height="802" loading="lazy" decoding="async" alt="MetaTrader 5 在相同K线上运行本移植版，默认设置。"></a>
+        <figcaption><span class="tag tag-mt">MetaTrader 5</span>MetaTrader 5 在相同K线上运行本移植版，默认设置。</figcaption>
+      </figure>
+    </div>
+    <div class="links-row">
+      <a class="btn btn-ghost" href="/proof/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>打开交互式对比查看器</a>
+      <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/tree/main/parity" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>亲自重跑测试</a>
+    </div>
+  </div>
+</section>
+
+<section id="features" aria-labelledby="features-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02 · 它绘制什么</div>
+      <h2 id="features-h">完整脚本。每个参数，每个警报。</h2>
+      <p>没有任何简化。参数名称、默认值和分组都与 TradingView 原版相同。</p>
+    </div>
+    <div class="grid g3">
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Break of structure and change of character" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="18" y1="55.1" x2="18" y2="64.2" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="56.6" width="10" height="4.6" rx="1" fill="#089981"/><line x1="40" y1="46.0" x2="40" y2="58.2" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="47.5" width="10" height="9.1" rx="1" fill="#089981"/><line x1="62" y1="38.4" x2="62" y2="49.8" stroke="#089981" stroke-width="1.2"/><rect x="57.0" y="41.4" width="10" height="6.1" rx="1" fill="#089981"/><line x1="84" y1="40.7" x2="84" y2="53.6" stroke="#F23645" stroke-width="1.2"/><rect x="79.0" y="41.4" width="10" height="10.7" rx="1" fill="#F23645"/><line x1="106" y1="49.0" x2="106" y2="59.7" stroke="#F23645" stroke-width="1.2"/><rect x="101.0" y="52.1" width="10" height="5.3" rx="1" fill="#F23645"/><line x1="128" y1="47.5" x2="128" y2="58.2" stroke="#089981" stroke-width="1.2"/><rect x="123.0" y="48.3" width="10" height="9.1" rx="1" fill="#089981"/><line x1="150" y1="39.9" x2="150" y2="49.8" stroke="#089981" stroke-width="1.2"/><rect x="145.0" y="41.4" width="10" height="6.9" rx="1" fill="#089981"/><line x1="172" y1="29.3" x2="172" y2="42.2" stroke="#089981" stroke-width="1.2"/><rect x="167.0" y="31.6" width="10" height="9.8" rx="1" fill="#089981"/><line x1="194" y1="27.0" x2="194" y2="36.9" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="31.6" width="10" height="3.8" rx="1" fill="#F23645"/><line x1="216" y1="33.8" x2="216" y2="46.0" stroke="#F23645" stroke-width="1.2"/><rect x="211.0" y="35.4" width="10" height="9.1" rx="1" fill="#F23645"/><line x1="238" y1="43.0" x2="238" y2="55.1" stroke="#F23645" stroke-width="1.2"/><rect x="233.0" y="44.5" width="10" height="9.1" rx="1" fill="#F23645"/><line x1="260" y1="51.3" x2="260" y2="62.7" stroke="#F23645" stroke-width="1.2"/><rect x="255.0" y="53.6" width="10" height="6.8" rx="1" fill="#F23645"/><line x1="62" y1="38.4" x2="172" y2="38.4" stroke="#089981" stroke-width="1.2" stroke-dasharray="4 3"/><text x="117.0" y="35.4" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><line x1="150" y1="49.8" x2="238" y2="49.8" stroke="#F23645" stroke-width="1.2" stroke-dasharray="4 3"/><text x="194.0" y="59.8" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">CHoCH</text></svg></div>
+        <h3>市场结构：BOS 与 CHoCH</h3>
+        <p>在两个尺度上识别结构突破（BOS）与性质转变（CHoCH）：内部结构（5 根K线的波段）用于入场，波段结构（默认 50 根K线）用于把握大方向。可选共振过滤。</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Bullish order block" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><rect x="84" y="46.0" width="216" height="10.6" fill="#2157f3" fill-opacity="0.22"/><line x1="84" y1="46.0" x2="300" y2="46.0" stroke="#2157f3" stroke-opacity=".55"/><text x="292" y="56.8" fill="#7aa2ff" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Bullish OB</text><line x1="18" y1="29.3" x2="18" y2="39.9" stroke="#F23645" stroke-width="1.2"/><rect x="13.0" y="30.8" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="40" y1="36.9" x2="40" y2="47.5" stroke="#F23645" stroke-width="1.2"/><rect x="35.0" y="38.4" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="62" y1="44.5" x2="62" y2="53.6" stroke="#F23645" stroke-width="1.2"/><rect x="57.0" y="46.0" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="84" y1="46.0" x2="84" y2="56.6" stroke="#F23645" stroke-width="1.2"/><rect x="79.0" y="52.1" width="10" height="3.0" rx="1" fill="#F23645"/><line x1="106" y1="36.9" x2="106" y2="55.9" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="38.4" width="10" height="16.7" rx="1" fill="#089981"/><line x1="128" y1="27.8" x2="128" y2="39.9" stroke="#089981" stroke-width="1.2"/><rect x="123.0" y="29.3" width="10" height="9.1" rx="1" fill="#089981"/><line x1="150" y1="26.2" x2="150" y2="35.4" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="29.3" width="10" height="4.5" rx="1" fill="#F23645"/><line x1="172" y1="32.3" x2="172" y2="43.0" stroke="#F23645" stroke-width="1.2"/><rect x="167.0" y="33.8" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="194" y1="39.9" x2="194" y2="48.3" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="41.4" width="10" height="3.1" rx="1" fill="#F23645"/><line x1="216" y1="33.8" x2="216" y2="46.0" stroke="#089981" stroke-width="1.2"/><rect x="211.0" y="35.4" width="10" height="9.1" rx="1" fill="#089981"/><line x1="238" y1="24.7" x2="238" y2="36.9" stroke="#089981" stroke-width="1.2"/><rect x="233.0" y="26.2" width="10" height="9.2" rx="1" fill="#089981"/><line x1="260" y1="21.7" x2="260" y2="29.3" stroke="#089981" stroke-width="1.2"/><rect x="255.0" y="23.2" width="10" height="3.0" rx="1" fill="#089981"/></svg></div>
+        <h3>内部与波段订单块</h3>
+        <p>看涨与看跌订单块，可按 ATR 或累积平均波幅过滤，按最高/最低价或收盘价判定失效，各有独立的数量上限。</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Equal highs and equal lows" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="18" y1="44.5" x2="18" y2="55.1" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="46.0" width="10" height="7.6" rx="1" fill="#089981"/><line x1="40" y1="30.8" x2="40" y2="47.5" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="35.4" width="10" height="10.6" rx="1" fill="#089981"/><line x1="62" y1="33.8" x2="62" y2="44.5" stroke="#F23645" stroke-width="1.2"/><rect x="57.0" y="35.4" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="84" y1="39.9" x2="84" y2="49.0" stroke="#089981" stroke-width="1.2"/><rect x="79.0" y="41.4" width="10" height="1.6" rx="1" fill="#089981"/><line x1="106" y1="30.5" x2="106" y2="43.0" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="38.4" width="10" height="3.0" rx="1" fill="#089981"/><line x1="128" y1="36.9" x2="128" y2="50.6" stroke="#F23645" stroke-width="1.2"/><rect x="123.0" y="38.4" width="10" height="10.6" rx="1" fill="#F23645"/><line x1="150" y1="47.5" x2="150" y2="61.2" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="49.0" width="10" height="10.7" rx="1" fill="#F23645"/><line x1="172" y1="53.6" x2="172" y2="67.3" stroke="#089981" stroke-width="1.2"/><rect x="167.0" y="55.1" width="10" height="4.6" rx="1" fill="#089981"/><line x1="194" y1="50.6" x2="194" y2="58.2" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="55.1" width="10" height="1.5" rx="1" fill="#F23645"/><line x1="216" y1="55.1" x2="216" y2="64.2" stroke="#F23645" stroke-width="1.2"/><rect x="211.0" y="56.6" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="238" y1="58.2" x2="238" y2="67.1" stroke="#089981" stroke-width="1.2"/><rect x="233.0" y="58.9" width="10" height="2.3" rx="1" fill="#089981"/><line x1="260" y1="49.0" x2="260" y2="60.4" stroke="#089981" stroke-width="1.2"/><rect x="255.0" y="50.6" width="10" height="8.3" rx="1" fill="#089981"/><line x1="40" y1="30.8" x2="106" y2="30.8" stroke="#F23645" stroke-width="1.2" stroke-dasharray="1 2"/><text x="73.0" y="27.8" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">EQH</text><line x1="172" y1="67.3" x2="238" y2="67.3" stroke="#089981" stroke-width="1.2" stroke-dasharray="1 2"/><text x="205.0" y="77.3" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">EQL</text></svg></div>
+        <h3>等高点与等低点</h3>
+        <p>EQH 与 EQL：停留在同一价位的流动性，阈值和确认长度均可调。</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Bullish fair value gap" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><rect x="62" y="44.5" width="238" height="9.1" fill="#00ff68" fill-opacity="0.22"/><text x="292" y="53.0" fill="#5df59b" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Bullish FVG</text><line x1="18" y1="64.2" x2="18" y2="71.8" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="65.8" width="10" height="3.0" rx="1" fill="#089981"/><line x1="40" y1="61.2" x2="40" y2="67.3" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="62.7" width="10" height="3.1" rx="1" fill="#089981"/><line x1="62" y1="53.6" x2="62" y2="64.2" stroke="#089981" stroke-width="1.2"/><rect x="57.0" y="56.6" width="10" height="6.1" rx="1" fill="#089981"/><line x1="84" y1="27.8" x2="84" y2="57.4" stroke="#089981" stroke-width="1.2"/><rect x="79.0" y="29.3" width="10" height="27.3" rx="1" fill="#089981"/><line x1="106" y1="23.2" x2="106" y2="44.5" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="26.2" width="10" height="3.1" rx="1" fill="#089981"/><line x1="128" y1="24.0" x2="128" y2="36.9" stroke="#F23645" stroke-width="1.2"/><rect x="123.0" y="26.2" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="150" y1="30.8" x2="150" y2="41.4" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="33.8" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="172" y1="35.4" x2="172" y2="46.0" stroke="#089981" stroke-width="1.2"/><rect x="167.0" y="36.9" width="10" height="1.5" rx="1" fill="#089981"/><line x1="194" y1="29.3" x2="194" y2="38.4" stroke="#089981" stroke-width="1.2"/><rect x="189.0" y="30.8" width="10" height="6.1" rx="1" fill="#089981"/><line x1="216" y1="26.2" x2="216" y2="33.8" stroke="#089981" stroke-width="1.2"/><rect x="211.0" y="27.8" width="10" height="3.0" rx="1" fill="#089981"/><line x1="238" y1="21.7" x2="238" y2="29.3" stroke="#089981" stroke-width="1.2"/><rect x="233.0" y="23.2" width="10" height="4.6" rx="1" fill="#089981"/><line x1="260" y1="20.2" x2="260" y2="27.8" stroke="#F23645" stroke-width="1.2"/><rect x="255.0" y="23.2" width="10" height="1.5" rx="1" fill="#F23645"/></svg></div>
+        <h3>公允价值缺口（FVG）</h3>
+        <p>三根K线形成的失衡区，可取当前周期或更高周期，带自动阈值和可调延伸。</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Premium, equilibrium and discount zones" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><rect x="18" y="23.2" width="282" height="6.8" fill="#F23645" fill-opacity="0.18"/><rect x="18" y="46.4" width="282" height="3.0" fill="#878b94" fill-opacity="0.18"/><rect x="18" y="65.8" width="282" height="6.8" fill="#089981" fill-opacity="0.18"/><text x="294" y="29.6" fill="#F23645" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Premium</text><text x="294" y="50.9" fill="#878b94" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Equilibrium</text><text x="294" y="72.2" fill="#089981" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Discount</text><line x1="14" y1="44.5" x2="14" y2="61.2" stroke="#089981" stroke-width="1.2"/><rect x="9.5" y="46.0" width="9" height="7.6" rx="1" fill="#089981"/><line x1="33" y1="33.8" x2="33" y2="49.0" stroke="#089981" stroke-width="1.2"/><rect x="28.5" y="36.9" width="9" height="9.1" rx="1" fill="#089981"/><line x1="52" y1="23.2" x2="52" y2="39.9" stroke="#089981" stroke-width="1.2"/><rect x="47.5" y="26.2" width="9" height="10.7" rx="1" fill="#089981"/><line x1="71" y1="24.7" x2="71" y2="38.4" stroke="#F23645" stroke-width="1.2"/><rect x="66.5" y="26.2" width="9" height="10.7" rx="1" fill="#F23645"/><line x1="90" y1="35.4" x2="90" y2="50.6" stroke="#F23645" stroke-width="1.2"/><rect x="85.5" y="36.9" width="9" height="12.1" rx="1" fill="#F23645"/><line x1="109" y1="46.0" x2="109" y2="61.2" stroke="#F23645" stroke-width="1.2"/><rect x="104.5" y="49.0" width="9" height="9.2" rx="1" fill="#F23645"/><line x1="128" y1="56.6" x2="128" y2="72.6" stroke="#F23645" stroke-width="1.2"/><rect x="123.5" y="58.2" width="9" height="10.6" rx="1" fill="#F23645"/><line x1="147" y1="58.2" x2="147" y2="70.3" stroke="#089981" stroke-width="1.2"/><rect x="142.5" y="59.7" width="9" height="9.1" rx="1" fill="#089981"/><line x1="166" y1="47.5" x2="166" y2="61.2" stroke="#089981" stroke-width="1.2"/><rect x="161.5" y="49.0" width="9" height="10.7" rx="1" fill="#089981"/><line x1="185" y1="46.0" x2="185" y2="55.1" stroke="#F23645" stroke-width="1.2"/><rect x="180.5" y="49.0" width="9" height="3.1" rx="1" fill="#F23645"/><line x1="204" y1="41.4" x2="204" y2="53.6" stroke="#089981" stroke-width="1.2"/><rect x="199.5" y="43.0" width="9" height="9.1" rx="1" fill="#089981"/><line x1="223" y1="38.4" x2="223" y2="49.0" stroke="#F23645" stroke-width="1.2"/><rect x="218.5" y="43.0" width="9" height="3.0" rx="1" fill="#F23645"/></svg></div>
+        <h3>溢价区、均衡区、折价区</h3>
+        <p>将当前波段区间划分为溢价区、均衡区和折价区，随区间扩大而更新。</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Swing points, strong low and weak high" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="18" y1="56.6" x2="18" y2="68.8" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="58.2" width="10" height="3.0" rx="1" fill="#089981"/><line x1="40" y1="41.4" x2="40" y2="59.7" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="43.0" width="10" height="15.2" rx="1" fill="#089981"/><line x1="62" y1="39.9" x2="62" y2="53.6" stroke="#F23645" stroke-width="1.2"/><rect x="57.0" y="43.0" width="10" height="9.1" rx="1" fill="#F23645"/><line x1="84" y1="49.0" x2="84" y2="61.2" stroke="#089981" stroke-width="1.2"/><rect x="79.0" y="50.6" width="10" height="1.5" rx="1" fill="#089981"/><line x1="106" y1="30.8" x2="106" y2="52.1" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="32.3" width="10" height="18.3" rx="1" fill="#089981"/><line x1="128" y1="29.3" x2="128" y2="41.4" stroke="#F23645" stroke-width="1.2"/><rect x="123.0" y="32.3" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="150" y1="36.9" x2="150" y2="47.5" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="39.9" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="172" y1="23.2" x2="172" y2="47.5" stroke="#089981" stroke-width="1.2"/><rect x="167.0" y="24.7" width="10" height="21.3" rx="1" fill="#089981"/><line x1="194" y1="21.7" x2="194" y2="30.8" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="24.7" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="216" y1="27.8" x2="216" y2="36.9" stroke="#F23645" stroke-width="1.2"/><rect x="211.0" y="29.3" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="238" y1="30.8" x2="238" y2="38.4" stroke="#089981" stroke-width="1.2"/><rect x="233.0" y="32.3" width="10" height="3.1" rx="1" fill="#089981"/><line x1="260" y1="29.3" x2="260" y2="35.4" stroke="#089981" stroke-width="1.2"/><rect x="255.0" y="30.8" width="10" height="1.5" rx="1" fill="#089981"/><text x="40" y="38.4" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">HH</text><text x="84" y="71.2" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">HL</text><text x="106" y="27.8" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">HH</text><text x="150" y="57.5" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">HL</text><line x1="172" y1="21.7" x2="260" y2="21.7" stroke="#F23645" stroke-width="1"/><text x="292" y="18.7" fill="#F23645" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Weak High</text><line x1="150" y1="47.5" x2="260" y2="47.5" stroke="#089981" stroke-width="1"/><text x="292" y="57.5" fill="#089981" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Strong Low</text></svg></div>
+        <h3>强/弱高点与低点</h3>
+        <p>当前波段的极值，按趋势标为强或弱，并标出 HH、HL、LH、LL 波段点。</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Previous day, week and month levels" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="0" y1="20.2" x2="266" y2="20.2" stroke="#2157f3" stroke-width="1"/><text x="270" y="23.2" fill="#7aa2ff" font-size="9" text-anchor="start" font-family="Trebuchet MS, Segoe UI, sans-serif">PMH</text><line x1="0" y1="30.8" x2="266" y2="30.8" stroke="#2157f3" stroke-width="1"/><text x="270" y="33.8" fill="#7aa2ff" font-size="9" text-anchor="start" font-family="Trebuchet MS, Segoe UI, sans-serif">PWH</text><line x1="0" y1="41.4" x2="266" y2="41.4" stroke="#2157f3" stroke-width="1"/><text x="270" y="44.4" fill="#7aa2ff" font-size="9" text-anchor="start" font-family="Trebuchet MS, Segoe UI, sans-serif">PDH</text><line x1="0" y1="68.8" x2="266" y2="68.8" stroke="#2157f3" stroke-width="1"/><text x="270" y="71.8" fill="#7aa2ff" font-size="9" text-anchor="start" font-family="Trebuchet MS, Segoe UI, sans-serif">PDL</text><line x1="18" y1="49.0" x2="18" y2="58.2" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="50.6" width="10" height="3.0" rx="1" fill="#089981"/><line x1="40" y1="44.5" x2="40" y2="52.1" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="46.0" width="10" height="4.6" rx="1" fill="#089981"/><line x1="62" y1="43.0" x2="62" y2="53.6" stroke="#F23645" stroke-width="1.2"/><rect x="57.0" y="46.0" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="84" y1="49.0" x2="84" y2="61.2" stroke="#F23645" stroke-width="1.2"/><rect x="79.0" y="52.1" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="106" y1="53.6" x2="106" y2="62.7" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="55.1" width="10" height="4.6" rx="1" fill="#089981"/><line x1="128" y1="47.5" x2="128" y2="56.6" stroke="#089981" stroke-width="1.2"/><rect x="123.0" y="49.0" width="10" height="6.1" rx="1" fill="#089981"/><line x1="150" y1="46.0" x2="150" y2="55.1" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="49.0" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="172" y1="52.1" x2="172" y2="59.7" stroke="#F23645" stroke-width="1.2"/><rect x="167.0" y="53.6" width="10" height="3.0" rx="1" fill="#F23645"/><line x1="194" y1="49.0" x2="194" y2="58.2" stroke="#089981" stroke-width="1.2"/><rect x="189.0" y="50.6" width="10" height="6.0" rx="1" fill="#089981"/><line x1="216" y1="41.4" x2="216" y2="52.1" stroke="#089981" stroke-width="1.2"/><rect x="211.0" y="43.0" width="10" height="7.6" rx="1" fill="#089981"/></svg></div>
+        <h3>前一日、前一周、前一月</h3>
+        <p>PDH 与 PDL、PWH 与 PWL、PMH 与 PML 水平线，各有独立的颜色和线型。</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Trend coloured candles and alerts" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="18" y1="56.6" x2="18" y2="64.2" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="58.2" width="10" height="3.0" rx="1" fill="#089981"/><line x1="40" y1="52.1" x2="40" y2="59.7" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="53.6" width="10" height="4.6" rx="1" fill="#089981"/><line x1="62" y1="46.0" x2="62" y2="55.1" stroke="#089981" stroke-width="1.2"/><rect x="57.0" y="47.5" width="10" height="6.1" rx="1" fill="#089981"/><line x1="84" y1="44.5" x2="84" y2="52.1" stroke="#089981" stroke-width="1.2"/><rect x="79.0" y="47.5" width="10" height="1.5" rx="1" fill="#089981"/><line x1="106" y1="39.9" x2="106" y2="50.6" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="41.4" width="10" height="7.6" rx="1" fill="#089981"/><line x1="128" y1="35.4" x2="128" y2="44.5" stroke="#089981" stroke-width="1.2"/><rect x="123.0" y="38.4" width="10" height="3.0" rx="1" fill="#089981"/><line x1="150" y1="36.9" x2="150" y2="49.0" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="38.4" width="10" height="9.1" rx="1" fill="#F23645"/><line x1="172" y1="46.0" x2="172" y2="55.1" stroke="#F23645" stroke-width="1.2"/><rect x="167.0" y="47.5" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="194" y1="50.6" x2="194" y2="61.2" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="53.6" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="216" y1="56.6" x2="216" y2="65.8" stroke="#F23645" stroke-width="1.2"/><rect x="211.0" y="59.7" width="10" height="4.5" rx="1" fill="#F23645"/><line x1="238" y1="61.2" x2="238" y2="70.3" stroke="#F23645" stroke-width="1.2"/><rect x="233.0" y="64.2" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="106" y1="50.6" x2="194" y2="50.6" stroke="#F23645" stroke-width="1.2" stroke-dasharray="4 3"/><text x="150.0" y="60.6" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">CHoCH</text><g transform="translate(262 10)" fill="none" stroke="#ffb020" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></g></svg></div>
+        <h3>趋势K线与 16 种警报</h3>
+        <p>K线按内部趋势着色。原版的每个 alertcondition 都变成 MT5 警报：弹窗、推送通知或电子邮件。</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Historical and present display modes" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><rect x="6" y="6" width="138" height="80" rx="8" fill="#ffffff" fill-opacity=".03" stroke="#ffffff" stroke-opacity=".08"/><rect x="156" y="6" width="138" height="80" rx="8" fill="#ffffff" fill-opacity=".03" stroke="#ffffff" stroke-opacity=".08"/><text x="75" y="80" fill="#9aa7b8" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">Historical</text><text x="225" y="80" fill="#9aa7b8" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">Present</text><text x="18" y="58.2" fill="#089981" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><text x="44" y="47.6" fill="#F23645" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">CHoCH</text><text x="70" y="36.9" fill="#F23645" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><text x="96" y="58.2" fill="#089981" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><text x="122" y="47.6" fill="#089981" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">CHoCH</text><text x="232" y="41.5" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><line x1="224.8" y1="44.5" x2="273.2" y2="44.5" stroke="#089981" stroke-width="1.2" stroke-dasharray="4 3"/></svg></div>
+        <h3>Historical / Present，Colored / Monochrome</h3>
+        <p>与原版相同的显示模式。Present 模式只保留最新的结构，图表更清爽。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="engineering" aria-labelledby="eng-h">
+  <div class="wrap eng">
+    <div>
+      <div class="kicker">03 · 技术细节</div>
+      <h2 id="eng-h">MetaTrader 要求换一种机制，但结果从不改变</h2>
+      <p class="muted" style="margin-top:16px">移植的质量取决于边界情况。以下是 MT5 与 Pine 运行方式不同的四个地方，以及移植版的处理方式。</p>
+      <p class="faint mono" style="margin:26px 0 10px;font-size:12px">在 TradingView 上实测，在 MQL5 中重现</p>
+<div class="code"><span class="c">// Pine: absolute tolerance of 1e-10</span>
+<span class="v">0.1</span> + <span class="v">0.2</span> == <span class="v">0.3</span>        <span class="c">// true</span>
+<span class="v">1</span> + <span class="v">0.9e-10</span> &gt; <span class="v">1</span>      <span class="c">// false</span>
+<span class="v">1</span> + <span class="v">1e-10</span>   &gt; <span class="v">1</span>      <span class="c">// true</span>
+
+<span class="c">// SmartMoneyConcepts.mq5, line 417</span>
+<span class="k">#define</span> PINE_EPS <span class="v">1e-10</span>
+<span class="k">bool</span> Gt(<span class="k">const double</span> a, <span class="k">const double</span> b)
+  { <span class="k">return</span> a - b &gt; PINE_EPS; }
+<span class="k">bool</span> Lt(<span class="k">const double</span> a, <span class="k">const double</span> b)
+  { <span class="k">return</span> b - a &gt; PINE_EPS; }</div>
+    </div>
+    <div class="eng-list">
+      <div class="eng-item"><span class="n">01</span><div><h3>Pine 的实时回滚</h3><p>正在形成的K线在一份临时状态副本上计算，下一个跳动时丢弃。只有已收盘的K线才会被写入，与 Pine 的实时行为完全一致。</p></div></div>
+      <div class="eng-item"><span class="n">02</span><div><h3>Pine 的对象上限</h3><p>标签、线条和方框先经过内存中的集合，执行 Pine 每类 500 个的上限，最旧的先删除，然后同步到图表上。</p></div></div>
+      <div class="eng-item"><span class="n">03</span><div><h3>真正的透明度</h3><p>MT5 对象没有 Alpha 通道，因此方框绘制在透明画布上并进行真正的 Alpha 混合。每个 color.new(c, t) 变成一个颜色参数加一个透明度参数。</p></div></div>
+      <div class="eng-item"><span class="n">04</span><div><h3>Pine 的浮点容差</h3><p>Pine 比较数字时使用 1e-10 的绝对容差，所以 0.1 + 0.2 == 0.3 为真。没有它，有一根共振过滤比较 0.05 与 0.05 的K线会多出一个 CHoCH。移植版完整重现了这一点。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="install" aria-labelledby="install-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04 · 安装</div>
+      <h2 id="install-h">一分钟内即可运行</h2>
+    </div>
+    <ol class="steps" style="list-style:none;padding:0;margin:0">
+<li class="step"><p><b>下载</b> SmartMoneyConcepts.ex5（如需阅读或修改代码，也可下载 .mq5）。</p></li><li class="step"><p>在 MetaTrader 5 中打开 <b>文件 › 打开数据文件夹</b>，进入 <b>MQL5 › Indicators</b>，把文件放进去。</p></li><li class="step"><p>回到 MT5，在导航器中右键点击 <b>指标</b>，选择 <b>刷新</b>。</p></li><li class="step"><p>把 <b>SmartMoneyConcepts</b> 拖到任意图表上。设置和警报在 <b>输入参数</b>（Inputs）选项卡中。</p></li>    </ol>
+    <p class="muted" style="margin-top:18px;font-size:15px">使用 .mq5？在 MetaEditor（F4）中打开并点击编译（F7），结果为 0 错误、0 警告。 <a href="/install/">完整安装指南与故障排除（英文） →</a></p>
+  </div>
+</section>
+
+<section id="download" aria-labelledby="download-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">05 · 下载</div>
+      <h2 id="download-h">免费。两个文件。无需注册。</h2>
+      <p>可执行文件让您立即试用，完整源代码让您阅读、学习和修改。</p>
+    </div>
+    <div class="dl">
+      <div class="dl-card main">
+        <span class="ext">SmartMoneyConcepts.ex5 · 88 KB</span>
+        <h3>即装即用的指标</h3>
+        <p>由 MetaEditor 编译，0 错误、0 警告。放入 MQL5/Indicators 即可。</p>
+        <p class="hash">SHA-256 cbb5afeee53174efc9cb2f9876d7915c7472b286481b18e8e618a89cc33ea19d</p>
+        <a class="btn btn-primary" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.ex5" data-dl="ex5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>下载 .ex5</a>
+      </div>
+      <div class="dl-card">
+        <span class="ext">SmartMoneyConcepts.mq5 · 91 KB</span>
+        <h3>完整源代码</h3>
+        <p>单个文件，约 2,300 行，无 include、无 DLL，清晰并带注释。</p>
+        <p class="hash">SHA-256 0a575d0047b5b938b821a319eeb4002fe414598bb2c016dd6e9429fc6d2460c8</p>
+        <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.mq5" data-dl="mq5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>下载 .mq5</a>
+      </div>
+      <div class="dl-card">
+        <span class="ext">SmartMoneyConcepts-MT5-v1.0.0.zip · 116 KB</span>
+        <h3>全部打包成 zip</h3>
+        <p>.ex5、.mq5、许可证和 README。</p>
+        <p class="hash">SHA-256 c73b378b2a84f158c9cdb556d32faf55cb8090b19706589843f40429a24bc83a</p>
+        <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts-MT5-v1.0.0.zip" data-dl="zip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>下载 .zip</a>
+      </div>
+    </div>
+    <div class="license"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M14.5 9.5a3.5 3.5 0 1 0 0 5"/></svg><p>原作 © LuxAlgo，采用 CC BY-NC-SA 4.0 许可。本移植版是同一许可下的衍生作品：请保留署名，仅限非商业用途，修改后须以相同条款分享。独立项目，与 LuxAlgo 或 TradingView 无关联，亦未获其认可。 <a href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases" rel="noopener">GitHub 上的全部版本 →</a></p></div>
+  </div>
+</section>
+
+<section id="support" aria-labelledby="support-h">
+  <div class="wrap">
+    <div class="support">
+      <div class="section-head">
+        <div class="kicker">06 · 支持</div>
+        <h2 id="support-h">人人免费，量力支持。</h2>
+        <p>这个移植版以及证明它的测试平台花费了大量心血。它会一直免费。如果它为您节省了时间或帮助了您的交易，任何金额的捐赠都非常欢迎，哪怕只有一美元。正是这些支持让下一批工具得以诞生。</p>
+      </div>
+      <div class="wallets">
+        <div class="wallet">
+          <div class="qr" role="img" aria-label="地址二维码: TULMdmDTh5tuWhMNfUNAWCN9vASh5JqAzf"><svg preserveAspectRatio="xMidYMid meet" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" class="segno"><path class="qrline" stroke="#0b0f15" d="M0 0.5h7m2 0h4m1 0h1m2 0h2m3 0h7m-29 1h1m5 0h1m1 0h2m2 0h2m4 0h3m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m3 0h2m3 0h1m2 0h3m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m3 0h2m1 0h1m5 0h1m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m1 0h3m2 0h2m4 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m3 0h2m2 0h2m1 0h1m1 0h2m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-20 1h1m5 0h1m1 0h2m1 0h1m-21 1h1m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m3 0h2m6 0h1m2 0h1m-27 1h3m1 0h1m1 0h1m4 0h2m1 0h1m1 0h4m5 0h2m-27 1h1m3 0h4m5 0h1m1 0h2m3 0h8m-29 1h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m1 0h2m1 0h1m2 0h1m4 0h1m-25 1h1m1 0h5m1 0h1m2 0h1m1 0h1m3 0h4m3 0h1m-28 1h2m6 0h2m4 0h1m1 0h2m1 0h4m4 0h1m-28 1h3m3 0h1m3 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m1 0h3m-28 1h2m1 0h2m1 0h2m3 0h1m4 0h2m1 0h2m-20 1h1m2 0h3m1 0h1m1 0h2m2 0h1m3 0h5m3 0h2m-27 1h2m1 0h1m2 0h1m1 0h2m1 0h1m2 0h6m4 0h1m-27 1h1m1 0h1m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m2 0h2m2 0h1m1 0h6m-28 1h4m2 0h1m1 0h3m1 0h3m1 0h4m6 0h1m-28 1h1m2 0h2m1 0h3m5 0h1m1 0h2m2 0h5m1 0h3m-21 1h1m1 0h2m2 0h3m3 0h1m3 0h1m-25 1h7m3 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h1m1 0h3m-29 1h1m5 0h1m2 0h1m2 0h1m2 0h1m1 0h1m2 0h1m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h3m4 0h2m1 0h7m1 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m1 0h2m2 0h5m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-29 1h1m5 0h1m3 0h2m2 0h1m2 0h4m1 0h2m3 0h1m-28 1h7m1 0h1m1 0h1m3 0h3m2 0h2m6 0h2"/></svg></div>
+          <div>
+            <h3><i style="background:#ff3b48"></i>TRON 链上的 USDT</h3>
+            <p class="net">网络：TRON（TRC-20）</p>
+            <div class="addr" translate="no">TULMdmDTh5tuWhMNfUNAWCN9vASh5JqAzf</div>
+            <button type="button" class="btn btn-ghost btn-s" data-copy="TULMdmDTh5tuWhMNfUNAWCN9vASh5JqAzf" data-copied="已复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span data-copy-label>复制地址</span></button>
+            <p class="warn">只发送 TRON 网络资产（USDT TRC-20、TRX）。从其他网络发送的资产将会丢失。</p>
+          </div>
+        </div>
+        <div class="wallet">
+          <div class="qr" role="img" aria-label="地址二维码: 0xC2D08CD5277587325bABC2111F54b5E0A7ec8F12"><svg preserveAspectRatio="xMidYMid meet" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" class="segno"><path class="qrline" stroke="#0b0f15" d="M0 0.5h7m4 0h1m4 0h1m1 0h1m1 0h1m1 0h7m-29 1h1m5 0h1m4 0h2m1 0h5m3 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m4 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m2 0h8m3 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m1 0h2m7 0h1m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h2m1 0h1m1 0h1m1 0h4m1 0h1m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h1m2 0h2m1 0h2m2 0h1m-19 1h1m1 0h5m3 0h4m1 0h1m1 0h2m3 0h5m-24 1h2m4 0h1m3 0h4m3 0h1m1 0h1m1 0h1m3 0h1m-28 1h2m1 0h4m1 0h2m1 0h1m2 0h1m2 0h1m4 0h1m2 0h2m-27 1h1m1 0h1m5 0h1m1 0h1m3 0h1m3 0h1m2 0h4m2 0h1m-26 1h1m1 0h5m2 0h1m1 0h5m2 0h1m1 0h1m3 0h1m-28 1h1m1 0h3m2 0h6m6 0h2m1 0h1m1 0h2m1 0h1m-27 1h3m1 0h2m3 0h1m1 0h5m1 0h1m1 0h1m-19 1h1m1 0h1m2 0h1m2 0h1m4 0h2m3 0h1m3 0h1m2 0h1m-26 1h1m1 0h4m5 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h4m-29 1h1m1 0h1m4 0h1m1 0h1m1 0h1m2 0h3m2 0h1m2 0h1m1 0h1m3 0h1m-29 1h1m5 0h2m1 0h1m1 0h1m3 0h2m1 0h1m2 0h4m-25 1h1m1 0h1m4 0h1m1 0h3m2 0h3m2 0h1m1 0h1m1 0h2m2 0h1m-28 1h1m1 0h1m3 0h1m3 0h1m2 0h1m1 0h2m3 0h8m-20 1h1m1 0h1m3 0h1m3 0h3m3 0h1m1 0h1m1 0h1m-29 1h7m5 0h2m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m-28 1h1m5 0h1m1 0h4m6 0h1m1 0h1m3 0h2m1 0h2m-29 1h1m1 0h3m1 0h1m1 0h2m1 0h1m3 0h1m1 0h2m1 0h5m2 0h2m-29 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m2 0h3m1 0h1m3 0h2m-29 1h1m1 0h3m1 0h1m1 0h4m3 0h1m6 0h1m1 0h4m-28 1h1m5 0h1m7 0h3m2 0h2m3 0h2m1 0h1m-28 1h7m1 0h1m2 0h1m1 0h6m3 0h3"/></svg></div>
+          <div>
+            <h3><i style="background:#f0b90b"></i>BNB Smart Chain</h3>
+            <p class="net">网络：BNB Smart Chain（BEP-20）</p>
+            <div class="addr" translate="no">0xC2D08CD5277587325bABC2111F54b5E0A7ec8F12</div>
+            <button type="button" class="btn btn-ghost btn-s" data-copy="0xC2D08CD5277587325bABC2111F54b5E0A7ec8F12" data-copied="已复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span data-copy-label>复制地址</span></button>
+            <p class="warn">只通过 BNB Smart Chain 发送 BNB 或 BEP-20 代币（USDT、USDC…）。不要用以太坊或 TRON。</p>
+          </div>
+        </div>
+      </div>
+      <p class="support-foot">捐赠不是付款：无论是否捐赠，下载都保持免费。</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" aria-labelledby="services-h">
+  <div class="wrap services">
+    <div class="me">
+      <div class="kicker">07 · 定制开发</div>
+      <h2 id="services-h">需要修改？我可以为您开发。</h2>
+      <p style="margin-top:16px">我是 <b>Ismael Ladjohounlou</b>，本移植版的开发者。如果您想让这个指标适配您的交易方式，或需要 MetaTrader、TradingView、Telegram 上的任何其他工具，请告诉我您的需求。报价免费。</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:general.trading.bot.2025@gmail.com?subject=%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91%EF%BC%9ASmart%20Money%20Concepts%20MT5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>描述您的项目</a>
+        <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/issues/new" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>在 GitHub 提交 issue</a>
+      </div>
+      <ul class="contact-list">
+        <li><a href="mailto:general.trading.bot.2025@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>general.trading.bot.2025@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/ismaelladjohounlou" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a></li>
+        <li><a href="https://www.mql5.com/en/users/ismael_financial_bot" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M8 17V9"/><path d="M13 17V5"/><path d="M18 17v-6"/></svg>MQL5 主页</a></li>
+        <li><a href="https://ismael-portfolio-liard.vercel.app/en" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>作品集</a></li>
+      </ul>
+    </div>
+    <div class="svc">
+      <article class="card hl">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span>
+        <div>
+          <h3>定制本指标</h3>
+          <p>您自己的规则和过滤条件、更多警报、中文标签、多周期视图、可供 EA 读取的信号缓冲区。</p>
+        </div>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></span>
+        <div>
+          <h3><a href="/pine-script-to-mql5/">TradingView Pine 脚本转 MT5</a></h3>
+          <p>任何 Pine 指标或策略移植到 MQL5 或 MQL4，并提供与本站相同的证明：在相同K线上逐个对象比对。 <a href="/pine-script-to-mql5/">了解流程 →</a></p>
+        </div>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><path d="M8 14h.01"/><path d="M16 14h.01"/></svg></span>
+        <div>
+          <h3>智能交易系统（EA）</h3>
+          <p>MT4 与 MT5 的自动化策略：SMC 与 ICT 模型、多周期入场、自营交易公司风控规则。交付完整源代码。</p>
+        </div>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6L4 20a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 20l-6-11V3"/><path d="M7 15h10"/></svg></span>
+        <div>
+          <h3>可信的回测</h3>
+          <p>策略测试器回测、独立的 Python 参考实现，以及关于优势是否真实存在的诚实结论。</p>
+        </div>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+        <div>
+          <h3>Telegram 机器人与跟单工具</h3>
+          <p>信号机器人、跟单工具，以及用于控制 EA 的 Telegram 面板。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="more" aria-labelledby="more-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">08 · 作者的其他作品</div>
+      <h2 id="more-h">想要比原版更多？</h2>
+      <p>Structura 是我从零编写的 MT5 聪明钱引擎：包含以上所有功能，以及原版没有的内容。</p>
+    </div>
+    <article class="product">
+      <div class="pic"><img src="/assets/img/structura.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Structura, Smart Money indicator for MetaTrader 5"></div>
+      <div class="body">
+        <span class="badge">原创指标 · MQL5 Market</span>
+        <h3 style="font-size:1.5rem;margin-bottom:12px">Structura：市场结构与订单块</h3>
+        <p>独立于 LuxAlgo 设计并验证，其 Python 参考实现与 MQL5 引擎在约 989,000 行数据上完全一致。</p>
+        <ul><li>订单块 0 到 3 分评分（位移、FVG、流动性）</li><li>Breaker、反向 FVG、流动性扫荡与 OTE 区</li><li>多周期仪表盘与推送警报</li><li>6 个可供 EA 使用的缓冲区</li><li>经证明不重绘</li></ul>
+        <div class="cta-row" style="margin:0">
+          <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/201556" rel="noopener">在 MQL5 Market 查看</a>
+          <a class="btn btn-ghost" href="https://youtu.be/x35L5b2P_xY" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>观看 82 秒演示</a>
+        </div>
+      </div>
+    </article>
+    <p class="faint mono" style="margin:26px 0 0;font-size:12px;text-transform:uppercase;letter-spacing:.08em">MQL5 Market 上的其他产品</p>
+    <div class="mini">
+<a href="https://www.mql5.com/zh/market/product/200522" rel="noopener">SnapBack Three Sigma Reversal<span>指标 · 统计反转</span></a><a href="https://www.mql5.com/zh/market/product/200530" rel="noopener">Pin Bar Trend Pullback<span>EA · 价格行为</span></a><a href="https://www.mql5.com/zh/market/product/200527" rel="noopener">Multi Market RSI Trade Manager<span>EA · RSI 与仓位管理</span></a>    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">09 · 常见问题</div>
+      <h2 id="faq-h">交易者常问的问题</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>真的免费吗？</summary><div class="a"><p>是的。编译好的 .ex5 和完整的 .mq5 源代码都可以免费下载、使用和修改，仅限非商业用途。无需账户、无需邮箱、无需许可证密钥。捐赠完全自愿。</p></div></details>
+      <details><summary>这是 LuxAlgo 官方指标吗？</summary><div class="a"><p>不是。这是 LuxAlgo 开源脚本 Smart Money Concepts 的独立非官方 MQL5 移植版，以相同的 CC BY-NC-SA 4.0 许可发布并保留署名。LuxAlgo 并未认可它。</p></div></details>
+      <details><summary>真的和 TradingView 完全一样吗？</summary><div class="a"><p>在测试数据上是的：四种配置和两次逐笔回放中，100% 的标签、线条、方框和K线颜色都一致。唯一的差别是周线和月线水平的价格，因为 TradingView 读取的是它自己的 W 与 M K线。您可以在对比查看器中检查，或在 GitHub 上重跑测试。</p></div></details>
+      <details><summary>会重绘吗？</summary><div class="a"><p>行为与原版完全相同。结构在K线收盘后确认；正在形成的K线每个跳动都会重算，只在收盘时写入。波段点在其回看长度之后才确认，与 Pine 一样，所以标签会在枢轴点之后几根K线才出现。</p></div></details>
+      <details><summary>适用于哪些市场和周期？</summary><div class="a"><p>MetaTrader 5 能显示的任何品种和周期：外汇、黄金（XAUUSD）、指数、加密货币和股票。日、周、月水平使用您经纪商的 D1、W1 和 MN1 数据。</p></div></details>
+      <details><summary>我可以出售它或发布到 MQL5 Market 吗？</summary><div class="a"><p>不可以。许可证禁止商业用途，原版和本移植版都一样。您可以分享、修改并用于自己的交易，但须保留署名并使用相同许可。</p></div></details>
+      <details><summary>可以在 EA 中使用吗？</summary><div class="a"><p>可以：开启 Color Candles 后，EA 可以通过 iCustom 从颜色缓冲区（缓冲区 4）读取趋势。如果您需要 BOS、CHoCH 或订单块的干净信号缓冲区，或基于它的完整 EA，我可以为您制作适合自动交易的版本。</p></div></details>
+      <details><summary>有 MT4 版本吗？</summary><div class="a"><p>暂时没有。可以按需定制 MQL4 版本。</p></div></details>
+      <details><summary>可以用其他币种捐赠吗？</summary><div class="a"><p>TRON 网络上的任何资产都可以发到 TRON 地址，BNB Smart Chain 上的任何 BEP-20 代币都可以发到 BNB 地址。发送前务必确认网络：选错网络意味着资金丢失。</p></div></details>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/zh/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0d141c"/><rect x=".5" y=".5" width="31" height="31" rx="7.5" fill="none" stroke="#ffffff" stroke-opacity=".14"/><path d="M8 9v14" stroke="#089981" stroke-width="1.6"/><rect x="6" y="12" width="4" height="7" rx="1" fill="#089981"/><path d="M16 6v14" stroke="#089981" stroke-width="1.6"/><rect x="14" y="8" width="4" height="8" rx="1" fill="#089981"/><path d="M24 11v15" stroke="#F23645" stroke-width="1.6"/><rect x="22" y="14" width="4" height="8" rx="1" fill="#F23645"/><path d="M6 8.5h20" stroke="#19d3a6" stroke-width="1.4" stroke-dasharray="2.4 1.8"/></svg><span>SMC · MT5</span></a>
+        <p style="margin-top:14px;max-width:42ch">LuxAlgo Smart Money Concepts 的免费开源 MetaTrader 5 移植版，经证明与 TradingView 完全一致。</p>
+      </div>
+      <div>
+        <h4>项目</h4>
+        <ul>
+          <li><a href="/zh/#download">下载</a></li>
+          <li><a href="/proof/">对比查看器</a></li>
+          <li><a href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts" rel="noopener">GitHub 源代码</a></li>
+          <li><a href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases" rel="noopener">版本发布</a></li>
+          <li><a href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/issues" rel="noopener">报告问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>指南</h4>
+        <ul>
+          <li><a href="/guide/">SMC 概念与设置</a></li>
+          <li><a href="/install/">安装指南</a></li>
+          <li><a href="/pine-script-to-mql5/">Pine 脚本转 MQL5</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>作者</h4>
+        <ul>
+          <li><a href="https://ismael-portfolio-liard.vercel.app/en" rel="noopener">作品集</a></li>
+          <li><a href="https://www.linkedin.com/in/ismaelladjohounlou" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.mql5.com/en/users/ismael_financial_bot" rel="noopener">MQL5 主页</a></li>
+          <li><a href="mailto:general.trading.bot.2025@gmail.com">电子邮件</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>原版 Smart Money Concepts © LuxAlgo，采用 CC BY-NC-SA 4.0 许可。MQL5 移植版 © Ismael Ladjohounlou，相同许可。 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license noopener">CC BY-NC-SA 4.0</a> · <a href="https://www.tradingview.com/script/CnB3fSph-Smart-Money-Concepts-SMC-LuxAlgo/" rel="noopener">Smart Money Concepts (SMC) [LuxAlgo]</a></p>
+      <p>独立项目，与 LuxAlgo、TradingView 或 MetaQuotes 无关联，亦未获其赞助或认可。所有商标归其各自所有者。</p>
+      <p>交易存在重大亏损风险。本指标是分析工具，不构成投资建议。</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/chart.js?v=ed2d68997f" defer></script>
+<script src="/assets/js/main.js?v=ed2d68997f" defer></script>
+</body>
+</html>

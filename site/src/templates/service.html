@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block main %}
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Smart Money Concepts MT5</a> / Pine Script to MQL5</nav>
+    <h1>Convert your TradingView Pine Script to MetaTrader 5, with proof</h1>
+    <p class="lead">Your indicator or strategy rewritten in <b>MQL5</b> (or MQL4), and a <b>parity report</b> showing it draws and signals exactly what it does on TradingView, on the same bars. The Smart Money Concepts port on this site is the public example: <a href="/proof/">2,535 drawings, all identical</a>.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:{{ site.email }}?subject={{ 'Pine Script to MQL5 quote'|urlencode }}">{{ icon('send') }}Get a free quote</a>
+      <a class="btn btn-ghost" href="/proof/">{{ icon('eye') }}See a parity report</a>
+    </div>
+  </div>
+</div>
+
+<section style="padding-top:40px" aria-labelledby="what">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">What you get</div><h2 id="what">More than a translation</h2></div>
+    <div class="grid g3">
+      <article class="card"><h3>The MQL5 source</h3><p>Readable, commented .mq5 (or .mq4) code and the compiled file, compiled with 0 errors and 0 warnings. Same inputs, same defaults, same groups as your Pine script.</p></article>
+      <article class="card"><h3>A parity report</h3><p>Your script and the port run on the same bars. Every plot value, label, line, box and alert is exported from both platforms and compared, with the method and the files to re-run it.</p></article>
+      <article class="card"><h3>Pine’s quirks, kept</h3><p>Real-time recalculation of the forming bar, the 500-object limits, transparency, float tolerance, request.security on higher timeframes: the port behaves like Pine, not just “close to it”.</p></article>
+      <article class="card"><h3>Strategies as Expert Advisors</h3><p>Entries, exits, stops, sizing and pyramiding rebuilt as an EA, with the trades compared against the TradingView strategy tester.</p></article>
+      <article class="card"><h3>Alerts that work in MT5</h3><p>Every alertcondition and alert() becomes a MetaTrader alert: popup, push notification to your phone or email.</p></article>
+      <article class="card"><h3>Ready for automation</h3><p>Optional signal buffers so an Expert Advisor can read the indicator through iCustom, and an EA built on it if you want one.</p></article>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="how">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">How it works</div><h2 id="how">Four steps</h2></div>
+    <ol class="steps" style="list-style:none;padding:0;margin:0">
+      <li class="step"><p><b>Send the script</b> (or its TradingView link) and tell me what you need in MT5: indicator, EA, alerts, extra features.</p></li>
+      <li class="step"><p><b>Get a quote</b> with the price and delivery date, before any work starts.</p></li>
+      <li class="step"><p><b>The port</b> is written and tested on the same bars as TradingView until the parity report is clean.</p></li>
+      <li class="step"><p><b>Delivery</b>: source, compiled file, parity report, and fixes if something differs on your charts.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="sfaq">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">FAQ</div><h2 id="sfaq">Common questions</h2></div>
+    <div class="faq">
+      {% for q, a in service_faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><div class="a"><p>{{ a }}</p></div></details>{% endfor %}
+    </div>
+    <div class="cta-band">
+      <div><h2>Send me your script</h2><p>{{ site.email }}, or open an issue on GitHub. The quote is free.</p></div>
+      <div class="cta-row" style="margin:0">
+        <a class="btn btn-primary" href="mailto:{{ site.email }}?subject={{ 'Pine Script to MQL5 quote'|urlencode }}">{{ icon('mail') }}Email me</a>
+        <a class="btn btn-ghost" href="{{ site.linkedin }}" rel="noopener">{{ icon('linkedin') }}LinkedIn</a>
+        <a class="btn btn-ghost" href="{{ site.mql5 }}" rel="noopener">{{ icon('chart') }}MQL5 profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

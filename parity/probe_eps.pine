@@ -1,0 +1,13 @@
+//@version=5
+indicator("eps probe", overlay = true)
+one = close / close   // 1.0 known only at run time, so nothing is folded at compile time
+f(x) => x ? "1" : "0"
+s = ""
+s += "a" + f(one + 1e-10 > one) + f(one + 5e-11 > one) + f(one + 2e-10 > one) + f(one + 1.5e-10 > one) + f(one + 1.1e-10 > one) + f(one + 0.9e-10 > one) + f(one + 1e-11 > one)
+s += " b" + f(1e6 * one + 1e-6 > 1e6 * one) + f(1e6 * one + 1e-5 > 1e6 * one) + f(1e6 * one + 1e-4 > 1e6 * one) + f(1e6 * one + 1e-3 > 1e6 * one) + f(1e6 * one + 1e-9 > 1e6 * one)
+s += " c" + f(1e-12 * one + 1e-13 > 1e-12 * one) + f(1e-20 * one > 0) + f(1e-11 * one > 0) + f(1e-9 * one > 0)
+s += " d" + f(100 * one + 1e-9 > 100 * one) + f(100 * one + 1e-8 > 100 * one) + f(100 * one + 1e-11 > 100 * one) + f(100 * one + 2e-8 > 100 * one)
+s += " e" + f(1e-12 * one == 0) + f(1e-9 * one == 0) + f(-1e-11 * one < 0) + f(0 >= 1e-11 * one) + f(one + 1e-11 >= one) + f(one <= one - 1e-11) + f(one != one + 1e-11)
+var table tb = table.new(position.top_right, 1, 1)
+if barstate.islast
+    table.cell(tb, 0, 0, s)

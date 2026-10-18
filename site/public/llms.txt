@@ -1,0 +1,20 @@
+# Smart Money Concepts for MetaTrader 5
+
+> Free MetaTrader 5 (MQL5) port of LuxAlgo's open-source "Smart Money Concepts (SMC) [LuxAlgo]" TradingView indicator, by Ismael Ladjohounlou. The compiled .ex5 and the full .mq5 source are free (CC BY-NC-SA 4.0, non-commercial). Compared object by object with TradingView on 5,044 AAPL 15-minute bars in four configurations and two tick-by-tick replays: 100% of labels, lines, boxes and candle colours identical. Unofficial, not affiliated with LuxAlgo or TradingView.
+
+Features: internal and swing market structure (BOS, CHoCH), internal and swing order blocks, equal highs and lows (EQH, EQL), fair value gaps (chart or higher timeframe), premium / equilibrium / discount zones, strong and weak highs and lows, previous day / week / month highs and lows, trend coloured candles, 16 alerts (popup, push, email), Historical or Present mode, Colored or Monochrome style.
+
+## Pages
+- [Home and download](https://smart-money-concepts-mt5.vercel.app/): what the indicator draws, downloads, donations, custom work
+- [Parity proof](https://smart-money-concepts-mt5.vercel.app/proof/): interactive viewer and method of the TradingView vs MT5 comparison
+- [Concepts and settings](https://smart-money-concepts-mt5.vercel.app/guide/): how each concept is computed and every input with its default
+- [Installation](https://smart-money-concepts-mt5.vercel.app/install/): .ex5 and .mq5 installation in MetaTrader 5, alerts, troubleshooting
+- [Pine Script to MQL5 service](https://smart-money-concepts-mt5.vercel.app/pine-script-to-mql5/): custom conversion of TradingView scripts with a parity report
+
+## Files
+- [SmartMoneyConcepts.ex5](https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.ex5) (88 KB, SHA-256 cbb5afeee53174efc9cb2f9876d7915c7472b286481b18e8e618a89cc33ea19d)
+- [SmartMoneyConcepts.mq5](https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.mq5) (91 KB, SHA-256 0a575d0047b5b938b821a319eeb4002fe414598bb2c016dd6e9429fc6d2460c8)
+- [Source repository and test bench](https://github.com/GeneralTradingSarl/Smart-Money-Concepts)
+
+## Author
+Ismael Ladjohounlou, trading systems developer (MQL5, Pine Script, Python). Contact: general.trading.bot.2025@gmail.com. Custom MT4/MT5 indicators, Expert Advisors, Pine Script to MQL5 conversions, Telegram bots.

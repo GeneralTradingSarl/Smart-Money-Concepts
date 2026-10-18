@@ -1,0 +1,28 @@
+{% from "_icons.html" import icon %}
+{% macro viewer(t, cfg='B', bars=160, autoblink=True, eager=False, full=False, poster=None) -%}
+<div class="viewer" data-viewer data-config="{{ cfg }}" data-bars="{{ bars }}"{% if autoblink %} data-autoblink{% endif %}{% if eager %} data-eager{% endif %}{% if full %} data-wheel{% endif %}
+  data-legend-tv="{{ t.viewer.legend_tv }}" data-legend-mt5="{{ t.viewer.legend_mt5 }}"
+  data-t-stat="{{ t.viewer.stat }}" data-t-price="{{ t.viewer.price }}">
+  <div class="viewer-bar">
+    <div class="seg" role="group" aria-label="Platform">
+      <button type="button" data-side="tv" aria-pressed="false"><i class="sw" style="background:#5b8cff"></i>{{ t.viewer.tv }} <small>{{ t.viewer.tv_small }}</small></button>
+      <button type="button" data-side="mt5" aria-pressed="true"><i class="sw" style="background:#f0b90b"></i>{{ t.viewer.mt5 }} <small>{{ t.viewer.mt5_small }}</small></button>
+    </div>
+    <button type="button" class="chip" data-blink aria-pressed="false">{{ icon('blink') }}{{ t.viewer.blink }}</button>
+    <button type="button" class="chip" data-diff aria-pressed="false">{{ icon('diff') }}{{ t.viewer.diff }}</button>
+    {% if full %}
+    <select data-cfg aria-label="Configuration">
+      {% for c in ['A','B','C','D'] %}<option value="{{ c }}"{% if c == cfg %} selected{% endif %}>{{ c }} · {{ t.proof.rows[c] }}</option>{% endfor %}
+    </select>
+    <span class="zoom"><button type="button" class="chip" data-zoom="in" aria-label="Zoom in">+</button><button type="button" class="chip" data-zoom="out" aria-label="Zoom out">−</button><button type="button" class="chip" data-zoom="reset" aria-label="Reset view">⟲</button></span>
+    {% endif %}
+    <output class="viewer-stat" data-stat aria-live="polite"></output>
+  </div>
+  <div class="viewer-canvas">
+    {% if poster %}<img class="poster" src="{{ poster }}" width="1770" height="780" alt="{{ t.viewer.alt }}" fetchpriority="high">{% endif %}
+    <canvas role="img" aria-label="{{ t.viewer.alt }}"></canvas>
+    <span class="loading">{{ t.viewer.loading }}</span>
+  </div>
+  <div class="viewer-foot"><span>{{ t.viewer.caption|safe }}</span><span>{{ t.viewer.source }}</span></div>
+</div>
+{%- endmacro %}

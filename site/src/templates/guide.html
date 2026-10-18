@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block main %}
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Smart Money Concepts MT5</a> / Guide</nav>
+    <h1>Smart Money Concepts indicator for MT5: what it draws and how</h1>
+    <p class="lead">What every label, line and box of the indicator means, the exact rule behind it (the same as in LuxAlgo’s Pine source), and a reference of <b>every setting</b> with its default value.</p>
+  </div>
+</div>
+
+<div class="wrap prose">
+  <nav class="toc" aria-label="Contents"><b>On this page</b>
+    <ol>
+      <li><a href="#structure">Market structure: BOS and CHoCH</a></li>
+      <li><a href="#internal-swing">Internal vs swing structure</a></li>
+      <li><a href="#order-blocks">Order blocks</a></li>
+      <li><a href="#eqh-eql">Equal highs and lows</a></li>
+      <li><a href="#fvg">Fair value gaps</a></li>
+      <li><a href="#zones">Premium, equilibrium, discount</a></li>
+      <li><a href="#strong-weak">Strong and weak highs and lows</a></li>
+      <li><a href="#levels">Daily, weekly, monthly levels</a></li>
+      <li><a href="#modes">Modes, styles and candles</a></li>
+      <li><a href="#settings">Settings reference</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="structure">Market structure: BOS and CHoCH</h2>
+  <div class="card" style="padding:12px;margin:0 0 18px">{{ figs.structure|safe }}</div>
+  <p>The indicator first finds <strong>swing points</strong>. A swing high is a bar whose high stays above the highs of the next <em>N</em> bars (a swing low, the same with lows), so a swing is only known <em>N</em> bars after it happened, exactly like in Pine.</p>
+  <p>A <strong>structure break</strong> happens when a candle <strong>closes</strong> beyond the last swing high (bullish) or the last swing low (bearish). Each swing level can only be broken once. The break is then tagged:</p>
+  <ul>
+    <li><strong>BOS</strong> (Break of Structure): the break goes in the direction of the current trend. Price makes a new high in an uptrend, or a new low in a downtrend: continuation.</li>
+    <li><strong>CHoCH</strong> (Change of Character): the break goes against the current trend, which flips. The first close above a swing high in a downtrend is a bullish CHoCH: a possible reversal.</li>
+  </ul>
+  <p>Each break draws a line from the swing point to the breaking bar, with its tag in the middle, in the bullish or bearish colour. Bullish and bearish structures can each be shown as <em>All</em>, <em>BOS</em> only or <em>CHoCH</em> only.</p>
+
+  <h2 id="internal-swing">Internal vs swing structure</h2>
+  <p>The same logic runs on two scales at the same time:</p>
+  <ul>
+    <li><strong>Internal structure</strong> uses 5-bar swings. Its lines are dashed and its labels small. It reacts fast and is meant for entries and lower-timeframe context.</li>
+    <li><strong>Swing structure</strong> uses longer swings (<em>Swings Points length</em>, 50 bars by default). Its lines are solid. It gives the main trend.</li>
+  </ul>
+  <p>An internal break is ignored when the internal level is the same as the swing level, so the same break is not drawn twice. The optional <strong>Confluence Filter</strong> adds a candle-shape condition to internal breaks: a bullish break only counts when the breaking candle’s upper wick is longer than the distance from its open down to its low, and a bearish break only when it is shorter. The rule is kept exactly as written in the original. With <em>Show Swings Points</em> on, the swing highs and lows are labelled <strong>HH</strong>, <strong>HL</strong>, <strong>LH</strong> and <strong>LL</strong>.</p>
+
+  <h2 id="order-blocks">Order blocks</h2>
+  <div class="card" style="padding:12px;margin:0 0 18px">{{ figs.ob|safe }}</div>
+  <p>When structure breaks, the indicator looks back over the leg that produced the break and stores an <strong>order block</strong>: for a bullish break, the candle with the lowest low between the swing and the break; for a bearish break, the candle with the highest high. The block spans that candle’s high and low and extends to the right.</p>
+  <p>To stop a single huge candle from becoming a giant block, <strong>high-volatility candles</strong> (range at least twice the volatility measure) have their high and low swapped before the search. The measure is the 200-bar ATR, or the cumulative mean range with <em>Order Block Filter</em> set to <em>Cumulative Mean Range</em>.</p>
+  <p>A bullish block is <strong>mitigated</strong> and removed when price goes below its bottom, a bearish one when price goes above its top. <em>Order Block Mitigation</em> decides what “price” means: the candle’s close, or its high and low. Internal and swing order blocks are separate, with their own colours and their own number on screen (1 to 20).</p>
+
+  <h2 id="eqh-eql">Equal highs and lows (EQH, EQL)</h2>
+  <div class="card" style="padding:12px;margin:0 0 18px">{{ figs.eq|safe }}</div>
+  <p>Two swing highs confirmed after <em>Bars Confirmation</em> bars (3 by default) whose prices differ by less than <em>Threshold</em> × ATR(200) are marked <strong>EQH</strong>, joined by a dotted line. Same for lows with <strong>EQL</strong>. Equal highs and lows are where stops tend to rest, which is why SMC traders watch them as liquidity.</p>
+
+  <h2 id="fvg">Fair value gaps (FVG)</h2>
+  <div class="card" style="padding:12px;margin:0 0 18px">{{ figs.fvg|safe }}</div>
+  <p>A <strong>bullish fair value gap</strong> is a three-candle pattern where the current low is above the high of two candles back, and the middle candle closed above that high. A bearish one is the mirror image. The gap is drawn as a box between those two prices, split at its middle, and extended by <em>Extend FVG</em> bars.</p>
+  <p>With <em>Auto Threshold</em> on, a gap is only kept when the middle candle’s move (close minus open, relative to open) is larger than twice the average of that move over all bars, which filters out the tiny gaps. The <em>Timeframe</em> input lets you take gaps from a higher timeframe, for example 1-hour gaps on a 15-minute chart. A bullish gap is removed when price trades below its bottom, a bearish gap when price trades above its top.</p>
+
+  <h2 id="zones">Premium, equilibrium and discount zones</h2>
+  <div class="card" style="padding:12px;margin:0 0 18px">{{ figs.pd|safe }}</div>
+  <p>The zones split the current swing range, from its highest high to its lowest low:</p>
+  <ul>
+    <li><strong>Premium</strong>: the top 5% of the range, where buying is expensive.</li>
+    <li><strong>Equilibrium</strong>: a thin band around the 50% level (from 47.5% to 52.5%).</li>
+    <li><strong>Discount</strong>: the bottom 5% of the range, where buying is cheap.</li>
+  </ul>
+  <p>The range follows price: a new high or a new low stretches it, and each new swing high or swing low resets that end of the range.</p>
+
+  <h2 id="strong-weak">Strong and weak highs and lows</h2>
+  <div class="card" style="padding:12px;margin:0 0 18px">{{ figs.sw|safe }}</div>
+  <p>The current range’s high and low are labelled from the swing trend. In a bearish trend the high is a <strong>Strong High</strong> (the high that made the break down, a level sellers defend) and the low a <strong>Weak Low</strong> (a target likely to be taken). In a bullish trend it is the opposite: <strong>Strong Low</strong> and <strong>Weak High</strong>.</p>
+
+  <h2 id="levels">Previous day, week and month levels</h2>
+  <div class="card" style="padding:12px;margin:0 0 18px">{{ figs.mtf|safe }}</div>
+  <p><strong>PDH / PDL</strong>, <strong>PWH / PWL</strong> and <strong>PMH / PML</strong> are the high and low of the previous day, week and month, each with its own line style and colour. On MetaTrader 5 they come from your broker’s D1, W1 and MN1 bars. On a chart timeframe higher than the level (daily levels on a weekly chart, for example), the level is not drawn, as on TradingView.</p>
+
+  <h2 id="modes">Modes, styles and candles</h2>
+  <ul>
+    <li><strong>Historical</strong> keeps every structure drawn since the start of the chart, up to Pine’s limit of 500 labels, lines and boxes. <strong>Present</strong> keeps only the latest structure label and line of each kind, for a clean chart.</li>
+    <li><strong>Colored</strong> uses the green and red of the original. <strong>Monochrome</strong> uses two greys for everything.</li>
+    <li><strong>Color Candles</strong> paints every candle with the internal trend, and makes the trend readable by an Expert Advisor through the colour buffer.</li>
+  </ul>
+
+  <h2 id="settings">Settings reference</h2>
+  <p>Read directly from <code>SmartMoneyConcepts.mq5</code>, in the order of the Inputs tab.</p>
+</div>
+<div class="wrap">
+  <div class="table-wrap">
+    <table class="inputs">
+      <thead><tr><th scope="col">Input</th><th scope="col">Default</th><th scope="col">Name in the code</th></tr></thead>
+      <tbody>
+        {% for g in inputs %}
+        <tr class="grp"><td colspan="3">{{ g.name }}</td></tr>
+        {% for i in g['items'] %}<tr><td>{{ i.label }}</td><td>{{ i.default }}</td><td><code>{{ i.var }}</code></td></tr>
+        {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="wrap prose">
+  <div class="cta-band">
+    <div><h2>Need a rule the original doesn’t have?</h2><p>Your filters, your alerts, signal buffers for an EA, labels in your language.</p></div>
+    <div class="cta-row" style="margin:0"><a class="btn btn-primary" href="/#services">{{ icon('send') }}Ask for a custom version</a><a class="btn btn-ghost" href="{{ dl.ex5.url }}" data-dl="ex5">{{ icon('download') }}Download free</a></div>
+  </div>
+</div>
+{% endblock %}

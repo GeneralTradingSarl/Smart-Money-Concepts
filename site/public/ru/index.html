@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ru" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Money Concepts MT5: бесплатный индикатор SMC от LuxAlgo для MetaTrader 5 (.ex5 + .mq5)</title>
+<meta name="description" content="Бесплатный порт индикатора Smart Money Concepts от LuxAlgo для MetaTrader 5: BOS, CHoCH, ордер-блоки, FVG, EQH/EQL, зоны premium и discount. Доказано идентичен TradingView. Скачайте .ex5 и исходный код .mq5.">
+<meta name="keywords" content="smart money concepts mt5, индикатор smc mt5, luxalgo mt5, luxalgo mql5, индикатор smart money metatrader 5, ордер блоки mt5, индикатор bos choch mt5, fair value gap mt5, исходный код smc mq5, бесплатный индикатор smc">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://smart-money-concepts-mt5.vercel.app/ru/">
+<link rel="alternate" hreflang="en" href="https://smart-money-concepts-mt5.vercel.app/">
+<link rel="alternate" hreflang="fr" href="https://smart-money-concepts-mt5.vercel.app/fr/">
+<link rel="alternate" hreflang="es" href="https://smart-money-concepts-mt5.vercel.app/es/">
+<link rel="alternate" hreflang="pt" href="https://smart-money-concepts-mt5.vercel.app/pt/">
+<link rel="alternate" hreflang="ru" href="https://smart-money-concepts-mt5.vercel.app/ru/">
+<link rel="alternate" hreflang="zh-Hans" href="https://smart-money-concepts-mt5.vercel.app/zh/">
+<link rel="alternate" hreflang="x-default" href="https://smart-money-concepts-mt5.vercel.app/">
+<meta name="author" content="Ismael Ladjohounlou">
+<meta name="theme-color" content="#07090d">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Smart Money Concepts MT5">
+<meta property="og:title" content="Smart Money Concepts для MT5: доказано идентичен LuxAlgo на TradingView">
+<meta property="og:description" content="Бесплатный .ex5 и полный исходный код .mq5. Каждая метка, линия и прямоугольник сверены с TradingView на 5 044 барах: 100 % совпадение.">
+<meta property="og:url" content="https://smart-money-concepts-mt5.vercel.app/ru/">
+<meta property="og:image" content="https://smart-money-concepts-mt5.vercel.app/og/og-ru.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Smart Money Concepts для MT5: доказано идентичен LuxAlgo на TradingView">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Smart Money Concepts для MT5: доказано идентичен LuxAlgo на TradingView">
+<meta name="twitter:description" content="Бесплатный .ex5 и полный исходный код .mq5. Каждая метка, линия и прямоугольник сверены с TradingView на 5 044 барах: 100 % совпадение.">
+<meta name="twitter:image" content="https://smart-money-concepts-mt5.vercel.app/og/og-ru.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap&family=Onest:wght@400;500;600;700;800">
+<link rel="stylesheet" href="/assets/css/style.css?v=ed2d68997f">
+<link rel="preload" href="/assets/data/bars.json" as="fetch" crossorigin>
+<link rel="preload" href="/assets/data/parity-B.json" as="fetch" crossorigin>
+<script type="application/ld+json">{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;WebSite&#34;,&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#website&#34;,&#34;url&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/&#34;,&#34;name&#34;:&#34;Smart Money Concepts MT5&#34;,&#34;inLanguage&#34;:[&#34;en&#34;,&#34;fr&#34;,&#34;es&#34;,&#34;pt&#34;,&#34;ru&#34;,&#34;zh-Hans&#34;],&#34;publisher&#34;:{&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#author&#34;}}</script>
+<script type="application/ld+json">{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;SoftwareApplication&#34;,&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#software&#34;,&#34;name&#34;:&#34;Smart Money Concepts for MetaTrader 5&#34;,&#34;alternateName&#34;:[&#34;Smart Money Concepts MT5&#34;,&#34;LuxAlgo Smart Money Concepts MT5&#34;,&#34;SMC indicator MT5&#34;,&#34;SmartMoneyConcepts.mq5&#34;],&#34;description&#34;:&#34;Бесплатный порт индикатора Smart Money Concepts от LuxAlgo для MetaTrader 5: BOS, CHoCH, ордер-блоки, FVG, EQH/EQL, зоны premium и discount. Доказано идентичен TradingView. Скачайте .ex5 и исходный код .mq5.&#34;,&#34;url&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/ru/&#34;,&#34;inLanguage&#34;:&#34;ru&#34;,&#34;applicationCategory&#34;:&#34;FinanceApplication&#34;,&#34;applicationSubCategory&#34;:&#34;Trading indicator&#34;,&#34;operatingSystem&#34;:&#34;Windows, macOS, Linux (MetaTrader 5)&#34;,&#34;softwareRequirements&#34;:&#34;MetaTrader 5&#34;,&#34;softwareVersion&#34;:&#34;1.0.0&#34;,&#34;datePublished&#34;:&#34;2026-10-18&#34;,&#34;fileSize&#34;:&#34;88 KB&#34;,&#34;downloadUrl&#34;:[&#34;https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.ex5&#34;,&#34;https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.mq5&#34;,&#34;https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts-MT5-v1.0.0.zip&#34;],&#34;installUrl&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/install/&#34;,&#34;screenshot&#34;:[&#34;https://smart-money-concepts-mt5.vercel.app/assets/img/proof-metatrader5.webp&#34;,&#34;https://smart-money-concepts-mt5.vercel.app/assets/img/proof-tradingview.webp&#34;],&#34;image&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/og/og-en.png&#34;,&#34;license&#34;:&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;,&#34;isAccessibleForFree&#34;:true,&#34;offers&#34;:{&#34;@type&#34;:&#34;Offer&#34;,&#34;price&#34;:&#34;0&#34;,&#34;priceCurrency&#34;:&#34;USD&#34;,&#34;availability&#34;:&#34;https://schema.org/InStock&#34;},&#34;author&#34;:{&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#author&#34;},&#34;isBasedOn&#34;:{&#34;@type&#34;:&#34;SoftwareSourceCode&#34;,&#34;name&#34;:&#34;Smart Money Concepts (SMC) [LuxAlgo]&#34;,&#34;url&#34;:&#34;https://www.tradingview.com/script/CnB3fSph-Smart-Money-Concepts-SMC-LuxAlgo/&#34;,&#34;programmingLanguage&#34;:&#34;Pine Script&#34;,&#34;license&#34;:&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;,&#34;author&#34;:{&#34;@type&#34;:&#34;Organization&#34;,&#34;name&#34;:&#34;LuxAlgo&#34;,&#34;url&#34;:&#34;https://www.luxalgo.com&#34;}},&#34;keywords&#34;:&#34;smart money concepts mt5, индикатор smc mt5, luxalgo mt5, luxalgo mql5, индикатор smart money metatrader 5, ордер блоки mt5, индикатор bos choch mt5, fair value gap mt5, исходный код smc mq5, бесплатный индикатор smc&#34;,&#34;featureList&#34;:[&#34;Структура рынка: BOS и CHoCH&#34;,&#34;Внутренние и свинговые ордер-блоки&#34;,&#34;Равные максимумы и минимумы&#34;,&#34;Fair value gaps&#34;,&#34;Premium, равновесие, discount&#34;,&#34;Сильные и слабые максимумы и минимумы&#34;,&#34;Прошлый день, неделя и месяц&#34;,&#34;Свечи тренда и 16 алертов&#34;,&#34;Historical или Present, Colored или Monochrome&#34;]}</script>
+<script type="application/ld+json">{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;SoftwareSourceCode&#34;,&#34;name&#34;:&#34;SmartMoneyConcepts.mq5&#34;,&#34;description&#34;:&#34;MQL5 source code of the MetaTrader 5 port of LuxAlgo&#39;s Smart Money Concepts indicator.&#34;,&#34;codeRepository&#34;:&#34;https://github.com/GeneralTradingSarl/Smart-Money-Concepts&#34;,&#34;programmingLanguage&#34;:&#34;MQL5&#34;,&#34;runtimePlatform&#34;:&#34;MetaTrader 5&#34;,&#34;license&#34;:&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;,&#34;author&#34;:{&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#author&#34;},&#34;isBasedOn&#34;:{&#34;@type&#34;:&#34;SoftwareSourceCode&#34;,&#34;name&#34;:&#34;Smart Money Concepts (SMC) [LuxAlgo]&#34;,&#34;url&#34;:&#34;https://www.tradingview.com/script/CnB3fSph-Smart-Money-Concepts-SMC-LuxAlgo/&#34;,&#34;programmingLanguage&#34;:&#34;Pine Script&#34;,&#34;license&#34;:&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;,&#34;author&#34;:{&#34;@type&#34;:&#34;Organization&#34;,&#34;name&#34;:&#34;LuxAlgo&#34;,&#34;url&#34;:&#34;https://www.luxalgo.com&#34;}},&#34;targetProduct&#34;:{&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#software&#34;}}</script>
+<script type="application/ld+json">{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;FAQPage&#34;,&#34;inLanguage&#34;:&#34;ru&#34;,&#34;mainEntity&#34;:[{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;Это правда бесплатно?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Да. Скомпилированный .ex5 и полный исходный код .mq5 можно бесплатно скачивать, использовать и изменять в некоммерческих целях. Без аккаунта, без e-mail, без лицензионного ключа. Пожертвования добровольные.&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;Это официальный индикатор LuxAlgo?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Нет. Это независимый неофициальный порт на MQL5 открытого скрипта Smart Money Concepts от LuxAlgo, опубликованный под той же лицензией CC BY-NC-SA 4.0 с указанием авторства. LuxAlgo его не одобряла.&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;Он действительно идентичен TradingView?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;На тестовом наборе да: 100 % меток, линий, прямоугольников и цветов свечей совпали в четырёх конфигурациях и двух прогонах тик за тиком. Отличается только цена недельных и месячных уровней, которую TradingView берёт из своих баров W и M. Проверьте сами в интерактивном просмотре или запустите стенд с GitHub.&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;Он перерисовывается?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Он ведёт себя точно как оригинал. Структура подтверждается на закрытых барах; формирующийся бар пересчитывается на каждом тике и фиксируется только при закрытии. Свинговые точки подтверждаются после своей длины, как в Pine, поэтому их метки появляются через несколько баров после пивота.&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;На каких рынках и таймфреймах он работает?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;На любом символе и таймфрейме, который показывает MetaTrader 5: форекс, золото (XAUUSD), индексы, крипта и акции. Дневные, недельные и месячные уровни берутся из данных D1, W1 и MN1 вашего брокера.&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;Можно ли его продавать или выложить в MQL5 Market?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Нет. Лицензия запрещает коммерческое использование, как оригинала, так и этого порта. Его можно распространять, изменять и использовать в своей торговле, сохраняя указание авторства и ту же лицензию.&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;Можно ли использовать его в советнике?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Да: при включённом Color Candles советник может читать тренд из цветового буфера (буфер 4) через iCustom. Если нужны чистые сигнальные буферы для BOS, CHoCH или ордер-блоков, либо готовый советник на его основе, я могу сделать версию для автоторговли.&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;Есть ли версия для MT4?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Пока нет. Версию на MQL4 можно сделать на заказ.&#34;}},{&#34;@type&#34;:&#34;Question&#34;,&#34;name&#34;:&#34;Можно ли пожертвовать другой криптовалютой?&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Любой актив сети TRON можно отправить на адрес TRON, а любой токен BEP-20 сети BNB Smart Chain на адрес BNB. Всегда проверяйте сеть перед отправкой: ошибка в сети означает потерю средств.&#34;}}]}</script>
+<script type="application/ld+json">{&#34;@type&#34;:&#34;Person&#34;,&#34;@id&#34;:&#34;https://smart-money-concepts-mt5.vercel.app/#author&#34;,&#34;name&#34;:&#34;Ismael Ladjohounlou&#34;,&#34;url&#34;:&#34;https://ismael-portfolio-liard.vercel.app/en&#34;,&#34;email&#34;:&#34;mailto:general.trading.bot.2025@gmail.com&#34;,&#34;jobTitle&#34;:&#34;Trading systems developer (MQL5, Pine Script, Python)&#34;,&#34;sameAs&#34;:[&#34;https://github.com/GeneralTradingSarl&#34;,&#34;https://www.linkedin.com/in/ismaelladjohounlou&#34;,&#34;https://www.mql5.com/en/users/ismael_financial_bot&#34;],&#34;knowsAbout&#34;:[&#34;MQL5&#34;,&#34;MQL4&#34;,&#34;Pine Script&#34;,&#34;MetaTrader 5&#34;,&#34;TradingView&#34;,&#34;Smart Money Concepts&#34;,&#34;Expert Advisors&#34;,&#34;Algorithmic trading&#34;,&#34;Python&#34;],&#34;@context&#34;:&#34;https://schema.org&#34;}</script>
+</head>
+<body class="lang-ru page-home">
+<a class="skip" href="#main">К содержанию</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/ru/" aria-label="Smart Money Concepts MT5"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0d141c"/><rect x=".5" y=".5" width="31" height="31" rx="7.5" fill="none" stroke="#ffffff" stroke-opacity=".14"/><path d="M8 9v14" stroke="#089981" stroke-width="1.6"/><rect x="6" y="12" width="4" height="7" rx="1" fill="#089981"/><path d="M16 6v14" stroke="#089981" stroke-width="1.6"/><rect x="14" y="8" width="4" height="8" rx="1" fill="#089981"/><path d="M24 11v15" stroke="#F23645" stroke-width="1.6"/><rect x="22" y="14" width="4" height="8" rx="1" fill="#F23645"/><path d="M6 8.5h20" stroke="#19d3a6" stroke-width="1.4" stroke-dasharray="2.4 1.8"/></svg><span>SMC · MT5</span><small>v1.0.0</small></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/proof/">Доказательство</a>
+      <a href="/guide/">Руководство</a>
+      <a href="/install/">Установка</a>
+      <a href="/ru/#services">На заказ</a>
+      <a href="/ru/#support">Поддержать</a>
+      <a href="/ru/#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <details class="lang">
+        <summary aria-label="Язык"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>RU</summary>
+        <ul>
+<li><a href="/" hreflang="en" lang="en">English</a></li>
+<li><a href="/fr/" hreflang="fr" lang="fr">Français</a></li>
+<li><a href="/es/" hreflang="es" lang="es">Español</a></li>
+<li><a href="/pt/" hreflang="pt" lang="pt">Português</a></li>
+<li><a href="/ru/" hreflang="ru" lang="ru" aria-current="true">Русский</a></li>
+<li><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+        </ul>
+      </details>
+      <a class="btn btn-ghost btn-s gh-btn" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg><span>GitHub</span></a>
+    </div>
+    <button class="menu-btn" type="button" data-menu aria-expanded="false" aria-label="Меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+  </div>
+</header>
+<main id="main">
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">
+<span class="pill"><i class="dot"></i>Бесплатно и с открытым кодом</span><span class="pill">MetaTrader 5</span><span class="pill">v1.0.0</span>    </div>
+    <div class="hero-grid">
+      <h1>Smart Money Concepts для MetaTrader 5<span class="sub">Индикатор SMC от LuxAlgo, перенесённый в MQL5 строка за строкой и <b>доказанно идентичный TradingView</b>.</span></h1>
+      <div>
+        <p class="lead">Бесплатный порт на MQL5 самого популярного SMC-скрипта TradingView: внутренняя и свинговая структура (<b>BOS</b>, <b>CHoCH</b>), <b>ордер-блоки</b>, равные максимумы и минимумы, <b>fair value gaps</b>, зоны premium и discount, а также уровни прошлого дня, недели и месяца. Сверен с оригиналом объект за объектом на 5 044 барах: совпадает каждая метка, линия и прямоугольник.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.ex5" data-dl="ex5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Скачать .ex5</a>
+          <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.mq5" data-dl="mq5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>Исходный код .mq5</a>
+        </div>
+        <div class="file-meta"><span>88 КБ</span><span>0 ошибок, 0 предупреждений</span><span>Без DLL и регистрации</span><span>CC BY-NC-SA 4.0</span></div>
+      </div>
+    </div>
+    <div class="viewer" data-viewer data-config="B" data-bars="150" data-autoblink data-eager  data-legend-tv="Smart Money Concepts [LuxAlgo] · TradingView" data-legend-mt5="SmartMoneyConcepts.ex5 · MetaTrader 5"
+  data-t-stat="{n} объектов на экране · {same} идентичны" data-t-price="{n} уровней W/M в пределах 1 цента (данные)">
+  <div class="viewer-bar">
+    <div class="seg" role="group" aria-label="Platform">
+      <button type="button" data-side="tv" aria-pressed="false"><i class="sw" style="background:#5b8cff"></i>TradingView <small>Pine LuxAlgo</small></button>
+      <button type="button" data-side="mt5" aria-pressed="true"><i class="sw" style="background:#f0b90b"></i>MetaTrader 5 <small>этот порт</small></button>
+    </div>
+    <button type="button" class="chip" data-blink aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>Тест мерцания</button>
+    <button type="button" class="chip" data-diff aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Различия</button>
+    <output class="viewer-stat" data-stat aria-live="polite"></output>
+  </div>
+  <div class="viewer-canvas">
+<img class="poster" src="/assets/img/hero-poster.webp" width="1770" height="780" alt="Smart Money Concepts, нарисованный TradingView и MetaTrader 5 на одних и тех же 15-минутных барах AAPL: ордер-блоки, метки BOS и CHoCH, зоны premium и discount, недельные и месячные уровни." fetchpriority="high">    <canvas role="img" aria-label="Smart Money Concepts, нарисованный TradingView и MetaTrader 5 на одних и тех же 15-минутных барах AAPL: ордер-блоки, метки BOS и CHoCH, зоны premium и discount, недельные и месячные уровни."></canvas>
+    <span class="loading">Загрузка выгрузок…</span>
+  </div>
+  <div class="viewer-foot"><span><b>Те же 15-минутные бары AAPL, включены все функции.</b> Тест мерцания переключает платформы дважды в секунду, и ничего не сдвигается. Перетаскивайте для прокрутки, двойной щелчок для сброса.</span><span>Нарисовано в вашем браузере по объектам, которые выгрузила каждая платформа.</span></div>
+</div>
+  </div>
+</div>
+
+<section id="proof" aria-labelledby="proof-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01 · Доказательство</div>
+      <h2 id="proof-h">Не «похож». Идентичен, объект за объектом.</h2>
+      <p>Скрипт LuxAlgo был запущен на TradingView. Те же 5 044 свечи были загружены в MetaTrader 5. Каждый рисунок выгружен с обеих платформ и сверен по времени, цене, тексту, цвету, стилю и размеру. Четыре конфигурации, затем последние 44 бара, проигранные тик за тиком.</p>
+    </div>
+    <div class="stats">
+<div class="stat"><b>2 535</b><span>рисунков сверено, все идентичны</span></div><div class="stat"><b>20 176</b><span>цветов тренда свечей, все идентичны</span></div><div class="stat"><b>4 + 2</b><span>конфигурации и два прогона тик за тиком</span></div><div class="stat"><b><em>0</em></b><span>отличий в логике</span></div>    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Конфиг</th><th scope="col">Настройки</th><th scope="col">Метки</th><th scope="col">Линии</th><th scope="col">Прямоуг.</th><th scope="col">Тренд</th></tr></thead>
+        <tbody>
+          <tr><td><span class="cfg">A</span></td><td>Настройки по умолчанию</td>
+            <td class="num"><span class="ok">327/327</span></td>
+            <td class="num"><span class="ok">327/327</span></td>
+            <td class="num"><span class="ok">5/5</span></td>
+            <td class="num"><span class="ok">5,044/5,044</span></td></tr>
+          <tr><td><span class="cfg">B</span></td><td>Все функции: свинги, свинговые OB, FVG, дневные, недельные и месячные уровни, зоны</td>
+            <td class="num"><span class="ok">409/409</span></td>
+            <td class="num"><span class="ok">333/333</span></td>
+            <td class="num"><span class="ok">47/47</span></td>
+            <td class="num"><span class="ok">5,044/5,044</span></td></tr>
+          <tr><td><span class="cfg">C</span></td><td>Режим Present, монохром, фильтр конфлюенса, Cumulative Mean Range, митигация по Close, FVG на 30 мин</td>
+            <td class="num"><span class="ok">13/13</span></td>
+            <td class="num"><span class="ok">8/8</span></td>
+            <td class="num"><span class="ok">70/70</span></td>
+            <td class="num"><span class="ok">5,044/5,044</span></td></tr>
+          <tr><td><span class="cfg">D</span></td><td>Конфиг C в историческом режиме, до лимита Pine в 500 меток</td>
+            <td class="num"><span class="ok">500/500</span></td>
+            <td class="num"><span class="ok">426/426</span></td>
+            <td class="num"><span class="ok">70/70</span></td>
+            <td class="num"><span class="ok">5,044/5,044</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="faint" style="margin-top:12px;font-size:14px">A и B ещё раз в реальном времени: последние 44 бара проиграны тик за тиком (176 тиков), тот же результат.</p>
+    <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><p>Единственное расхождение связано с данными, а не с кодом. На TradingView недельные и месячные уровни берутся из его собственных баров W и M (342,988), а MT5 строит их по барам графика (342,98, настоящий максимум этих баров). Точки привязки совпадают. На реальном счёте MT5 бары W1 и MN1 приходят из того же потока, что и ваш график.</p></div>
+
+    <h3 style="margin-top:44px">Настоящие скриншоты, те же бары, те же настройки</h3>
+    <div class="shots">
+      <figure class="shot">
+        <a href="/assets/img/proof-tradingview.webp"><img src="/assets/img/proof-tradingview.webp" width="1600" height="785" loading="lazy" decoding="async" alt="TradingView с оригинальным скриптом Smart Money Concepts [LuxAlgo], AAPL 15 мин."></a>
+        <figcaption><span class="tag tag-tv">TradingView</span>TradingView с оригинальным скриптом Smart Money Concepts [LuxAlgo], AAPL 15 мин.</figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="/assets/img/proof-metatrader5.webp"><img src="/assets/img/proof-metatrader5.webp" width="1590" height="802" loading="lazy" decoding="async" alt="MetaTrader 5 с этим портом, те же бары, настройки по умолчанию."></a>
+        <figcaption><span class="tag tag-mt">MetaTrader 5</span>MetaTrader 5 с этим портом, те же бары, настройки по умолчанию.</figcaption>
+      </figure>
+    </div>
+    <div class="links-row">
+      <a class="btn btn-ghost" href="/proof/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>Открыть интерактивный просмотр</a>
+      <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/tree/main/parity" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>Повторите тест сами</a>
+    </div>
+  </div>
+</section>
+
+<section id="features" aria-labelledby="features-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02 · Что он рисует</div>
+      <h2 id="features-h">Весь скрипт. Каждая настройка, каждый алерт.</h2>
+      <p>Ничего не упрощено. Те же названия настроек, те же значения по умолчанию и те же группы, что и в оригинале на TradingView.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Break of structure and change of character" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="18" y1="55.1" x2="18" y2="64.2" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="56.6" width="10" height="4.6" rx="1" fill="#089981"/><line x1="40" y1="46.0" x2="40" y2="58.2" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="47.5" width="10" height="9.1" rx="1" fill="#089981"/><line x1="62" y1="38.4" x2="62" y2="49.8" stroke="#089981" stroke-width="1.2"/><rect x="57.0" y="41.4" width="10" height="6.1" rx="1" fill="#089981"/><line x1="84" y1="40.7" x2="84" y2="53.6" stroke="#F23645" stroke-width="1.2"/><rect x="79.0" y="41.4" width="10" height="10.7" rx="1" fill="#F23645"/><line x1="106" y1="49.0" x2="106" y2="59.7" stroke="#F23645" stroke-width="1.2"/><rect x="101.0" y="52.1" width="10" height="5.3" rx="1" fill="#F23645"/><line x1="128" y1="47.5" x2="128" y2="58.2" stroke="#089981" stroke-width="1.2"/><rect x="123.0" y="48.3" width="10" height="9.1" rx="1" fill="#089981"/><line x1="150" y1="39.9" x2="150" y2="49.8" stroke="#089981" stroke-width="1.2"/><rect x="145.0" y="41.4" width="10" height="6.9" rx="1" fill="#089981"/><line x1="172" y1="29.3" x2="172" y2="42.2" stroke="#089981" stroke-width="1.2"/><rect x="167.0" y="31.6" width="10" height="9.8" rx="1" fill="#089981"/><line x1="194" y1="27.0" x2="194" y2="36.9" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="31.6" width="10" height="3.8" rx="1" fill="#F23645"/><line x1="216" y1="33.8" x2="216" y2="46.0" stroke="#F23645" stroke-width="1.2"/><rect x="211.0" y="35.4" width="10" height="9.1" rx="1" fill="#F23645"/><line x1="238" y1="43.0" x2="238" y2="55.1" stroke="#F23645" stroke-width="1.2"/><rect x="233.0" y="44.5" width="10" height="9.1" rx="1" fill="#F23645"/><line x1="260" y1="51.3" x2="260" y2="62.7" stroke="#F23645" stroke-width="1.2"/><rect x="255.0" y="53.6" width="10" height="6.8" rx="1" fill="#F23645"/><line x1="62" y1="38.4" x2="172" y2="38.4" stroke="#089981" stroke-width="1.2" stroke-dasharray="4 3"/><text x="117.0" y="35.4" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><line x1="150" y1="49.8" x2="238" y2="49.8" stroke="#F23645" stroke-width="1.2" stroke-dasharray="4 3"/><text x="194.0" y="59.8" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">CHoCH</text></svg></div>
+        <h3>Структура рынка: BOS и CHoCH</h3>
+        <p>Break of Structure и Change of Character на двух масштабах: внутренняя структура (свинги по 5 баров) для входов и свинговая структура (50 баров по умолчанию) для общей картины. Фильтр конфлюенса по желанию.</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Bullish order block" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><rect x="84" y="46.0" width="216" height="10.6" fill="#2157f3" fill-opacity="0.22"/><line x1="84" y1="46.0" x2="300" y2="46.0" stroke="#2157f3" stroke-opacity=".55"/><text x="292" y="56.8" fill="#7aa2ff" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Bullish OB</text><line x1="18" y1="29.3" x2="18" y2="39.9" stroke="#F23645" stroke-width="1.2"/><rect x="13.0" y="30.8" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="40" y1="36.9" x2="40" y2="47.5" stroke="#F23645" stroke-width="1.2"/><rect x="35.0" y="38.4" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="62" y1="44.5" x2="62" y2="53.6" stroke="#F23645" stroke-width="1.2"/><rect x="57.0" y="46.0" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="84" y1="46.0" x2="84" y2="56.6" stroke="#F23645" stroke-width="1.2"/><rect x="79.0" y="52.1" width="10" height="3.0" rx="1" fill="#F23645"/><line x1="106" y1="36.9" x2="106" y2="55.9" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="38.4" width="10" height="16.7" rx="1" fill="#089981"/><line x1="128" y1="27.8" x2="128" y2="39.9" stroke="#089981" stroke-width="1.2"/><rect x="123.0" y="29.3" width="10" height="9.1" rx="1" fill="#089981"/><line x1="150" y1="26.2" x2="150" y2="35.4" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="29.3" width="10" height="4.5" rx="1" fill="#F23645"/><line x1="172" y1="32.3" x2="172" y2="43.0" stroke="#F23645" stroke-width="1.2"/><rect x="167.0" y="33.8" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="194" y1="39.9" x2="194" y2="48.3" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="41.4" width="10" height="3.1" rx="1" fill="#F23645"/><line x1="216" y1="33.8" x2="216" y2="46.0" stroke="#089981" stroke-width="1.2"/><rect x="211.0" y="35.4" width="10" height="9.1" rx="1" fill="#089981"/><line x1="238" y1="24.7" x2="238" y2="36.9" stroke="#089981" stroke-width="1.2"/><rect x="233.0" y="26.2" width="10" height="9.2" rx="1" fill="#089981"/><line x1="260" y1="21.7" x2="260" y2="29.3" stroke="#089981" stroke-width="1.2"/><rect x="255.0" y="23.2" width="10" height="3.0" rx="1" fill="#089981"/></svg></div>
+        <h3>Внутренние и свинговые ордер-блоки</h3>
+        <p>Бычьи и медвежьи ордер-блоки с фильтром по ATR или по накопленному среднему диапазону, митигация по High/Low или по Close, у каждого свой лимит количества.</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Equal highs and equal lows" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="18" y1="44.5" x2="18" y2="55.1" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="46.0" width="10" height="7.6" rx="1" fill="#089981"/><line x1="40" y1="30.8" x2="40" y2="47.5" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="35.4" width="10" height="10.6" rx="1" fill="#089981"/><line x1="62" y1="33.8" x2="62" y2="44.5" stroke="#F23645" stroke-width="1.2"/><rect x="57.0" y="35.4" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="84" y1="39.9" x2="84" y2="49.0" stroke="#089981" stroke-width="1.2"/><rect x="79.0" y="41.4" width="10" height="1.6" rx="1" fill="#089981"/><line x1="106" y1="30.5" x2="106" y2="43.0" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="38.4" width="10" height="3.0" rx="1" fill="#089981"/><line x1="128" y1="36.9" x2="128" y2="50.6" stroke="#F23645" stroke-width="1.2"/><rect x="123.0" y="38.4" width="10" height="10.6" rx="1" fill="#F23645"/><line x1="150" y1="47.5" x2="150" y2="61.2" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="49.0" width="10" height="10.7" rx="1" fill="#F23645"/><line x1="172" y1="53.6" x2="172" y2="67.3" stroke="#089981" stroke-width="1.2"/><rect x="167.0" y="55.1" width="10" height="4.6" rx="1" fill="#089981"/><line x1="194" y1="50.6" x2="194" y2="58.2" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="55.1" width="10" height="1.5" rx="1" fill="#F23645"/><line x1="216" y1="55.1" x2="216" y2="64.2" stroke="#F23645" stroke-width="1.2"/><rect x="211.0" y="56.6" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="238" y1="58.2" x2="238" y2="67.1" stroke="#089981" stroke-width="1.2"/><rect x="233.0" y="58.9" width="10" height="2.3" rx="1" fill="#089981"/><line x1="260" y1="49.0" x2="260" y2="60.4" stroke="#089981" stroke-width="1.2"/><rect x="255.0" y="50.6" width="10" height="8.3" rx="1" fill="#089981"/><line x1="40" y1="30.8" x2="106" y2="30.8" stroke="#F23645" stroke-width="1.2" stroke-dasharray="1 2"/><text x="73.0" y="27.8" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">EQH</text><line x1="172" y1="67.3" x2="238" y2="67.3" stroke="#089981" stroke-width="1.2" stroke-dasharray="1 2"/><text x="205.0" y="77.3" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">EQL</text></svg></div>
+        <h3>Равные максимумы и минимумы</h3>
+        <p>EQH и EQL: ликвидность на одном уровне, с настраиваемым порогом и длиной подтверждения.</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Bullish fair value gap" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><rect x="62" y="44.5" width="238" height="9.1" fill="#00ff68" fill-opacity="0.22"/><text x="292" y="53.0" fill="#5df59b" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Bullish FVG</text><line x1="18" y1="64.2" x2="18" y2="71.8" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="65.8" width="10" height="3.0" rx="1" fill="#089981"/><line x1="40" y1="61.2" x2="40" y2="67.3" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="62.7" width="10" height="3.1" rx="1" fill="#089981"/><line x1="62" y1="53.6" x2="62" y2="64.2" stroke="#089981" stroke-width="1.2"/><rect x="57.0" y="56.6" width="10" height="6.1" rx="1" fill="#089981"/><line x1="84" y1="27.8" x2="84" y2="57.4" stroke="#089981" stroke-width="1.2"/><rect x="79.0" y="29.3" width="10" height="27.3" rx="1" fill="#089981"/><line x1="106" y1="23.2" x2="106" y2="44.5" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="26.2" width="10" height="3.1" rx="1" fill="#089981"/><line x1="128" y1="24.0" x2="128" y2="36.9" stroke="#F23645" stroke-width="1.2"/><rect x="123.0" y="26.2" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="150" y1="30.8" x2="150" y2="41.4" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="33.8" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="172" y1="35.4" x2="172" y2="46.0" stroke="#089981" stroke-width="1.2"/><rect x="167.0" y="36.9" width="10" height="1.5" rx="1" fill="#089981"/><line x1="194" y1="29.3" x2="194" y2="38.4" stroke="#089981" stroke-width="1.2"/><rect x="189.0" y="30.8" width="10" height="6.1" rx="1" fill="#089981"/><line x1="216" y1="26.2" x2="216" y2="33.8" stroke="#089981" stroke-width="1.2"/><rect x="211.0" y="27.8" width="10" height="3.0" rx="1" fill="#089981"/><line x1="238" y1="21.7" x2="238" y2="29.3" stroke="#089981" stroke-width="1.2"/><rect x="233.0" y="23.2" width="10" height="4.6" rx="1" fill="#089981"/><line x1="260" y1="20.2" x2="260" y2="27.8" stroke="#F23645" stroke-width="1.2"/><rect x="255.0" y="23.2" width="10" height="1.5" rx="1" fill="#F23645"/></svg></div>
+        <h3>Fair value gaps</h3>
+        <p>Трёхсвечные дисбалансы на таймфрейме графика или старшем, с автоматическим порогом и настраиваемым продлением.</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Premium, equilibrium and discount zones" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><rect x="18" y="23.2" width="282" height="6.8" fill="#F23645" fill-opacity="0.18"/><rect x="18" y="46.4" width="282" height="3.0" fill="#878b94" fill-opacity="0.18"/><rect x="18" y="65.8" width="282" height="6.8" fill="#089981" fill-opacity="0.18"/><text x="294" y="29.6" fill="#F23645" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Premium</text><text x="294" y="50.9" fill="#878b94" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Equilibrium</text><text x="294" y="72.2" fill="#089981" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Discount</text><line x1="14" y1="44.5" x2="14" y2="61.2" stroke="#089981" stroke-width="1.2"/><rect x="9.5" y="46.0" width="9" height="7.6" rx="1" fill="#089981"/><line x1="33" y1="33.8" x2="33" y2="49.0" stroke="#089981" stroke-width="1.2"/><rect x="28.5" y="36.9" width="9" height="9.1" rx="1" fill="#089981"/><line x1="52" y1="23.2" x2="52" y2="39.9" stroke="#089981" stroke-width="1.2"/><rect x="47.5" y="26.2" width="9" height="10.7" rx="1" fill="#089981"/><line x1="71" y1="24.7" x2="71" y2="38.4" stroke="#F23645" stroke-width="1.2"/><rect x="66.5" y="26.2" width="9" height="10.7" rx="1" fill="#F23645"/><line x1="90" y1="35.4" x2="90" y2="50.6" stroke="#F23645" stroke-width="1.2"/><rect x="85.5" y="36.9" width="9" height="12.1" rx="1" fill="#F23645"/><line x1="109" y1="46.0" x2="109" y2="61.2" stroke="#F23645" stroke-width="1.2"/><rect x="104.5" y="49.0" width="9" height="9.2" rx="1" fill="#F23645"/><line x1="128" y1="56.6" x2="128" y2="72.6" stroke="#F23645" stroke-width="1.2"/><rect x="123.5" y="58.2" width="9" height="10.6" rx="1" fill="#F23645"/><line x1="147" y1="58.2" x2="147" y2="70.3" stroke="#089981" stroke-width="1.2"/><rect x="142.5" y="59.7" width="9" height="9.1" rx="1" fill="#089981"/><line x1="166" y1="47.5" x2="166" y2="61.2" stroke="#089981" stroke-width="1.2"/><rect x="161.5" y="49.0" width="9" height="10.7" rx="1" fill="#089981"/><line x1="185" y1="46.0" x2="185" y2="55.1" stroke="#F23645" stroke-width="1.2"/><rect x="180.5" y="49.0" width="9" height="3.1" rx="1" fill="#F23645"/><line x1="204" y1="41.4" x2="204" y2="53.6" stroke="#089981" stroke-width="1.2"/><rect x="199.5" y="43.0" width="9" height="9.1" rx="1" fill="#089981"/><line x1="223" y1="38.4" x2="223" y2="49.0" stroke="#F23645" stroke-width="1.2"/><rect x="218.5" y="43.0" width="9" height="3.0" rx="1" fill="#F23645"/></svg></div>
+        <h3>Premium, равновесие, discount</h3>
+        <p>Текущий свинговый диапазон, разделённый на зоны premium, равновесия и discount и обновляемый по мере роста диапазона.</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Swing points, strong low and weak high" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="18" y1="56.6" x2="18" y2="68.8" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="58.2" width="10" height="3.0" rx="1" fill="#089981"/><line x1="40" y1="41.4" x2="40" y2="59.7" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="43.0" width="10" height="15.2" rx="1" fill="#089981"/><line x1="62" y1="39.9" x2="62" y2="53.6" stroke="#F23645" stroke-width="1.2"/><rect x="57.0" y="43.0" width="10" height="9.1" rx="1" fill="#F23645"/><line x1="84" y1="49.0" x2="84" y2="61.2" stroke="#089981" stroke-width="1.2"/><rect x="79.0" y="50.6" width="10" height="1.5" rx="1" fill="#089981"/><line x1="106" y1="30.8" x2="106" y2="52.1" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="32.3" width="10" height="18.3" rx="1" fill="#089981"/><line x1="128" y1="29.3" x2="128" y2="41.4" stroke="#F23645" stroke-width="1.2"/><rect x="123.0" y="32.3" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="150" y1="36.9" x2="150" y2="47.5" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="39.9" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="172" y1="23.2" x2="172" y2="47.5" stroke="#089981" stroke-width="1.2"/><rect x="167.0" y="24.7" width="10" height="21.3" rx="1" fill="#089981"/><line x1="194" y1="21.7" x2="194" y2="30.8" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="24.7" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="216" y1="27.8" x2="216" y2="36.9" stroke="#F23645" stroke-width="1.2"/><rect x="211.0" y="29.3" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="238" y1="30.8" x2="238" y2="38.4" stroke="#089981" stroke-width="1.2"/><rect x="233.0" y="32.3" width="10" height="3.1" rx="1" fill="#089981"/><line x1="260" y1="29.3" x2="260" y2="35.4" stroke="#089981" stroke-width="1.2"/><rect x="255.0" y="30.8" width="10" height="1.5" rx="1" fill="#089981"/><text x="40" y="38.4" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">HH</text><text x="84" y="71.2" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">HL</text><text x="106" y="27.8" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">HH</text><text x="150" y="57.5" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">HL</text><line x1="172" y1="21.7" x2="260" y2="21.7" stroke="#F23645" stroke-width="1"/><text x="292" y="18.7" fill="#F23645" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Weak High</text><line x1="150" y1="47.5" x2="260" y2="47.5" stroke="#089981" stroke-width="1"/><text x="292" y="57.5" fill="#089981" font-size="9" text-anchor="end" font-family="Trebuchet MS, Segoe UI, sans-serif">Strong Low</text></svg></div>
+        <h3>Сильные и слабые максимумы и минимумы</h3>
+        <p>Текущие свинговые экстремумы с пометкой strong или weak по тренду, а также точки HH, HL, LH и LL.</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Previous day, week and month levels" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="0" y1="20.2" x2="266" y2="20.2" stroke="#2157f3" stroke-width="1"/><text x="270" y="23.2" fill="#7aa2ff" font-size="9" text-anchor="start" font-family="Trebuchet MS, Segoe UI, sans-serif">PMH</text><line x1="0" y1="30.8" x2="266" y2="30.8" stroke="#2157f3" stroke-width="1"/><text x="270" y="33.8" fill="#7aa2ff" font-size="9" text-anchor="start" font-family="Trebuchet MS, Segoe UI, sans-serif">PWH</text><line x1="0" y1="41.4" x2="266" y2="41.4" stroke="#2157f3" stroke-width="1"/><text x="270" y="44.4" fill="#7aa2ff" font-size="9" text-anchor="start" font-family="Trebuchet MS, Segoe UI, sans-serif">PDH</text><line x1="0" y1="68.8" x2="266" y2="68.8" stroke="#2157f3" stroke-width="1"/><text x="270" y="71.8" fill="#7aa2ff" font-size="9" text-anchor="start" font-family="Trebuchet MS, Segoe UI, sans-serif">PDL</text><line x1="18" y1="49.0" x2="18" y2="58.2" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="50.6" width="10" height="3.0" rx="1" fill="#089981"/><line x1="40" y1="44.5" x2="40" y2="52.1" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="46.0" width="10" height="4.6" rx="1" fill="#089981"/><line x1="62" y1="43.0" x2="62" y2="53.6" stroke="#F23645" stroke-width="1.2"/><rect x="57.0" y="46.0" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="84" y1="49.0" x2="84" y2="61.2" stroke="#F23645" stroke-width="1.2"/><rect x="79.0" y="52.1" width="10" height="7.6" rx="1" fill="#F23645"/><line x1="106" y1="53.6" x2="106" y2="62.7" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="55.1" width="10" height="4.6" rx="1" fill="#089981"/><line x1="128" y1="47.5" x2="128" y2="56.6" stroke="#089981" stroke-width="1.2"/><rect x="123.0" y="49.0" width="10" height="6.1" rx="1" fill="#089981"/><line x1="150" y1="46.0" x2="150" y2="55.1" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="49.0" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="172" y1="52.1" x2="172" y2="59.7" stroke="#F23645" stroke-width="1.2"/><rect x="167.0" y="53.6" width="10" height="3.0" rx="1" fill="#F23645"/><line x1="194" y1="49.0" x2="194" y2="58.2" stroke="#089981" stroke-width="1.2"/><rect x="189.0" y="50.6" width="10" height="6.0" rx="1" fill="#089981"/><line x1="216" y1="41.4" x2="216" y2="52.1" stroke="#089981" stroke-width="1.2"/><rect x="211.0" y="43.0" width="10" height="7.6" rx="1" fill="#089981"/></svg></div>
+        <h3>Прошлый день, неделя и месяц</h3>
+        <p>Уровни PDH и PDL, PWH и PWL, PMH и PML, у каждого свой цвет и стиль линии.</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Trend coloured candles and alerts" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><line x1="18" y1="56.6" x2="18" y2="64.2" stroke="#089981" stroke-width="1.2"/><rect x="13.0" y="58.2" width="10" height="3.0" rx="1" fill="#089981"/><line x1="40" y1="52.1" x2="40" y2="59.7" stroke="#089981" stroke-width="1.2"/><rect x="35.0" y="53.6" width="10" height="4.6" rx="1" fill="#089981"/><line x1="62" y1="46.0" x2="62" y2="55.1" stroke="#089981" stroke-width="1.2"/><rect x="57.0" y="47.5" width="10" height="6.1" rx="1" fill="#089981"/><line x1="84" y1="44.5" x2="84" y2="52.1" stroke="#089981" stroke-width="1.2"/><rect x="79.0" y="47.5" width="10" height="1.5" rx="1" fill="#089981"/><line x1="106" y1="39.9" x2="106" y2="50.6" stroke="#089981" stroke-width="1.2"/><rect x="101.0" y="41.4" width="10" height="7.6" rx="1" fill="#089981"/><line x1="128" y1="35.4" x2="128" y2="44.5" stroke="#089981" stroke-width="1.2"/><rect x="123.0" y="38.4" width="10" height="3.0" rx="1" fill="#089981"/><line x1="150" y1="36.9" x2="150" y2="49.0" stroke="#F23645" stroke-width="1.2"/><rect x="145.0" y="38.4" width="10" height="9.1" rx="1" fill="#F23645"/><line x1="172" y1="46.0" x2="172" y2="55.1" stroke="#F23645" stroke-width="1.2"/><rect x="167.0" y="47.5" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="194" y1="50.6" x2="194" y2="61.2" stroke="#F23645" stroke-width="1.2"/><rect x="189.0" y="53.6" width="10" height="6.1" rx="1" fill="#F23645"/><line x1="216" y1="56.6" x2="216" y2="65.8" stroke="#F23645" stroke-width="1.2"/><rect x="211.0" y="59.7" width="10" height="4.5" rx="1" fill="#F23645"/><line x1="238" y1="61.2" x2="238" y2="70.3" stroke="#F23645" stroke-width="1.2"/><rect x="233.0" y="64.2" width="10" height="4.6" rx="1" fill="#F23645"/><line x1="106" y1="50.6" x2="194" y2="50.6" stroke="#F23645" stroke-width="1.2" stroke-dasharray="4 3"/><text x="150.0" y="60.6" fill="#F23645" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">CHoCH</text><g transform="translate(262 10)" fill="none" stroke="#ffb020" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></g></svg></div>
+        <h3>Свечи тренда и 16 алертов</h3>
+        <p>Свечи окрашены по внутреннему тренду. Каждый alertcondition оригинала становится алертом MT5: окно, push-уведомление или e-mail.</p>
+      </article>
+      <article class="card feature">
+        <div class="fig"><svg viewBox="0 0 300 92" role="img" aria-label="Historical and present display modes" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><rect x="6" y="6" width="138" height="80" rx="8" fill="#ffffff" fill-opacity=".03" stroke="#ffffff" stroke-opacity=".08"/><rect x="156" y="6" width="138" height="80" rx="8" fill="#ffffff" fill-opacity=".03" stroke="#ffffff" stroke-opacity=".08"/><text x="75" y="80" fill="#9aa7b8" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">Historical</text><text x="225" y="80" fill="#9aa7b8" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">Present</text><text x="18" y="58.2" fill="#089981" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><text x="44" y="47.6" fill="#F23645" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">CHoCH</text><text x="70" y="36.9" fill="#F23645" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><text x="96" y="58.2" fill="#089981" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><text x="122" y="47.6" fill="#089981" font-size="8" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">CHoCH</text><text x="232" y="41.5" fill="#089981" font-size="9" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif">BOS</text><line x1="224.8" y1="44.5" x2="273.2" y2="44.5" stroke="#089981" stroke-width="1.2" stroke-dasharray="4 3"/></svg></div>
+        <h3>Historical или Present, Colored или Monochrome</h3>
+        <p>Те же режимы отображения, что и в оригинале. Режим Present оставляет только последнюю структуру для чистого графика.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="engineering" aria-labelledby="eng-h">
+  <div class="wrap eng">
+    <div>
+      <div class="kicker">03 · Под капотом</div>
+      <h2 id="eng-h">Где MetaTrader требовал другого механизма, но никогда другого результата</h2>
+      <p class="muted" style="margin-top:16px">Порт хорош настолько, насколько хороши его крайние случаи. Четыре места, где MT5 работает иначе, чем Pine, и что с этим делает порт.</p>
+      <p class="faint mono" style="margin:26px 0 10px;font-size:12px">Измерено на TradingView, воспроизведено в MQL5</p>
+<div class="code"><span class="c">// Pine: absolute tolerance of 1e-10</span>
+<span class="v">0.1</span> + <span class="v">0.2</span> == <span class="v">0.3</span>        <span class="c">// true</span>
+<span class="v">1</span> + <span class="v">0.9e-10</span> &gt; <span class="v">1</span>      <span class="c">// false</span>
+<span class="v">1</span> + <span class="v">1e-10</span>   &gt; <span class="v">1</span>      <span class="c">// true</span>
+
+<span class="c">// SmartMoneyConcepts.mq5, line 417</span>
+<span class="k">#define</span> PINE_EPS <span class="v">1e-10</span>
+<span class="k">bool</span> Gt(<span class="k">const double</span> a, <span class="k">const double</span> b)
+  { <span class="k">return</span> a - b &gt; PINE_EPS; }
+<span class="k">bool</span> Lt(<span class="k">const double</span> a, <span class="k">const double</span> b)
+  { <span class="k">return</span> b - a &gt; PINE_EPS; }</div>
+    </div>
+    <div class="eng-list">
+      <div class="eng-item"><span class="n">01</span><div><h3>Откат Pine в реальном времени</h3><p>Формирующийся бар считается на одноразовой копии состояния, которая отбрасывается на следующем тике. Фиксируются только закрытые бары, в точности как в Pine в реальном времени.</p></div></div>
+      <div class="eng-item"><span class="n">02</span><div><h3>Лимиты объектов Pine</h3><p>Метки, линии и прямоугольники проходят через коллекцию в памяти, которая соблюдает лимит Pine в 500 объектов каждого типа, удаляя сначала самые старые, и затем отображается на графике.</p></div></div>
+      <div class="eng-item"><span class="n">03</span><div><h3>Настоящая прозрачность</h3><p>У объектов MT5 нет альфа-канала, поэтому прямоугольники рисуются на прозрачном холсте с настоящим альфа-смешиванием. Каждый color.new(c, t) превращается в цвет и прозрачность.</p></div></div>
+      <div class="eng-item"><span class="n">04</span><div><h3>Допуск Pine при сравнении чисел</h3><p>Pine сравнивает числа с абсолютным допуском 1e-10, поэтому 0.1 + 0.2 == 0.3 истинно. Без него на одной свече, где фильтр конфлюенса сравнивает 0.05 с 0.05, появлялся лишний CHoCH. Порт воспроизводит этот допуск.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="install" aria-labelledby="install-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04 · Установка</div>
+      <h2 id="install-h">Работает меньше чем через минуту</h2>
+    </div>
+    <ol class="steps" style="list-style:none;padding:0;margin:0">
+<li class="step"><p><b>Скачайте</b> SmartMoneyConcepts.ex5 (или .mq5, если хотите читать или менять код).</p></li><li class="step"><p>В MetaTrader 5 откройте <b>Файл › Открыть каталог данных</b>, затем <b>MQL5 › Indicators</b> и положите туда файл.</p></li><li class="step"><p>Вернитесь в MT5, щёлкните правой кнопкой по <b>Индикаторы</b> в Навигаторе и выберите <b>Обновить</b>.</p></li><li class="step"><p>Перетащите <b>SmartMoneyConcepts</b> на любой график. Настройки и алерты находятся на вкладке <b>Входные параметры</b>.</p></li>    </ol>
+    <p class="muted" style="margin-top:18px;font-size:15px">Используете .mq5? Откройте его в MetaEditor (F4) и нажмите «Компилировать» (F7). Он компилируется с 0 ошибок и 0 предупреждений. <a href="/install/">Полное руководство по установке и решению проблем (на английском) →</a></p>
+  </div>
+</section>
+
+<section id="download" aria-labelledby="download-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">05 · Скачать</div>
+      <h2 id="download-h">Бесплатно. Оба файла. Без регистрации.</h2>
+      <p>Исполняемый файл, чтобы попробовать прямо сейчас, и полный исходный код, чтобы читать, учиться и дорабатывать.</p>
+    </div>
+    <div class="dl">
+      <div class="dl-card main">
+        <span class="ext">SmartMoneyConcepts.ex5 · 88 KB</span>
+        <h3>Готовый индикатор</h3>
+        <p>Скомпилирован в MetaEditor, 0 ошибок, 0 предупреждений. Положите в MQL5/Indicators.</p>
+        <p class="hash">SHA-256 cbb5afeee53174efc9cb2f9876d7915c7472b286481b18e8e618a89cc33ea19d</p>
+        <a class="btn btn-primary" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.ex5" data-dl="ex5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Скачать .ex5</a>
+      </div>
+      <div class="dl-card">
+        <span class="ext">SmartMoneyConcepts.mq5 · 91 KB</span>
+        <h3>Полный исходный код</h3>
+        <p>Один файл примерно на 2 300 строк, без include и DLL. Читаемый, с комментариями.</p>
+        <p class="hash">SHA-256 0a575d0047b5b938b821a319eeb4002fe414598bb2c016dd6e9429fc6d2460c8</p>
+        <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts.mq5" data-dl="mq5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Скачать .mq5</a>
+      </div>
+      <div class="dl-card">
+        <span class="ext">SmartMoneyConcepts-MT5-v1.0.0.zip · 116 KB</span>
+        <h3>Всё в одном zip</h3>
+        <p>.ex5, .mq5, лицензия и README.</p>
+        <p class="hash">SHA-256 c73b378b2a84f158c9cdb556d32faf55cb8090b19706589843f40429a24bc83a</p>
+        <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases/download/v1.0.0/SmartMoneyConcepts-MT5-v1.0.0.zip" data-dl="zip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Скачать .zip</a>
+      </div>
+    </div>
+    <div class="license"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M14.5 9.5a3.5 3.5 0 1 0 0 5"/></svg><p>Оригинальная работа © LuxAlgo, лицензия CC BY-NC-SA 4.0. Этот порт является производной работой под той же лицензией: сохраняйте указание авторства, только некоммерческое использование, делитесь изменениями на тех же условиях. Независимый проект, не связан с LuxAlgo или TradingView и не одобрен ими. <a href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases" rel="noopener">Все версии на GitHub →</a></p></div>
+  </div>
+</section>
+
+<section id="support" aria-labelledby="support-h">
+  <div class="wrap">
+    <div class="support">
+      <div class="section-head">
+        <div class="kicker">06 · Поддержать</div>
+        <h2 id="support-h">Бесплатно для всех. Поддерживают те, кто может.</h2>
+        <p>Этот порт и тестовый стенд, который его доказывает, потребовали много работы. Он остаётся бесплатным. Если он экономит вам время или помогает в торговле, любое пожертвование приветствуется, даже один доллар. Именно это позволяет выпускать следующие инструменты.</p>
+      </div>
+      <div class="wallets">
+        <div class="wallet">
+          <div class="qr" role="img" aria-label="QR-код адреса: TULMdmDTh5tuWhMNfUNAWCN9vASh5JqAzf"><svg preserveAspectRatio="xMidYMid meet" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" class="segno"><path class="qrline" stroke="#0b0f15" d="M0 0.5h7m2 0h4m1 0h1m2 0h2m3 0h7m-29 1h1m5 0h1m1 0h2m2 0h2m4 0h3m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m3 0h2m3 0h1m2 0h3m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m3 0h2m1 0h1m5 0h1m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m1 0h3m2 0h2m4 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m3 0h2m2 0h2m1 0h1m1 0h2m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-20 1h1m5 0h1m1 0h2m1 0h1m-21 1h1m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m3 0h2m6 0h1m2 0h1m-27 1h3m1 0h1m1 0h1m4 0h2m1 0h1m1 0h4m5 0h2m-27 1h1m3 0h4m5 0h1m1 0h2m3 0h8m-29 1h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m1 0h2m1 0h1m2 0h1m4 0h1m-25 1h1m1 0h5m1 0h1m2 0h1m1 0h1m3 0h4m3 0h1m-28 1h2m6 0h2m4 0h1m1 0h2m1 0h4m4 0h1m-28 1h3m3 0h1m3 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m1 0h3m-28 1h2m1 0h2m1 0h2m3 0h1m4 0h2m1 0h2m-20 1h1m2 0h3m1 0h1m1 0h2m2 0h1m3 0h5m3 0h2m-27 1h2m1 0h1m2 0h1m1 0h2m1 0h1m2 0h6m4 0h1m-27 1h1m1 0h1m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m2 0h2m2 0h1m1 0h6m-28 1h4m2 0h1m1 0h3m1 0h3m1 0h4m6 0h1m-28 1h1m2 0h2m1 0h3m5 0h1m1 0h2m2 0h5m1 0h3m-21 1h1m1 0h2m2 0h3m3 0h1m3 0h1m-25 1h7m3 0h1m2 0h1m4 0h1m1 0h1m1 0h1m1 0h1m1 0h3m-29 1h1m5 0h1m2 0h1m2 0h1m2 0h1m1 0h1m2 0h1m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h3m4 0h2m1 0h7m1 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m1 0h2m2 0h5m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-29 1h1m5 0h1m3 0h2m2 0h1m2 0h4m1 0h2m3 0h1m-28 1h7m1 0h1m1 0h1m3 0h3m2 0h2m6 0h2"/></svg></div>
+          <div>
+            <h3><i style="background:#ff3b48"></i>USDT в сети TRON</h3>
+            <p class="net">Сеть: TRON (TRC-20)</p>
+            <div class="addr" translate="no">TULMdmDTh5tuWhMNfUNAWCN9vASh5JqAzf</div>
+            <button type="button" class="btn btn-ghost btn-s" data-copy="TULMdmDTh5tuWhMNfUNAWCN9vASh5JqAzf" data-copied="Скопировано"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span data-copy-label>Копировать адрес</span></button>
+            <p class="warn">Отправляйте только активы сети TRON (USDT TRC-20, TRX). Отправленное из другой сети будет потеряно.</p>
+          </div>
+        </div>
+        <div class="wallet">
+          <div class="qr" role="img" aria-label="QR-код адреса: 0xC2D08CD5277587325bABC2111F54b5E0A7ec8F12"><svg preserveAspectRatio="xMidYMid meet" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" class="segno"><path class="qrline" stroke="#0b0f15" d="M0 0.5h7m4 0h1m4 0h1m1 0h1m1 0h1m1 0h7m-29 1h1m5 0h1m4 0h2m1 0h5m3 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m4 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m2 0h8m3 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m1 0h2m7 0h1m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h2m1 0h1m1 0h1m1 0h4m1 0h1m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h1m2 0h2m1 0h2m2 0h1m-19 1h1m1 0h5m3 0h4m1 0h1m1 0h2m3 0h5m-24 1h2m4 0h1m3 0h4m3 0h1m1 0h1m1 0h1m3 0h1m-28 1h2m1 0h4m1 0h2m1 0h1m2 0h1m2 0h1m4 0h1m2 0h2m-27 1h1m1 0h1m5 0h1m1 0h1m3 0h1m3 0h1m2 0h4m2 0h1m-26 1h1m1 0h5m2 0h1m1 0h5m2 0h1m1 0h1m3 0h1m-28 1h1m1 0h3m2 0h6m6 0h2m1 0h1m1 0h2m1 0h1m-27 1h3m1 0h2m3 0h1m1 0h5m1 0h1m1 0h1m-19 1h1m1 0h1m2 0h1m2 0h1m4 0h2m3 0h1m3 0h1m2 0h1m-26 1h1m1 0h4m5 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h4m-29 1h1m1 0h1m4 0h1m1 0h1m1 0h1m2 0h3m2 0h1m2 0h1m1 0h1m3 0h1m-29 1h1m5 0h2m1 0h1m1 0h1m3 0h2m1 0h1m2 0h4m-25 1h1m1 0h1m4 0h1m1 0h3m2 0h3m2 0h1m1 0h1m1 0h2m2 0h1m-28 1h1m1 0h1m3 0h1m3 0h1m2 0h1m1 0h2m3 0h8m-20 1h1m1 0h1m3 0h1m3 0h3m3 0h1m1 0h1m1 0h1m-29 1h7m5 0h2m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m-28 1h1m5 0h1m1 0h4m6 0h1m1 0h1m3 0h2m1 0h2m-29 1h1m1 0h3m1 0h1m1 0h2m1 0h1m3 0h1m1 0h2m1 0h5m2 0h2m-29 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m2 0h3m1 0h1m3 0h2m-29 1h1m1 0h3m1 0h1m1 0h4m3 0h1m6 0h1m1 0h4m-28 1h1m5 0h1m7 0h3m2 0h2m3 0h2m1 0h1m-28 1h7m1 0h1m2 0h1m1 0h6m3 0h3"/></svg></div>
+          <div>
+            <h3><i style="background:#f0b90b"></i>BNB Smart Chain</h3>
+            <p class="net">Сеть: BNB Smart Chain (BEP-20)</p>
+            <div class="addr" translate="no">0xC2D08CD5277587325bABC2111F54b5E0A7ec8F12</div>
+            <button type="button" class="btn btn-ghost btn-s" data-copy="0xC2D08CD5277587325bABC2111F54b5E0A7ec8F12" data-copied="Скопировано"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span data-copy-label>Копировать адрес</span></button>
+            <p class="warn">Отправляйте BNB или токены BEP-20 (USDT, USDC…) только через BNB Smart Chain. Не Ethereum и не TRON.</p>
+          </div>
+        </div>
+      </div>
+      <p class="support-foot">Пожертвование не является оплатой: файлы остаются бесплатными, даже если вы ничего не отправите.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" aria-labelledby="services-h">
+  <div class="wrap services">
+    <div class="me">
+      <div class="kicker">07 · На заказ</div>
+      <h2 id="services-h">Нужна доработка? Я сделаю её для вас.</h2>
+      <p style="margin-top:16px">Я <b>Исмаэль Ладжохунлу</b> (Ismael Ladjohounlou), разработчик этого порта. Если вы хотите адаптировать индикатор под свою торговлю или вам нужен любой другой инструмент для MetaTrader, TradingView или Telegram, напишите, что нужно. Оценка бесплатна.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:general.trading.bot.2025@gmail.com?subject=%D0%9D%D0%B0%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%3A%20Smart%20Money%20Concepts%20MT5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Описать проект</a>
+        <a class="btn btn-ghost" href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/issues/new" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>Открыть issue на GitHub</a>
+      </div>
+      <ul class="contact-list">
+        <li><a href="mailto:general.trading.bot.2025@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>general.trading.bot.2025@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/ismaelladjohounlou" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a></li>
+        <li><a href="https://www.mql5.com/en/users/ismael_financial_bot" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M8 17V9"/><path d="M13 17V5"/><path d="M18 17v-6"/></svg>Профиль MQL5</a></li>
+        <li><a href="https://ismael-portfolio-liard.vercel.app/en" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>Портфолио</a></li>
+      </ul>
+    </div>
+    <div class="svc">
+      <article class="card hl">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span>
+        <div>
+          <h3>Доработка этого индикатора</h3>
+          <p>Ваши правила и фильтры, дополнительные алерты, метки на вашем языке, мультитаймфреймовый вид, сигнальные буферы для советника.</p>
+        </div>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></span>
+        <div>
+          <h3><a href="/pine-script-to-mql5/">Pine Script из TradingView в MT5</a></h3>
+          <p>Любой индикатор или стратегия на Pine, перенесённые в MQL5 или MQL4, с тем же доказательством, что и здесь: объект за объектом, на тех же барах. <a href="/pine-script-to-mql5/">Как это работает →</a></p>
+        </div>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><path d="M8 14h.01"/><path d="M16 14h.01"/></svg></span>
+        <div>
+          <h3>Советники (Expert Advisors)</h3>
+          <p>Торговые роботы для MT4 и MT5: модели SMC и ICT, входы на нескольких таймфреймах, правила риска проп-фирм. Полный исходный код.</p>
+        </div>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6L4 20a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 20l-6-11V3"/><path d="M7 15h10"/></svg></span>
+        <div>
+          <h3>Бэктесты, которым можно верить</h3>
+          <p>Прогоны в тестере стратегий, независимая эталонная реализация на Python и честный вывод о том, есть ли преимущество.</p>
+        </div>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+        <div>
+          <h3>Telegram-боты и копировщики сделок</h3>
+          <p>Сигнальные боты, копировщики сделок и панели управления советником в Telegram.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="more" aria-labelledby="more-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">08 · Другие работы автора</div>
+      <h2 id="more-h">Хотите больше, чем оригинал?</h2>
+      <p>Structura это мой собственный движок Smart Money для MT5, написанный с нуля: всё перечисленное выше и то, чего нет в оригинале.</p>
+    </div>
+    <article class="product">
+      <div class="pic"><img src="/assets/img/structura.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Structura, Smart Money indicator for MetaTrader 5"></div>
+      <div class="body">
+        <span class="badge">Оригинальный индикатор · MQL5 Market</span>
+        <h3 style="font-size:1.5rem;margin-bottom:12px">Structura: структура рынка и ордер-блоки</h3>
+        <p>Создан и проверен независимо от LuxAlgo, с эталонной реализацией на Python, которая совпадает с движком MQL5 примерно на 989 000 строк.</p>
+        <ul><li>Ордер-блоки с оценкой от 0 до 3 (импульс, FVG, ликвидность)</li><li>Breakers, инверсные FVG, снятие ликвидности и зоны OTE</li><li>Мультитаймфреймовая панель и push-алерты</li><li>6 буферов для советников</li><li>Доказано без перерисовки</li></ul>
+        <div class="cta-row" style="margin:0">
+          <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/201556" rel="noopener">Открыть в MQL5 Market</a>
+          <a class="btn btn-ghost" href="https://youtu.be/x35L5b2P_xY" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Смотреть демо (82 секунды)</a>
+        </div>
+      </div>
+    </article>
+    <p class="faint mono" style="margin:26px 0 0;font-size:12px;text-transform:uppercase;letter-spacing:.08em">Также в MQL5 Market</p>
+    <div class="mini">
+<a href="https://www.mql5.com/ru/market/product/200522" rel="noopener">SnapBack Three Sigma Reversal<span>Индикатор · статистические развороты</span></a><a href="https://www.mql5.com/ru/market/product/200530" rel="noopener">Pin Bar Trend Pullback<span>Советник · price action</span></a><a href="https://www.mql5.com/ru/market/product/200527" rel="noopener">Multi Market RSI Trade Manager<span>Советник · RSI с управлением сделками</span></a>    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">09 · FAQ</div>
+      <h2 id="faq-h">Вопросы трейдеров</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Это правда бесплатно?</summary><div class="a"><p>Да. Скомпилированный .ex5 и полный исходный код .mq5 можно бесплатно скачивать, использовать и изменять в некоммерческих целях. Без аккаунта, без e-mail, без лицензионного ключа. Пожертвования добровольные.</p></div></details>
+      <details><summary>Это официальный индикатор LuxAlgo?</summary><div class="a"><p>Нет. Это независимый неофициальный порт на MQL5 открытого скрипта Smart Money Concepts от LuxAlgo, опубликованный под той же лицензией CC BY-NC-SA 4.0 с указанием авторства. LuxAlgo его не одобряла.</p></div></details>
+      <details><summary>Он действительно идентичен TradingView?</summary><div class="a"><p>На тестовом наборе да: 100 % меток, линий, прямоугольников и цветов свечей совпали в четырёх конфигурациях и двух прогонах тик за тиком. Отличается только цена недельных и месячных уровней, которую TradingView берёт из своих баров W и M. Проверьте сами в интерактивном просмотре или запустите стенд с GitHub.</p></div></details>
+      <details><summary>Он перерисовывается?</summary><div class="a"><p>Он ведёт себя точно как оригинал. Структура подтверждается на закрытых барах; формирующийся бар пересчитывается на каждом тике и фиксируется только при закрытии. Свинговые точки подтверждаются после своей длины, как в Pine, поэтому их метки появляются через несколько баров после пивота.</p></div></details>
+      <details><summary>На каких рынках и таймфреймах он работает?</summary><div class="a"><p>На любом символе и таймфрейме, который показывает MetaTrader 5: форекс, золото (XAUUSD), индексы, крипта и акции. Дневные, недельные и месячные уровни берутся из данных D1, W1 и MN1 вашего брокера.</p></div></details>
+      <details><summary>Можно ли его продавать или выложить в MQL5 Market?</summary><div class="a"><p>Нет. Лицензия запрещает коммерческое использование, как оригинала, так и этого порта. Его можно распространять, изменять и использовать в своей торговле, сохраняя указание авторства и ту же лицензию.</p></div></details>
+      <details><summary>Можно ли использовать его в советнике?</summary><div class="a"><p>Да: при включённом Color Candles советник может читать тренд из цветового буфера (буфер 4) через iCustom. Если нужны чистые сигнальные буферы для BOS, CHoCH или ордер-блоков, либо готовый советник на его основе, я могу сделать версию для автоторговли.</p></div></details>
+      <details><summary>Есть ли версия для MT4?</summary><div class="a"><p>Пока нет. Версию на MQL4 можно сделать на заказ.</p></div></details>
+      <details><summary>Можно ли пожертвовать другой криптовалютой?</summary><div class="a"><p>Любой актив сети TRON можно отправить на адрес TRON, а любой токен BEP-20 сети BNB Smart Chain на адрес BNB. Всегда проверяйте сеть перед отправкой: ошибка в сети означает потерю средств.</p></div></details>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/ru/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0d141c"/><rect x=".5" y=".5" width="31" height="31" rx="7.5" fill="none" stroke="#ffffff" stroke-opacity=".14"/><path d="M8 9v14" stroke="#089981" stroke-width="1.6"/><rect x="6" y="12" width="4" height="7" rx="1" fill="#089981"/><path d="M16 6v14" stroke="#089981" stroke-width="1.6"/><rect x="14" y="8" width="4" height="8" rx="1" fill="#089981"/><path d="M24 11v15" stroke="#F23645" stroke-width="1.6"/><rect x="22" y="14" width="4" height="8" rx="1" fill="#F23645"/><path d="M6 8.5h20" stroke="#19d3a6" stroke-width="1.4" stroke-dasharray="2.4 1.8"/></svg><span>SMC · MT5</span></a>
+        <p style="margin-top:14px;max-width:42ch">Бесплатный открытый порт Smart Money Concepts от LuxAlgo для MetaTrader 5, доказанно идентичный TradingView.</p>
+      </div>
+      <div>
+        <h4>Проект</h4>
+        <ul>
+          <li><a href="/ru/#download">Скачать</a></li>
+          <li><a href="/proof/">Интерактивный просмотр</a></li>
+          <li><a href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts" rel="noopener">Исходный код на GitHub</a></li>
+          <li><a href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/releases" rel="noopener">Версии</a></li>
+          <li><a href="https://github.com/GeneralTradingSarl/Smart-Money-Concepts/issues" rel="noopener">Сообщить о проблеме</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Руководства</h4>
+        <ul>
+          <li><a href="/guide/">Концепции SMC и настройки</a></li>
+          <li><a href="/install/">Руководство по установке</a></li>
+          <li><a href="/pine-script-to-mql5/">Pine Script в MQL5</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Автор</h4>
+        <ul>
+          <li><a href="https://ismael-portfolio-liard.vercel.app/en" rel="noopener">Портфолио</a></li>
+          <li><a href="https://www.linkedin.com/in/ismaelladjohounlou" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.mql5.com/en/users/ismael_financial_bot" rel="noopener">Профиль MQL5</a></li>
+          <li><a href="mailto:general.trading.bot.2025@gmail.com">E-mail</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Оригинальный Smart Money Concepts © LuxAlgo, лицензия CC BY-NC-SA 4.0. Порт на MQL5 © Ismael Ladjohounlou, та же лицензия. <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license noopener">CC BY-NC-SA 4.0</a> · <a href="https://www.tradingview.com/script/CnB3fSph-Smart-Money-Concepts-SMC-LuxAlgo/" rel="noopener">Smart Money Concepts (SMC) [LuxAlgo]</a></p>
+      <p>Независимый проект, не связан с LuxAlgo, TradingView или MetaQuotes, не спонсируется и не одобрен ими. Все товарные знаки принадлежат их владельцам.</p>
+      <p>Торговля сопряжена со значительным риском потерь. Этот индикатор является инструментом анализа, а не финансовой рекомендацией.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/chart.js?v=ed2d68997f" defer></script>
+<script src="/assets/js/main.js?v=ed2d68997f" defer></script>
+</body>
+</html>

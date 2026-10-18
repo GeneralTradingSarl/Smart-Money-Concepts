@@ -1,0 +1,110 @@
+{
+ "A": {
+  "labels": {
+   "tv": 323,
+   "mt5": 323,
+   "same": 323,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "lines": {
+   "tv": 323,
+   "mt5": 323,
+   "same": 323,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "boxes": {
+   "tv": 5,
+   "mt5": 5,
+   "same": 5,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "candles": {
+   "bars": 5044,
+   "same": 5044
+  }
+ },
+ "B": {
+  "labels": {
+   "tv": 405,
+   "mt5": 405,
+   "same": 401,
+   "priceOnly": 4,
+   "unmatched": 0
+  },
+  "lines": {
+   "tv": 329,
+   "mt5": 329,
+   "same": 325,
+   "priceOnly": 4,
+   "unmatched": 0
+  },
+  "boxes": {
+   "tv": 47,
+   "mt5": 47,
+   "same": 47,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "candles": {
+   "bars": 5044,
+   "same": 5044
+  }
+ },
+ "C": {
+  "labels": {
+   "tv": 13,
+   "mt5": 13,
+   "same": 13,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "lines": {
+   "tv": 8,
+   "mt5": 8,
+   "same": 8,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "boxes": {
+   "tv": 70,
+   "mt5": 70,
+   "same": 70,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "candles": {
+   "bars": 5044,
+   "same": 5044
+  }
+ },
+ "D": {
+  "labels": {
+   "tv": 500,
+   "mt5": 500,
+   "same": 500,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "lines": {
+   "tv": 422,
+   "mt5": 422,
+   "same": 422,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "boxes": {
+   "tv": 70,
+   "mt5": 70,
+   "same": 70,
+   "priceOnly": 0,
+   "unmatched": 0
+  },
+  "candles": {
+   "bars": 5044,
+   "same": 5044
+  }
+ }
+}

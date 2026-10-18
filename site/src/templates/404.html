@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block main %}
+<div class="page-hero">
+  <div class="wrap">
+    <p class="kicker">404</p>
+    <h1>This page broke structure.</h1>
+    <p class="lead">It does not exist, or it moved. The indicator, the proof and the downloads are one click away.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/">Home</a>
+      <a class="btn btn-ghost" href="/proof/">{{ icon('eye') }}Proof</a>
+      <a class="btn btn-ghost" href="/#download">{{ icon('download') }}Download</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

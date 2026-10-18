@@ -1,0 +1,16 @@
+//@version=5
+indicator("float probe", overlay = true)
+// T1/T2: literals only (no stored price). T3/T4: the bar where Pine and MT5 disagree.
+var string r = "bar not found"
+if time == 1774364400000
+    a = high - math.max(close, open)
+    b = math.min(close, open - low)
+    r := "T3 a>b " + str.tostring(a > b) + " a==b " + str.tostring(a == b) + " a=" + str.tostring(a, '#.################') + " b=" + str.tostring(b, '#.################') + " | T4 high-253.81=" + str.tostring(high - 253.81, '#.################') + " high==253.81 " + str.tostring(high == 253.81)
+t1 = 0.1 + 0.2 == 0.3
+t2 = (253.81 - 253.76) > (252.1 - 252.05)
+t5 = (253.81 - 253.76) == (252.1 - 252.05)
+t6 = 1.0 + 1e-12 > 1.0
+t7 = 1.0 + 1e-9 > 1.0
+var table tb = table.new(position.top_right, 1, 1)
+if barstate.islast
+    table.cell(tb, 0, 0, "T1 " + str.tostring(t1) + " T2 " + str.tostring(t2) + " T5 " + str.tostring(t5) + " T6 " + str.tostring(t6) + " T7 " + str.tostring(t7) + " | " + r)

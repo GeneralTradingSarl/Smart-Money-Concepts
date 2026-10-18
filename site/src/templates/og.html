@@ -1,0 +1,55 @@
+{% from "_icons.html" import icon %}<!doctype html>
+<html lang="{{ html_lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600&display=block{% if lang == 'ru' %}&family=Onest:wght@500;700;800{% endif %}">
+<link rel="stylesheet" href="/assets/css/style.css?v={{ v }}">
+<style>
+  html, body { margin: 0; width: {{ w }}px; height: {{ h }}px; overflow: hidden; }
+  body::before { -webkit-mask-image: none; mask-image: none; }
+  .og { position: relative; width: {{ w }}px; height: {{ h }}px; display: grid; grid-template-columns: 520px 1fr; gap: 0; }
+  .og .l { padding: 52px 20px 44px 56px; display: flex; flex-direction: column; }
+  .og .brand { font-size: 20px; }
+  .og h1 { font-size: {{ 56 if lang == 'en' else 46 if lang == 'zh' else 48 }}px; margin-top: 34px; max-width: {{ '15ch' if lang == 'zh' else '12ch' }}; }
+  .og .s { margin-top: 18px; font-size: 22px; color: var(--muted); line-height: 1.35; max-width: 23ch; }
+  .og .s b { color: var(--text); }
+  .og .chips { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
+  .og .chips span { font-family: var(--mono); font-size: 16px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--text); background: rgba(255,255,255,.03); }
+  .og .chips span.ok { color: #04130f; background: var(--bull-hi); border-color: var(--bull-hi); font-weight: 600; }
+  .og .r { padding: 40px 40px 40px 0; }
+  .og .frame { height: 100%; border: 1px solid var(--line-2); border-radius: 18px; overflow: hidden; background: var(--bg-2); box-shadow: 0 30px 80px -30px rgba(0,0,0,.9); }
+  .og canvas, .poster canvas { width: 100%; height: 100%; display: block; }
+  .poster { width: {{ w }}px; height: {{ h }}px; }
+</style>
+</head>
+<body class="lang-{{ lang }}">
+{% if kind == 'poster' %}
+<div class="poster"><canvas id="c"></canvas></div>
+{% else %}
+<div class="og">
+  <div class="l">
+    <span class="brand">{{ icon('logo') }}<span>SMC · MT5</span></span>
+    <h1>{{ t.hero.h1 }}</h1>
+    <p class="s">{{ t.hero.h1_sub|safe }}</p>
+    <div class="chips"><span class="ok">2,535 / 2,535</span><span>.ex5 + .mq5</span><span>{{ t.hero.pills[0] }}</span></div>
+  </div>
+  <div class="r"><div class="frame"><canvas id="c"></canvas></div></div>
+</div>
+{% endif %}
+<script src="/assets/js/chart.js?v={{ v }}"></script>
+<script>
+  document.fonts.ready.then(function () {
+    var v = new SMCViewer(document.getElementById('c'), { bars: {{ bars }}, rightPad: 24,
+      legend: { mt5: {{ t.viewer.legend_mt5|tojson }}, tv: {{ t.viewer.legend_tv|tojson }} } });
+    SMCViewer.load('/assets/data/', 'B').then(function (d) {
+      v.resize();
+      v.setData(d.bars, d.parity);
+      v.reset(true);
+      v.draw();
+      document.title = 'ready';
+    });
+  });
+</script>
+</body>
+</html>

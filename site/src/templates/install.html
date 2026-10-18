@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block main %}
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Smart Money Concepts MT5</a> / Install</nav>
+    <h1>How to install the Smart Money Concepts indicator in MetaTrader 5</h1>
+    <p class="lead">Two minutes, no account, no DLL. Use the <b>.ex5</b> to run it straight away, or compile the <b>.mq5</b> if you want to read or change the code.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="{{ dl.ex5.url }}" data-dl="ex5">{{ icon('download') }}SmartMoneyConcepts.ex5 · {{ dl.ex5.size }}</a>
+      <a class="btn btn-ghost" href="{{ dl.mq5.url }}" data-dl="mq5">{{ icon('code') }}SmartMoneyConcepts.mq5 · {{ dl.mq5.size }}</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap prose">
+  <nav class="toc" aria-label="Contents"><b>On this page</b>
+    <ol>
+      <li><a href="#ex5">Install the .ex5</a></li>
+      <li><a href="#mq5">Compile the .mq5</a></li>
+      <li><a href="#settings">Settings and templates</a></li>
+      <li><a href="#alerts">Alerts, push and email</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#verify">Check the file you downloaded</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="ex5">1. Install the .ex5 (ready to run)</h2>
+  <ol>
+    <li id="step-1"><strong>Download</strong> <code>SmartMoneyConcepts.ex5</code> from the <a href="{{ site.repo }}/releases" rel="noopener">release page</a> or the button above.</li>
+    <li id="step-2">In MetaTrader 5, open <strong>File › Open Data Folder</strong>. A file explorer window opens on the terminal’s data folder.</li>
+    <li id="step-3">Open <strong>MQL5</strong>, then <strong>Indicators</strong>, and copy <code>SmartMoneyConcepts.ex5</code> there. You can also make a subfolder, for example <code>Indicators/SMC</code>.</li>
+    <li id="step-4">Back in MT5, in the <strong>Navigator</strong> (<kbd>Ctrl</kbd>+<kbd>N</kbd>), right-click <strong>Indicators</strong> and choose <strong>Refresh</strong>. Restarting MT5 works too.</li>
+    <li id="step-5">Drag <strong>SmartMoneyConcepts</strong> onto a chart, set the options in the <strong>Inputs</strong> tab and press <strong>OK</strong>.</li>
+  </ol>
+  <div class="callout"><p>Copy the file into the <strong>data folder</strong> opened from MT5, not into the program folder under <code>C:\Program Files</code>. Each broker’s terminal has its own data folder.</p></div>
+
+  <h2 id="mq5">2. Compile the .mq5 (source code)</h2>
+  <ol>
+    <li>Put <code>SmartMoneyConcepts.mq5</code> in <code>MQL5/Indicators</code> exactly as above.</li>
+    <li>Open MetaEditor with <kbd>F4</kbd> from MetaTrader 5, then open the file from the Navigator on the left.</li>
+    <li>Press <strong>Compile</strong> (<kbd>F7</kbd>). The result should read <code>0 errors, 0 warnings</code> and a <code>SmartMoneyConcepts.ex5</code> appears next to the source.</li>
+    <li>Refresh the Navigator in MT5 and attach the indicator.</li>
+  </ol>
+  <p>The source is a single file of about 2,300 lines with no include and no external library. It is saved as UTF-8 with a byte order mark, which MetaEditor needs to read the accents in the header.</p>
+
+  <h2 id="settings">3. Settings and templates</h2>
+  <p>The inputs keep the names, defaults and groups of the TradingView original: <em>Smart Money Concepts</em>, <em>Real Time Internal Structure</em>, <em>Real Time Swing Structure</em>, <em>Order Blocks</em>, <em>EQH/EQL</em>, <em>Fair Value Gaps</em>, <em>Highs &amp; Lows MTF</em>, <em>Premium &amp; Discount Zones</em> and <em>Alerts</em>, plus a <em>MetaTrader</em> group with the number of bars to compute and the label font. Every input is described in the <a href="/guide/#settings">settings reference</a>.</p>
+  <ul>
+    <li><strong>Keep your setup:</strong> right-click the chart, <strong>Templates › Save Template</strong>. Apply it to any other chart in one click.</li>
+    <li><strong>Every new chart:</strong> save the template as <code>default</code> and every new chart opens with the indicator already on it.</li>
+    <li><strong>Colours and transparency:</strong> each Pine colour with transparency became two inputs, a colour and a transparency from 0 to 100, because MetaTrader colours have no alpha channel.</li>
+  </ul>
+
+  <h2 id="alerts">4. Alerts, push notifications and email</h2>
+  <p>The 16 alert conditions of the original are in the <strong>Alerts</strong> group: internal and swing BOS and CHoCH (bullish and bearish), internal and swing order block breakouts, equal highs, equal lows, bullish and bearish fair value gaps. Tick the ones you want, then choose how you are told:</p>
+  <ul>
+    <li><strong>Popup</strong>: the MetaTrader alert window with a sound (on by default).</li>
+    <li><strong>Push notification</strong>: enter your MetaQuotes ID (shown in the settings of the MetaTrader 5 mobile app) in <strong>Tools › Options › Notifications</strong> on the desktop terminal.</li>
+    <li><strong>E-mail</strong>: set up your mail server in <strong>Tools › Options › Email</strong>.</li>
+    <li><strong>Alert on bar close only</strong> (on by default) waits for the candle to close, like a once-per-bar-close alert on TradingView. Turn it off to be told once per bar, as soon as the condition appears.</li>
+  </ul>
+
+  <h2 id="troubleshooting">5. Troubleshooting</h2>
+  <h3>The indicator is not in the Navigator</h3>
+  <p>The file is probably not in the data folder of this terminal. Open it again with <strong>File › Open Data Folder</strong> from the same MT5, check the file is in <code>MQL5/Indicators</code>, then <strong>Refresh</strong>. Make sure you are using MetaTrader <strong>5</strong>: an <code>.ex5</code> does not run in MetaTrader 4.</p>
+  <h3>Nothing, or very little, is drawn</h3>
+  <p>Structure needs history. Scroll the chart back to load more bars, or raise <strong>Max bars in chart</strong> in <strong>Tools › Options › Charts</strong>. Check that <strong>Bars to compute</strong> in the <em>MetaTrader</em> group is 0 (all bars) or large enough. Some features are off by default, as on TradingView: swing points, swing order blocks, fair value gaps, daily, weekly and monthly levels, premium and discount zones.</p>
+  <h3>It does not look like my TradingView chart</h3>
+  <p>The logic is identical, so differences come from the data: your broker’s candles are not TradingView’s candles (different feed, different session hours, different time zone for daily bars). Different candles give different swings. On the same bars, the output is the same object for object, as the <a href="/proof/">proof</a> shows.</p>
+  <h3>The chart is slow on very long histories</h3>
+  <p>Set <strong>Bars to compute</strong> to a few thousand bars. Structure further back rarely matters for trading.</p>
+  <h3>Compilation errors with the .mq5</h3>
+  <p>Make sure the file was not re-saved by another editor without its UTF-8 byte order mark, and that MetaEditor is up to date (Help › Check for updates, or update the terminal).</p>
+
+  <h2 id="verify">6. Check the file you downloaded</h2>
+  <p>The SHA-256 fingerprints of version {{ site.version }}:</p>
+<div class="code">{{ dl.ex5.sha }}  SmartMoneyConcepts.ex5
+{{ dl.mq5.sha }}  SmartMoneyConcepts.mq5
+{{ dl.zip.sha }}  {{ dl.zip.name }}</div>
+  <p style="margin-top:14px">On Windows: <code>certutil -hashfile SmartMoneyConcepts.ex5 SHA256</code>. On macOS or Linux: <code>shasum -a 256 SmartMoneyConcepts.ex5</code>.</p>
+
+  <div class="cta-band">
+    <div><h2>Want it set up for your trading?</h2><p>Custom rules, extra alerts, an EA built on it: I can do it for you.</p></div>
+    <div class="cta-row" style="margin:0"><a class="btn btn-primary" href="/#services">{{ icon('send') }}Custom work</a><a class="btn btn-ghost" href="/guide/">Read the guide</a></div>
+  </div>
+</div>
+{% endblock %}

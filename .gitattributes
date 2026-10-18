@@ -1,0 +1,9 @@
+* text=auto
+*.mq5 linguist-language=MQL5
+*.ex5 binary
+*.png binary
+*.webp binary
+*.zip binary
+site/** linguist-documentation
+parity/** linguist-vendored
+legacy/** linguist-vendored

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_viewer.html" import viewer %}
+{% block main %}
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Smart Money Concepts MT5</a> / Proof</nav>
+    <h1>Smart Money Concepts on MT5 vs TradingView: the proof, object by object</h1>
+    <p class="lead">LuxAlgo’s Pine script and this MQL5 port were run on the <b>same 5,044 AAPL 15-minute bars</b>. Everything each platform drew was exported and compared: <b>2,535 drawings and 20,176 candle colours, all identical</b>. Below, you can look at both outputs yourself.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  {{ viewer(t, 'B', 220, False, True, True, None) }}
+  <p class="faint" style="font-size:14px;margin-top:12px">Pick a configuration, switch between <b>TradingView</b> and <b>MetaTrader 5</b>, or press <b>Blink test</b> to flip between them. <b>Differences</b> fades every object that has an identical twin on the other platform and circles the rest. Scroll with the mouse wheel to zoom, drag to move in time, double-click to reset. Times are UTC. TradingView’s export does not record how far after the last bar a point lies; in this script those points (strong and weak highs and lows, daily, weekly and monthly levels) are always 20 bars ahead, as written in the Pine source, so that is where the viewer draws them.</p>
+</div>
+
+<section aria-labelledby="results">
+  <div class="wrap">
+    <div class="kicker">Results</div>
+    <h2 id="results">Four configurations, two real-time replays, zero logic differences</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Config</th><th scope="col">Settings</th><th scope="col">Labels</th><th scope="col">Lines</th><th scope="col">Boxes</th><th scope="col">Trend colour</th></tr></thead>
+        <tbody>
+          {% for c in ['A','B','C','D'] %}{% set r = parity[c] %}
+          <tr><td><span class="cfg">{{ c }}</span></td><td>{{ t.proof.rows[c] }}</td>
+            <td class="num"><span class="ok">{{ r.labels }}/{{ r.labels }}</span></td>
+            <td class="num"><span class="ok">{{ r.lines }}/{{ r.lines }}</span></td>
+            <td class="num"><span class="ok">{{ r.boxes }}/{{ r.boxes }}</span></td>
+            <td class="num"><span class="ok">{{ r.candles_fmt }}/{{ r.candles_fmt }}</span></td></tr>
+          {% endfor %}
+          <tr><td><span class="cfg">rt</span></td><td>A and B in real time: the last 44 bars replayed tick by tick (176 ticks)</td><td class="num"><span class="ok">identical</span></td><td class="num"><span class="ok">identical</span></td><td class="num"><span class="ok">identical</span></td><td class="num"><span class="ok">identical</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="faint" style="font-size:13.5px;margin-top:10px">The counts include the few objects that exist with no coordinates yet (Pine’s <code>na</code>), so they are a little higher than the number of objects drawn in the viewer.</p>
+    <div class="note">{{ icon('info') }}<p>{{ t.proof.note }} In the viewer, with config B and <b>Differences</b> on, these four weekly and monthly levels (PWH, PWL, PMH, PML) and their lines are the only objects circled, in amber.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="method">
+  <div class="wrap prose">
+    <div class="kicker">Method</div>
+    <h2 id="method" style="margin-top:0">How the comparison was made</h2>
+    <ol>
+      <li><strong>Run the original.</strong> The unmodified <a href="{{ site.luxalgo_script }}" rel="noopener">Smart Money Concepts (SMC) [LuxAlgo]</a> script ran on TradingView Desktop, AAPL 15 minutes. Pine runs on TradingView’s servers on their own set of bars (here 5,044), so that set was read first with a probe table.</li>
+      <li><strong>Export every drawing.</strong> Every label, line and box was read from the chart: time, price, text, text colour, style and size for labels; both ends, colour and style for lines; corners, fill, border and extension for boxes; plus the trend colour of every candle.</li>
+      <li><strong>Same bars in MetaTrader 5.</strong> The exact 5,044 bars were loaded into MT5 as a custom symbol, so both platforms worked on identical data.</li>
+      <li><strong>Run the port.</strong> SmartMoneyConcepts.mq5 ran with the same settings and dumped every object it drew.</li>
+      <li><strong>Compare as sets.</strong> Each object on one side must find an identical twin on the other side, field by field. Nothing is matched “approximately”.</li>
+      <li><strong>Real time.</strong> For configs A and B, the last 44 bars were replayed tick by tick (176 ticks), so the forming bar went through the port’s rollback logic, then compared again.</li>
+    </ol>
+    <h3>Configurations</h3>
+    <ul>
+      <li><strong>A</strong>: the original defaults, with coloured candles on so that the trend of every bar is exported.</li>
+      <li><strong>B</strong>: every feature on: swing points, swing order blocks, fair value gaps, daily, weekly and monthly levels, premium and discount zones.</li>
+      <li><strong>C</strong>: the other branches of the code: Present mode, Monochrome style, confluence filter, cumulative mean range filter, Close mitigation, 20-bar swings, wider EQH/EQL threshold, fair value gaps on 30 minutes without auto threshold.</li>
+      <li><strong>D</strong>: config C in Historical mode, which pushes Pine to its limit of 500 labels and checks that the port deletes the same oldest objects.</li>
+    </ul>
+    <h3>TradingView behaviours reproduced</h3>
+    <ul>
+      <li><strong>Float tolerance.</strong> Pine compares numbers with an absolute tolerance of 1e-10: <code>0.1 + 0.2 == 0.3</code> is true, <code>1 + 0.9e-10 &gt; 1</code> is false, <code>1 + 1e-10 &gt; 1</code> is true, at any magnitude. Without it, one candle where the confluence filter compares 0.05 with 0.05 produced an extra CHoCH.</li>
+      <li><strong>Points between bars.</strong> A point placed at a time with no bar (night, weekend) is drawn on the next bar.</li>
+      <li><strong>Comparisons with na are false.</strong> No internal structure is drawn before the first swing exists.</li>
+    </ul>
+    <h2 id="rerun">Re-run it yourself</h2>
+    <p>The full bench is in the <a href="{{ site.repo }}/tree/main/parity" rel="noopener">parity folder of the repository</a>: the original Pine script, the four test variants, the TradingView exports, the MT5 dumps and the comparison script.</p>
+<div class="code">git clone {{ site.repo }}
+cd Smart-Money-Concepts
+python parity/compare.py A B C D Art Brt
+
+<span class="c">config B: 5044 bars</span>
+<span class="c">  note     PWH: TradingView 342.988 (its own W bar), MT5 342.98 = true extreme of the bars, same anchor</span>
+  labels   TradingView   409   MT5   409   identical   409   <span class="v">OK</span>
+  lines    TradingView   333   MT5   333   identical   333   <span class="v">OK</span>
+  boxes    TradingView    47   MT5    47   identical    47   <span class="v">OK</span>
+  candles  trend color identical on 5044/5044 bars   <span class="v">OK</span>
+<span class="c">...</span>
+<span class="v">ALL IDENTICAL</span></div>
+    <p style="margin-top:16px">Raw files: {% for c in 'ABCD' %}<a href="{{ site.repo }}/blob/main/parity/tv_{{ c }}.json" rel="noopener">tv_{{ c }}.json</a> · <a href="{{ site.repo }}/blob/main/parity/results/mt5_{{ c }}.csv" rel="noopener">mt5_{{ c }}.csv</a>{% if not loop.last %} · {% endif %}{% endfor %}.</p>
+  </div>
+  <div class="wrap">
+    <div class="cta-band">
+      <div><h2>Convinced? It’s free.</h2><p>The .ex5 to run it now, the .mq5 to read every line.</p></div>
+      <div class="cta-row" style="margin:0">
+        <a class="btn btn-primary" href="{{ dl.ex5.url }}" data-dl="ex5">{{ icon('download') }}Download the .ex5</a>
+        <a class="btn btn-ghost" href="/pine-script-to-mql5/">{{ icon('swap') }}Port my Pine script</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

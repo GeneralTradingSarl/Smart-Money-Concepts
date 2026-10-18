@@ -1,0 +1,118 @@
+{% from "_icons.html" import icon %}<!doctype html>
+<html lang="{{ html_lang }}" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+{% if keywords %}<meta name="keywords" content="{{ keywords }}">
+{% endif %}<meta name="robots" content="{{ robots }}">
+<link rel="canonical" href="{{ canonical }}">
+{% for a in alternates %}<link rel="alternate" hreflang="{{ a.hreflang }}" href="{{ a.href }}">
+{% endfor %}<meta name="author" content="Ismael Ladjohounlou">
+<meta name="theme-color" content="#07090d">
+<meta name="color-scheme" content="dark">
+{% if site.google_verification %}<meta name="google-site-verification" content="{{ site.google_verification }}">
+{% endif %}{% if site.bing_verification %}<meta name="msvalidate.01" content="{{ site.bing_verification }}">
+{% endif %}<meta property="og:type" content="{{ og_type }}">
+<meta property="og:site_name" content="Smart Money Concepts MT5">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ og_desc }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ og_title }}">
+<meta property="og:locale" content="{{ og_locale }}">
+{% for l in og_locale_alts %}<meta property="og:locale:alternate" content="{{ l }}">
+{% endfor %}<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title }}">
+<meta name="twitter:description" content="{{ og_desc }}">
+<meta name="twitter:image" content="{{ og_image }}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap{% if lang == 'ru' %}&family=Onest:wght@400;500;600;700;800{% endif %}">
+<link rel="stylesheet" href="/assets/css/style.css?v={{ v }}">
+{% if preload_data %}<link rel="preload" href="/assets/data/bars.json" as="fetch" crossorigin>
+<link rel="preload" href="/assets/data/parity-B.json" as="fetch" crossorigin>
+{% endif %}{% for j in jsonld %}<script type="application/ld+json">{{ j }}</script>
+{% endfor %}</head>
+<body class="lang-{{ lang }} page-{{ page }}">
+<a class="skip" href="#main">{{ skip }}</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="{{ home_url }}" aria-label="Smart Money Concepts MT5">{{ icon('logo') }}<span>SMC · MT5</span><small>v{{ site.version }}</small></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/proof/">{{ t.nav.proof }}</a>
+      <a href="/guide/">{{ t.nav.guide }}</a>
+      <a href="/install/">{{ t.nav.install }}</a>
+      <a href="{{ home_url }}#services">{{ t.nav.services }}</a>
+      <a href="{{ home_url }}#support">{{ t.nav.support }}</a>
+      <a href="{{ home_url }}#faq">{{ t.nav.faq }}</a>
+    </nav>
+    <div class="nav-cta">
+      <details class="lang">
+        <summary aria-label="{{ t.nav.language }}">{{ icon('globe') }}{{ lang_short }}</summary>
+        <ul>
+          {% for l in langs %}<li><a href="{{ l.href }}" hreflang="{{ l.hreflang }}" lang="{{ l.hreflang }}"{% if l.current %} aria-current="true"{% endif %}>{{ l.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </details>
+      <a class="btn btn-ghost btn-s gh-btn" href="{{ site.repo }}" rel="noopener">{{ icon('github') }}<span>{{ t.nav.github }}</span></a>
+    </div>
+    <button class="menu-btn" type="button" data-menu aria-expanded="false" aria-label="{{ t.nav.menu }}">{{ icon('menu') }}</button>
+  </div>
+</header>
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="{{ home_url }}">{{ icon('logo') }}<span>SMC · MT5</span></a>
+        <p style="margin-top:14px;max-width:42ch">{{ t.footer.tagline }}</p>
+      </div>
+      <div>
+        <h4>{{ t.footer.col_project }}</h4>
+        <ul>
+          <li><a href="{{ home_url }}#download">{{ t.nav.download }}</a></li>
+          <li><a href="/proof/">{{ t.footer.proof }}</a></li>
+          <li><a href="{{ site.repo }}" rel="noopener">{{ t.footer.source }}</a></li>
+          <li><a href="{{ site.repo }}/releases" rel="noopener">{{ t.footer.releases }}</a></li>
+          <li><a href="{{ site.repo }}/issues" rel="noopener">{{ t.footer.issues }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>{{ t.footer.col_guides }}</h4>
+        <ul>
+          <li><a href="/guide/">{{ t.footer.guide }}</a></li>
+          <li><a href="/install/">{{ t.footer.install }}</a></li>
+          <li><a href="/pine-script-to-mql5/">{{ t.footer.pine }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>{{ t.footer.col_author }}</h4>
+        <ul>
+          <li><a href="{{ site.portfolio }}" rel="noopener">{{ t.services.portfolio }}</a></li>
+          <li><a href="{{ site.linkedin }}" rel="noopener">{{ t.services.linkedin }}</a></li>
+          <li><a href="{{ site.mql5 }}" rel="noopener">{{ t.services.mql5 }}</a></li>
+          <li><a href="mailto:{{ site.email }}">{{ t.services.email }}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>{{ t.footer.legal_license }} <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license noopener">CC BY-NC-SA 4.0</a> · <a href="{{ site.luxalgo_script }}" rel="noopener">Smart Money Concepts (SMC) [LuxAlgo]</a></p>
+      <p>{{ t.footer.legal_tm }}</p>
+      <p>{{ t.footer.legal_risk }}</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/chart.js?v={{ v }}" defer></script>
+<script src="/assets/js/main.js?v={{ v }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+{
+  "meta": {
+    "title": "Smart Money Concepts MT5: indicador SMC da LuxAlgo grátis para MetaTrader 5 (.ex5 + .mq5)",
+    "description": "Port gratuito para MetaTrader 5 do indicador Smart Money Concepts da LuxAlgo: BOS, CHoCH, order blocks, FVG, EQH/EQL, zonas premium e discount. Comprovado idêntico ao TradingView. Baixe o .ex5 e o código-fonte .mq5.",
+    "og_title": "Smart Money Concepts para MT5, comprovado idêntico ao LuxAlgo do TradingView",
+    "og_desc": ".ex5 grátis e código-fonte .mq5 completo. Cada rótulo, linha e caixa comparado com o TradingView em 5.044 candles: 100% idêntico.",
+    "locale": "pt_BR",
+    "keywords": "smart money concepts mt5, indicador smc mt5, luxalgo mt5, luxalgo mql5, indicador smart money metatrader 5, order blocks mt5, indicador bos choch mt5, fair value gap mt5, código-fonte smc mq5, indicador smc grátis"
+  },
+  "nav": {
+    "proof": "Prova",
+    "guide": "Guia",
+    "features": "Recursos",
+    "install": "Instalação",
+    "download": "Baixar",
+    "support": "Apoiar",
+    "services": "Sob medida",
+    "faq": "FAQ",
+    "menu": "Menu",
+    "github": "GitHub",
+    "language": "Idioma"
+  },
+  "hero": {
+    "pills": [
+      "Grátis e de código aberto",
+      "MetaTrader 5",
+      "v1.0.0"
+    ],
+    "h1": "Smart Money Concepts para MetaTrader 5",
+    "h1_sub": "O indicador SMC da LuxAlgo, traduzido linha por linha para MQL5 e <b>comprovado idêntico ao TradingView</b>.",
+    "lead": "Um port gratuito para MQL5 do script SMC mais popular do TradingView: estrutura interna e swing (<b>BOS</b>, <b>CHoCH</b>), <b>order blocks</b>, topos e fundos iguais, <b>fair value gaps</b>, zonas premium e discount, e níveis do dia, da semana e do mês anteriores. Comparado objeto por objeto com o original em 5.044 candles: cada rótulo, linha e caixa confere.",
+    "cta_ex5": "Baixar o .ex5",
+    "cta_mq5": "Código-fonte .mq5",
+    "cta_proof": "Ver a prova",
+    "meta": [
+      "88 KB",
+      "0 erros, 0 avisos",
+      "Sem DLL, sem cadastro",
+      "CC BY-NC-SA 4.0"
+    ]
+  },
+  "viewer": {
+    "tv": "TradingView",
+    "tv_small": "Pine da LuxAlgo",
+    "mt5": "MetaTrader 5",
+    "mt5_small": "este port",
+    "blink": "Teste de piscar",
+    "diff": "Diferenças",
+    "stat": "{n} objetos na tela · {same} idênticos",
+    "price": "{n} níveis S/M a menos de 1 centavo (dados)",
+    "legend_tv": "Smart Money Concepts [LuxAlgo] · TradingView",
+    "legend_mt5": "SmartMoneyConcepts.ex5 · MetaTrader 5",
+    "caption": "<b>Os mesmos candles AAPL de 15 minutos, todos os recursos ligados.</b> O teste de piscar alterna entre as duas plataformas duas vezes por segundo, e nada se move. Arraste para rolar, clique duas vezes para voltar.",
+    "source": "Desenhado no seu navegador a partir dos objetos exportados por cada plataforma.",
+    "loading": "Carregando as exportações…",
+    "alt": "Smart Money Concepts desenhado pelo TradingView e pelo MetaTrader 5 nos mesmos candles AAPL de 15 minutos: order blocks, rótulos BOS e CHoCH, zonas premium e discount, níveis semanais e mensais."
+  },
+  "proof": {
+    "kicker": "01 · Prova",
+    "h2": "Não “parecido”. Idêntico, objeto por objeto.",
+    "p": "O script da LuxAlgo rodou no TradingView. Os mesmos 5.044 candles foram carregados no MetaTrader 5. Cada desenho foi exportado das duas plataformas e comparado em horário, preço, texto, cor, estilo e tamanho. Quatro configurações e depois os últimos 44 candles repetidos tick a tick.",
+    "stats": [
+      {
+        "v": "2.535",
+        "l": "desenhos comparados, todos idênticos"
+      },
+      {
+        "v": "20.176",
+        "l": "cores de tendência dos candles, todas idênticas"
+      },
+      {
+        "v": "4 + 2",
+        "l": "configurações, mais duas repetições tick a tick"
+      },
+      {
+        "v": "0",
+        "l": "diferenças de lógica"
+      }
+    ],
+    "th": [
+      "Config",
+      "Ajustes",
+      "Rótulos",
+      "Linhas",
+      "Caixas",
+      "Tendência"
+    ],
+    "rows": {
+      "A": "Ajustes padrão",
+      "B": "Todos os recursos: swings, OB swing, FVG, níveis diário, semanal e mensal, zonas",
+      "C": "Modo Present, monocromático, filtro de confluência, Cumulative Mean Range, mitigação Close, FVG em 30 min",
+      "D": "Config C no modo histórico, até o limite de 500 rótulos do Pine"
+    },
+    "realtime": "A e B de novo em tempo real: os últimos 44 candles repetidos tick a tick (176 ticks), mesmo resultado.",
+    "note": "A única diferença vem dos dados, não do código. No TradingView, os níveis semanais e mensais vêm dos seus próprios candles W e M (342,988), enquanto o MT5 os reconstrói a partir dos candles do gráfico (342,98, a máxima real desses candles). Os pontos de ancoragem são idênticos. Numa conta real de MT5, W1 e MN1 vêm do mesmo feed do seu gráfico.",
+    "shot_tv": "TradingView com o script original Smart Money Concepts [LuxAlgo], AAPL 15 min.",
+    "shot_mt": "MetaTrader 5 com este port, mesmos candles, ajustes padrão.",
+    "shots_title": "Capturas reais, mesmos candles, mesmos ajustes",
+    "link_viewer": "Abrir o visualizador interativo da prova",
+    "link_bench": "Refaça o teste você mesmo"
+  },
+  "features": {
+    "kicker": "02 · O que ele desenha",
+    "h2": "O script inteiro. Cada ajuste, cada alerta.",
+    "p": "Nada foi simplificado. Mesmos nomes de ajustes, mesmos valores padrão e mesmos grupos do original do TradingView.",
+    "items": [
+      {
+        "id": "structure",
+        "t": "Estrutura de mercado: BOS e CHoCH",
+        "d": "Break of Structure e Change of Character em duas escalas: estrutura interna (swings de 5 candles) para as entradas e estrutura swing (50 candles por padrão) para o quadro geral. Filtro de confluência opcional."
+      },
+      {
+        "id": "ob",
+        "t": "Order blocks internos e swing",
+        "d": "Order blocks de alta e de baixa filtrados por ATR ou pela amplitude média acumulada, mitigados pela máxima/mínima ou pelo fechamento, cada um com seu próprio limite."
+      },
+      {
+        "id": "eq",
+        "t": "Topos e fundos iguais",
+        "d": "EQH e EQL: liquidez parada no mesmo nível, com limite e confirmação ajustáveis."
+      },
+      {
+        "id": "fvg",
+        "t": "Fair value gaps",
+        "d": "Desequilíbrios de três candles no tempo gráfico atual ou em um maior, com limite automático e extensão ajustável."
+      },
+      {
+        "id": "pd",
+        "t": "Premium, equilíbrio, discount",
+        "d": "A amplitude do swing atual dividida em zonas premium, equilíbrio e discount, atualizada quando a amplitude cresce."
+      },
+      {
+        "id": "sw",
+        "t": "Topos e fundos fortes e fracos",
+        "d": "Os extremos do swing atual, marcados como fortes ou fracos conforme a tendência, mais os pontos HH, HL, LH e LL."
+      },
+      {
+        "id": "mtf",
+        "t": "Dia, semana e mês anteriores",
+        "d": "Níveis PDH e PDL, PWH e PWL, PMH e PML, cada um com sua cor e estilo de linha."
+      },
+      {
+        "id": "alerts",
+        "t": "Candles de tendência e 16 alertas",
+        "d": "Candles coloridos pela tendência interna. Cada alertcondition do original vira um alerta do MT5: janela, notificação push ou e-mail."
+      },
+      {
+        "id": "modes",
+        "t": "Histórico ou Presente, Colorido ou Monocromático",
+        "d": "Os mesmos modos de exibição do original. O modo Presente mantém só a estrutura mais recente, para um gráfico limpo."
+      }
+    ]
+  },
+  "eng": {
+    "kicker": "03 · Por dentro",
+    "h2": "Onde o MetaTrader exigiu outro mecanismo, nunca outro resultado",
+    "p": "Um port vale o que valem seus casos-limite. Quatro pontos em que o MT5 funciona diferente do Pine, e o que o port faz a respeito.",
+    "items": [
+      {
+        "t": "O retrocesso em tempo real do Pine",
+        "d": "O candle em formação é calculado sobre uma cópia descartável do estado, jogada fora no tick seguinte. Só os candles fechados são gravados, exatamente como o Pine em tempo real."
+      },
+      {
+        "t": "Os limites de objetos do Pine",
+        "d": "Rótulos, linhas e caixas passam por uma coleção em memória que aplica o limite de 500 de cada tipo do Pine, apagando primeiro os mais antigos, e depois são espelhados no gráfico."
+      },
+      {
+        "t": "Transparência de verdade",
+        "d": "Os objetos do MT5 não têm canal alfa, então as caixas são pintadas numa tela transparente com mistura alfa real. Cada color.new(c, t) vira uma cor mais uma transparência."
+      },
+      {
+        "t": "A tolerância numérica do Pine",
+        "d": "O Pine compara números com uma tolerância absoluta de 1e-10, então 0,1 + 0,2 == 0,3 é verdadeiro. Sem ela, um candle em que o filtro de confluência compara 0,05 com 0,05 gerava um CHoCH a mais. O port a reproduz."
+      }
+    ],
+    "code_title": "Medido no TradingView, reproduzido em MQL5"
+  },
+  "install": {
+    "kicker": "04 · Instalação",
+    "h2": "Funcionando em menos de um minuto",
+    "steps": [
+      "<b>Baixe</b> o SmartMoneyConcepts.ex5 (ou o .mq5 se quiser ler ou alterar o código).",
+      "No MetaTrader 5, abra <b>Arquivo › Abrir pasta de dados</b>, depois <b>MQL5 › Indicators</b>, e coloque o arquivo lá.",
+      "De volta ao MT5, clique com o botão direito em <b>Indicadores</b> no Navegador e escolha <b>Atualizar</b>.",
+      "Arraste o <b>SmartMoneyConcepts</b> para qualquer gráfico. Ajustes e alertas ficam na aba de parâmetros (<b>Inputs</b>)."
+    ],
+    "note": "Usando o .mq5? Abra no MetaEditor (F4) e clique em Compilar (F7). Ele compila com 0 erros e 0 avisos.",
+    "link": "Guia de instalação completo e solução de problemas (em inglês)"
+  },
+  "download": {
+    "kicker": "05 · Baixar",
+    "h2": "Grátis. Os dois arquivos. Sem cadastro.",
+    "p": "O executável para testar agora, e o código-fonte completo para ler, aprender e adaptar.",
+    "ex5": {
+      "t": "Indicador pronto para usar",
+      "d": "Compilado no MetaEditor, 0 erros, 0 avisos. Coloque em MQL5/Indicators.",
+      "btn": "Baixar .ex5"
+    },
+    "mq5": {
+      "t": "Código-fonte completo",
+      "d": "Um único arquivo de cerca de 2.300 linhas, sem include nem DLL. Legível e comentado.",
+      "btn": "Baixar .mq5"
+    },
+    "zip": {
+      "t": "Tudo num zip",
+      "d": "O .ex5, o .mq5, a licença e o README.",
+      "btn": "Baixar .zip"
+    },
+    "sha": "SHA-256",
+    "license": "Obra original © LuxAlgo, licenciada CC BY-NC-SA 4.0. Este port é uma obra derivada sob a mesma licença: mantenha a atribuição, apenas uso não comercial, compartilhe suas alterações nas mesmas condições. Projeto independente, sem afiliação nem endosso da LuxAlgo ou do TradingView.",
+    "github": "Todas as versões no GitHub"
+  },
+  "support": {
+    "kicker": "06 · Apoiar",
+    "h2": "Grátis para todos. Apoiado por quem pode.",
+    "p": "Este port, e a bancada de testes que o comprova, deram muito trabalho. Ele continua grátis. Se ele poupa seu tempo ou ajuda seu trading, uma doação de qualquer valor é bem-vinda, mesmo um único dólar. É o que faz as próximas ferramentas saírem.",
+    "tron": {
+      "t": "USDT na TRON",
+      "net": "Rede: TRON (TRC-20)",
+      "warn": "Envie apenas ativos da rede TRON (USDT TRC-20, TRX). O que for enviado de outra rede se perde."
+    },
+    "bnb": {
+      "t": "BNB Smart Chain",
+      "net": "Rede: BNB Smart Chain (BEP-20)",
+      "warn": "Envie BNB ou tokens BEP-20 (USDT, USDC…) apenas pela BNB Smart Chain. Nem Ethereum, nem TRON."
+    },
+    "copy_btn": "Copiar endereço",
+    "copied": "Copiado",
+    "qr": "QR code do endereço",
+    "foot": "Doação não é pagamento: os downloads continuam grátis, doando ou não."
+  },
+  "services": {
+    "kicker": "07 · Sob medida",
+    "h2": "Precisa de uma mudança? Eu faço para você.",
+    "p": "Sou <b>Ismael Ladjohounlou</b>, o desenvolvedor deste port. Se você quer este indicador adaptado ao seu trading, ou qualquer outra ferramenta no MetaTrader, TradingView ou Telegram, me diga do que precisa. O orçamento é grátis.",
+    "items": [
+      {
+        "id": "custom",
+        "t": "Adaptar este indicador",
+        "d": "Suas próprias regras e filtros, mais alertas, rótulos no seu idioma, visão multitempo e sinais que um Expert Advisor consegue ler."
+      },
+      {
+        "id": "pine",
+        "t": "Pine Script do TradingView para MT5",
+        "d": "Qualquer indicador ou estratégia em Pine traduzido para MQL5 ou MQL4, com a mesma prova daqui: objeto por objeto, nos mesmos candles.",
+        "link": "Como funciona"
+      },
+      {
+        "id": "ea",
+        "t": "Expert Advisors",
+        "d": "Estratégias automáticas para MT4 e MT5: modelos SMC e ICT, entradas multitempo, regras de risco de mesas proprietárias. Código-fonte completo entregue."
+      },
+      {
+        "id": "bt",
+        "t": "Backtests confiáveis",
+        "d": "Testes no Testador de estratégia, uma referência independente em Python e um veredito honesto sobre se a vantagem é real."
+      },
+      {
+        "id": "tg",
+        "t": "Bots de Telegram e copiadores",
+        "d": "Bots de sinais, copiadores de operações e painéis de controle no Telegram para o seu EA."
+      }
+    ],
+    "cta_mail": "Descreva seu projeto",
+    "mail_subject": "Sob medida: Smart Money Concepts MT5",
+    "cta_issue": "Abrir uma issue no GitHub",
+    "email": "E-mail",
+    "linkedin": "LinkedIn",
+    "mql5": "Perfil MQL5",
+    "portfolio": "Portfólio"
+  },
+  "more": {
+    "kicker": "08 · Do mesmo autor",
+    "h2": "Quer mais do que o original?",
+    "p": "O Structura é o meu próprio motor Smart Money para MT5, escrito do zero: tudo o que está acima, mais o que o original deixa de fora.",
+    "badge": "Indicador original · MQL5 Market",
+    "t": "Structura: estrutura de mercado e order blocks",
+    "d": "Criado e comprovado de forma independente da LuxAlgo, com uma referência em Python que bate com o motor MQL5 em cerca de 989.000 linhas.",
+    "bullets": [
+      "Order blocks pontuados de 0 a 3 (deslocamento, FVG, liquidez)",
+      "Breakers, FVG invertidos, varridas de liquidez e zonas OTE",
+      "Painel multitempo e alertas push",
+      "6 buffers prontos para Expert Advisors",
+      "Sem repintura, comprovado"
+    ],
+    "btn_market": "Ver no MQL5 Market",
+    "btn_video": "Ver a demo de 82 segundos",
+    "others_title": "Também no MQL5 Market",
+    "others": [
+      {
+        "t": "SnapBack Three Sigma Reversal",
+        "d": "Indicador · reversões estatísticas",
+        "url": "https://www.mql5.com/pt/market/product/200522"
+      },
+      {
+        "t": "Pin Bar Trend Pullback",
+        "d": "Expert Advisor · price action",
+        "url": "https://www.mql5.com/pt/market/product/200530"
+      },
+      {
+        "t": "Multi Market RSI Trade Manager",
+        "d": "Expert Advisor · RSI com gestão de operações",
+        "url": "https://www.mql5.com/pt/market/product/200527"
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "09 · FAQ",
+    "h2": "O que os traders perguntam",
+    "items": [
+      {
+        "q": "É grátis mesmo?",
+        "a": "Sim. O .ex5 compilado e o código-fonte .mq5 completo são grátis para baixar, usar e modificar para fins não comerciais. Sem conta, sem e-mail, sem chave de licença. As doações são opcionais."
+      },
+      {
+        "q": "É o indicador oficial da LuxAlgo?",
+        "a": "Não. É um port para MQL5 independente e não oficial do script de código aberto Smart Money Concepts da LuxAlgo, publicado sob a mesma licença CC BY-NC-SA 4.0 com atribuição. A LuxAlgo não o endossa."
+      },
+      {
+        "q": "É idêntico ao TradingView mesmo?",
+        "a": "No conjunto de teste, sim: 100% dos rótulos, linhas, caixas e cores dos candles bateram em quatro configurações e duas repetições tick a tick. A única diferença é o preço dos níveis semanais e mensais, que o TradingView lê dos seus próprios candles W e M. Você pode conferir no visualizador ou refazer o teste pelo GitHub."
+      },
+      {
+        "q": "Ele repinta?",
+        "a": "Ele se comporta exatamente como o original. A estrutura é confirmada em candles fechados; o candle em formação é recalculado a cada tick e só gravado no fechamento. Os swings são confirmados depois do seu comprimento, como no Pine, então os rótulos aparecem alguns candles depois do pivô."
+      },
+      {
+        "q": "Em quais mercados e tempos gráficos funciona?",
+        "a": "Em qualquer ativo e tempo gráfico que o MetaTrader 5 mostrar: forex, ouro (XAUUSD), índices, cripto e ações. Os níveis diário, semanal e mensal usam os dados D1, W1 e MN1 da sua corretora."
+      },
+      {
+        "q": "Posso vender ou publicar no MQL5 Market?",
+        "a": "Não. A licença proíbe uso comercial, do original e deste port. Você pode compartilhar, modificar e usar no seu próprio trading, mantendo a atribuição e a mesma licença."
+      },
+      {
+        "q": "Posso usar num Expert Advisor?",
+        "a": "Sim: com Color Candles ligado, um EA pode ler a tendência no buffer de cor (buffer 4) com iCustom. Se você precisar de buffers de sinais limpos para BOS, CHoCH ou order blocks, ou de um EA completo baseado nele, eu posso fazer uma versão pronta para automação."
+      },
+      {
+        "q": "Existe versão para MT4?",
+        "a": "Ainda não. Uma versão MQL4 pode ser feita sob encomenda."
+      },
+      {
+        "q": "Posso doar com outra cripto?",
+        "a": "Qualquer ativo da rede TRON pode ir para o endereço TRON, e qualquer token BEP-20 da BNB Smart Chain para o endereço BNB. Sempre confira a rede antes de enviar: rede errada significa fundos perdidos."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Um port gratuito e aberto para MetaTrader 5 do Smart Money Concepts da LuxAlgo, comprovado idêntico ao TradingView.",
+    "col_project": "Projeto",
+    "col_guides": "Guias",
+    "col_author": "Autor",
+    "guide": "Conceitos SMC e ajustes",
+    "install": "Guia de instalação",
+    "proof": "Visualizador da prova",
+    "pine": "Pine Script para MQL5",
+    "source": "Código-fonte no GitHub",
+    "releases": "Versões",
+    "issues": "Relatar um problema",
+    "legal_license": "Smart Money Concepts original © LuxAlgo, licenciado CC BY-NC-SA 4.0. Port MQL5 © Ismael Ladjohounlou, mesma licença.",
+    "legal_tm": "Projeto independente, sem afiliação, patrocínio ou endosso da LuxAlgo, do TradingView ou da MetaQuotes. As marcas pertencem aos seus donos.",
+    "legal_risk": "Operar no mercado envolve risco considerável de perda. Este indicador é uma ferramenta de análise, não uma recomendação financeira."
+  }
+}
