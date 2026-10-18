@@ -39,6 +39,8 @@ SITE_INFO = {
     "linkedin": "https://www.linkedin.com/in/ismaelladjohounlou",
     "mql5": "https://www.mql5.com/en/users/ismael_financial_bot",
     "portfolio": "https://ismael-portfolio-liard.vercel.app/en",
+    "telegram": "https://t.me/botaccount77",
+    "telegram_handle": "@botaccount77",
     "github_user": "https://github.com/GeneralTradingSarl",
     "structura": "https://www.mql5.com/en/market/product/201556",
     "structura_video": "https://youtu.be/x35L5b2P_xY",
@@ -213,12 +215,13 @@ def jdump(o):
 
 
 def person():
-    return {"@type": "Person", "@id": BASE + "/#author", "name": "Ismael Ladjohounlou",
+    return {"@type": "Person", "@id": BASE + "/#author", "name": "Ismaël Ladjohounlou",
+            "alternateName": ["Ismael Ladjohounlou", "LADJOHOUNLOU Ismael"],
             "url": SITE_INFO["portfolio"], "email": "mailto:" + SITE_INFO["email"],
-            "jobTitle": "Trading systems developer (MQL5, Pine Script, Python)",
-            "sameAs": [SITE_INFO["github_user"], SITE_INFO["linkedin"], SITE_INFO["mql5"]],
+            "jobTitle": "AI and automation engineer, trading systems developer (MQL5, Pine Script, Python)",
+            "sameAs": [SITE_INFO["github_user"], SITE_INFO["linkedin"], SITE_INFO["mql5"], SITE_INFO["telegram"]],
             "knowsAbout": ["MQL5", "MQL4", "Pine Script", "MetaTrader 5", "TradingView", "Smart Money Concepts",
-                           "Expert Advisors", "Algorithmic trading", "Python"]}
+                           "Expert Advisors", "Algorithmic trading", "Python", "n8n", "Business automation", "AI agents"]}
 
 
 def luxalgo_work():
@@ -462,7 +465,7 @@ def write_static(sitemap, today, en, dl):
     json.dump(manifest, open(os.path.join(OUT, "site.webmanifest"), "w"), indent=1)
     llms = f"""# Smart Money Concepts for MetaTrader 5
 
-> Free MetaTrader 5 (MQL5) port of LuxAlgo's open-source "Smart Money Concepts (SMC) [LuxAlgo]" TradingView indicator, by Ismael Ladjohounlou. The compiled .ex5 and the full .mq5 source are free (CC BY-NC-SA 4.0, non-commercial). Compared object by object with TradingView on 5,044 AAPL 15-minute bars in four configurations and two tick-by-tick replays: 100% of labels, lines, boxes and candle colours identical. Unofficial, not affiliated with LuxAlgo or TradingView.
+> Free MetaTrader 5 (MQL5) port of LuxAlgo's open-source "Smart Money Concepts (SMC) [LuxAlgo]" TradingView indicator, by Ismaël Ladjohounlou. The compiled .ex5 and the full .mq5 source are free (CC BY-NC-SA 4.0, non-commercial). Compared object by object with TradingView on 5,044 AAPL 15-minute bars in four configurations and two tick-by-tick replays: 100% of labels, lines, boxes and candle colours identical. Unofficial, not affiliated with LuxAlgo or TradingView.
 
 Features: internal and swing market structure (BOS, CHoCH), internal and swing order blocks, equal highs and lows (EQH, EQL), fair value gaps (chart or higher timeframe), premium / equilibrium / discount zones, strong and weak highs and lows, previous day / week / month highs and lows, trend coloured candles, 16 alerts (popup, push, email), Historical or Present mode, Colored or Monochrome style.
 
@@ -479,7 +482,7 @@ Features: internal and swing market structure (BOS, CHoCH), internal and swing o
 - [Source repository and test bench]({REPO})
 
 ## Author
-Ismael Ladjohounlou, trading systems developer (MQL5, Pine Script, Python). Contact: {SITE_INFO['email']}. Custom MT4/MT5 indicators, Expert Advisors, Pine Script to MQL5 conversions, Telegram bots.
+Ismaël Ladjohounlou, AI and automation engineer and trading systems developer (MQL5, Pine Script, Python). Contact: {SITE_INFO['email']}, Telegram {SITE_INFO['telegram_handle']}. Custom MT4/MT5 indicators, Expert Advisors, Pine Script to MQL5 conversions, n8n and Python automation, Telegram bots.
 """
     open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8", newline="\n").write(llms)
     vercel = {

@@ -363,6 +363,20 @@ footer { margin-top: clamp(80px, 10vw, 140px); border-top: 1px solid var(--line)
 .legal p { margin: 0; }
 @media (max-width: 860px) { .foot { grid-template-columns: repeat(2, minmax(0, 1fr)); } .foot > div:first-child { grid-column: 1 / -1; } }
 
+/* after-download panel */
+.after { position: fixed; right: 20px; bottom: 20px; z-index: 80; width: min(400px, calc(100vw - 32px)); padding: 20px 20px 16px; border-radius: 18px;
+  background: #0e141c; border: 1px solid rgba(25, 211, 166, 0.45); box-shadow: 0 30px 80px -20px rgba(0,0,0,.85), 0 0 0 6px rgba(25,211,166,.06);
+  transform: translateY(16px); opacity: 0; transition: transform .35s ease, opacity .35s ease; }
+.after.in { transform: none; opacity: 1; }
+.after-x { position: absolute; top: 8px; right: 10px; background: none; border: 0; color: var(--muted); font-size: 24px; line-height: 1; cursor: pointer; padding: 4px 8px; border-radius: 8px; }
+.after-x:hover { color: var(--text); background: var(--surface-2); }
+.after-k { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-weight: 700; color: var(--bull-hi); padding-right: 30px; }
+.after-k svg { width: 18px; height: 18px; flex: none; }
+.after-t { margin: 0 0 14px; font-size: 15px; color: var(--muted); line-height: 1.55; }
+.after-b { display: flex; flex-wrap: wrap; gap: 8px; }
+.after-d { display: inline-block; margin-top: 12px; font-size: 13.5px; }
+@media (max-width: 560px) { .after { right: 16px; left: 16px; bottom: 16px; width: auto; } }
+
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
 .no-js .reveal { opacity: 1; transform: none; }

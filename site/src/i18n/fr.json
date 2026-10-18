@@ -232,7 +232,7 @@
   "services": {
     "kicker": "07 · Sur mesure",
     "h2": "Besoin d’une modification ? Je peux le faire pour vous.",
-    "p": "Je suis <b>Ismael Ladjohounlou</b>, le développeur de ce portage. Si vous voulez cet indicateur adapté à votre trading, ou tout autre outil sur MetaTrader, TradingView ou Telegram, dites-moi ce qu’il vous faut. Le devis est gratuit.",
+    "p": "Je suis <b>Ismaël Ladjohounlou</b>, ingénieur en IA et automatisation, et le développeur de ce portage. Si vous voulez cet indicateur adapté à votre trading, un Expert Advisor, ou n’importe quelle automatisation pour votre activité, dites-moi ce qu’il vous faut. Le devis est gratuit et je réponds personnellement.",
     "items": [
       {
         "id": "custom",
@@ -251,6 +251,11 @@
         "d": "Stratégies automatiques pour MT4 et MT5 : modèles SMC et ICT, entrées multi-unités de temps, règles de risque des prop firms. Code source complet livré."
       },
       {
+        "id": "auto",
+        "t": "Automatisation pour votre activité",
+        "d": "Workflows n8n et Python, agents IA, chaînes Instagram, WhatsApp et Telegram sur les API officielles, intégrations de paiement (Stripe, Mobile Money)."
+      },
+      {
         "id": "bt",
         "t": "Des backtests fiables",
         "d": "Tests dans le testeur de stratégie, référence Python indépendante, et un avis honnête sur la réalité de l’avantage."
@@ -267,7 +272,8 @@
     "email": "E-mail",
     "linkedin": "LinkedIn",
     "mql5": "Profil MQL5",
-    "portfolio": "Portfolio"
+    "portfolio": "Portfolio",
+    "telegram": "Telegram"
   },
   "more": {
     "kicker": "08 · Du même auteur",
@@ -358,8 +364,17 @@
     "source": "Code source sur GitHub",
     "releases": "Versions",
     "issues": "Signaler un problème",
-    "legal_license": "Smart Money Concepts original © LuxAlgo, sous licence CC BY-NC-SA 4.0. Portage MQL5 © Ismael Ladjohounlou, même licence.",
+    "legal_license": "Smart Money Concepts original © LuxAlgo, sous licence CC BY-NC-SA 4.0. Portage MQL5 © Ismaël Ladjohounlou, même licence.",
     "legal_tm": "Projet indépendant, ni affilié à LuxAlgo, TradingView ou MetaQuotes, ni sponsorisé ou approuvé par eux. Les marques appartiennent à leurs propriétaires.",
     "legal_risk": "Le trading comporte un risque important de perte. Cet indicateur est un outil d’analyse, pas un conseil financier."
+  },
+  "after": {
+    "title": "Votre téléchargement a commencé",
+    "text": "Merci de l’essayer. Une question, une version sur mesure, un Expert Advisor ou un projet d’automatisation pour votre activité ? N’hésitez pas à me contacter, je réponds personnellement.",
+    "telegram": "Telegram",
+    "email": "E-mail",
+    "linkedin": "LinkedIn",
+    "donate": "Soutenir par un don",
+    "close": "Fermer"
   }
 }

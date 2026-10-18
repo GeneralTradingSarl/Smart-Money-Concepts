@@ -7,21 +7,45 @@
     "locale": "es_ES",
     "keywords": "smart money concepts mt5, indicador smc mt5, luxalgo mt5, luxalgo mql5, indicador smart money metatrader 5, order blocks mt5, indicador bos choch mt5, fair value gap mt5, código fuente smc mq5, indicador smc gratis"
   },
-  "nav": { "proof": "Prueba", "guide": "Guía", "features": "Funciones", "install": "Instalación", "download": "Descargar", "support": "Apoyar", "services": "A medida", "faq": "FAQ", "menu": "Menú", "github": "GitHub", "language": "Idioma" },
+  "nav": {
+    "proof": "Prueba",
+    "guide": "Guía",
+    "features": "Funciones",
+    "install": "Instalación",
+    "download": "Descargar",
+    "support": "Apoyar",
+    "services": "A medida",
+    "faq": "FAQ",
+    "menu": "Menú",
+    "github": "GitHub",
+    "language": "Idioma"
+  },
   "hero": {
-    "pills": ["Gratis y de código abierto", "MetaTrader 5", "v1.0.0"],
+    "pills": [
+      "Gratis y de código abierto",
+      "MetaTrader 5",
+      "v1.0.0"
+    ],
     "h1": "Smart Money Concepts para MetaTrader 5",
     "h1_sub": "El indicador SMC de LuxAlgo, traducido línea por línea a MQL5 y <b>demostrado idéntico a TradingView</b>.",
     "lead": "Un port gratuito a MQL5 del script SMC más popular de TradingView: estructura interna y swing (<b>BOS</b>, <b>CHoCH</b>), <b>order blocks</b>, máximos y mínimos iguales, <b>fair value gaps</b>, zonas premium y discount, y niveles del día, la semana y el mes anteriores. Comparado objeto por objeto con el original en 5.044 velas: cada etiqueta, línea y caja coincide.",
     "cta_ex5": "Descargar el .ex5",
     "cta_mq5": "Código fuente .mq5",
     "cta_proof": "Ver la prueba",
-    "meta": ["88 KB", "0 errores, 0 advertencias", "Sin DLL, sin registro", "CC BY-NC-SA 4.0"]
+    "meta": [
+      "88 KB",
+      "0 errores, 0 advertencias",
+      "Sin DLL, sin registro",
+      "CC BY-NC-SA 4.0"
+    ]
   },
   "viewer": {
-    "tv": "TradingView", "tv_small": "Pine de LuxAlgo",
-    "mt5": "MetaTrader 5", "mt5_small": "este port",
-    "blink": "Prueba de parpadeo", "diff": "Diferencias",
+    "tv": "TradingView",
+    "tv_small": "Pine de LuxAlgo",
+    "mt5": "MetaTrader 5",
+    "mt5_small": "este port",
+    "blink": "Prueba de parpadeo",
+    "diff": "Diferencias",
     "stat": "{n} objetos en pantalla · {same} idénticos",
     "price": "{n} niveles S/M a menos de 1 centavo (datos)",
     "legend_tv": "Smart Money Concepts [LuxAlgo] · TradingView",
@@ -36,12 +60,31 @@
     "h2": "No “parecido”. Idéntico, objeto por objeto.",
     "p": "El script de LuxAlgo se ejecutó en TradingView. Las mismas 5.044 velas se cargaron en MetaTrader 5. Cada dibujo se exportó de ambas plataformas y se comparó en hora, precio, texto, color, estilo y tamaño. Cuatro configuraciones y luego las últimas 44 velas repetidas tick a tick.",
     "stats": [
-      { "v": "2.535", "l": "dibujos comparados, todos idénticos" },
-      { "v": "20.176", "l": "colores de tendencia de velas, todos idénticos" },
-      { "v": "4 + 2", "l": "configuraciones, más dos repeticiones tick a tick" },
-      { "v": "0", "l": "diferencias de lógica" }
+      {
+        "v": "2.535",
+        "l": "dibujos comparados, todos idénticos"
+      },
+      {
+        "v": "20.176",
+        "l": "colores de tendencia de velas, todos idénticos"
+      },
+      {
+        "v": "4 + 2",
+        "l": "configuraciones, más dos repeticiones tick a tick"
+      },
+      {
+        "v": "0",
+        "l": "diferencias de lógica"
+      }
     ],
-    "th": ["Config", "Ajustes", "Etiquetas", "Líneas", "Cajas", "Tendencia"],
+    "th": [
+      "Config",
+      "Ajustes",
+      "Etiquetas",
+      "Líneas",
+      "Cajas",
+      "Tendencia"
+    ],
     "rows": {
       "A": "Ajustes por defecto",
       "B": "Todas las funciones: swings, OB swing, FVG, niveles diario, semanal y mensual, zonas",
@@ -61,15 +104,51 @@
     "h2": "El script completo. Cada ajuste, cada alerta.",
     "p": "Nada se simplificó. Los mismos nombres de ajustes, los mismos valores por defecto y los mismos grupos que el original de TradingView.",
     "items": [
-      { "id": "structure", "t": "Estructura de mercado: BOS y CHoCH", "d": "Break of Structure y Change of Character en dos escalas: estructura interna (swings de 5 velas) para las entradas y estructura swing (50 velas por defecto) para la visión general. Filtro de confluencia opcional." },
-      { "id": "ob", "t": "Order blocks internos y swing", "d": "Order blocks alcistas y bajistas filtrados por ATR o por rango medio acumulado, mitigados por máximo/mínimo o por cierre, cada uno con su propio límite." },
-      { "id": "eq", "t": "Máximos y mínimos iguales", "d": "EQH y EQL: liquidez acumulada en el mismo nivel, con umbral y confirmación ajustables." },
-      { "id": "fvg", "t": "Fair value gaps", "d": "Desequilibrios de tres velas en la temporalidad del gráfico o en una mayor, con umbral automático y extensión ajustable." },
-      { "id": "pd", "t": "Premium, equilibrio, discount", "d": "El rango del swing actual dividido en zonas premium, equilibrio y discount, actualizado cuando el rango crece." },
-      { "id": "sw", "t": "Máximos y mínimos fuertes y débiles", "d": "Los extremos del swing actual, marcados como fuertes o débiles según la tendencia, más los puntos HH, HL, LH y LL." },
-      { "id": "mtf", "t": "Día, semana y mes anteriores", "d": "Niveles PDH y PDL, PWH y PWL, PMH y PML, cada uno con su color y estilo de línea." },
-      { "id": "alerts", "t": "Velas de tendencia y 16 alertas", "d": "Velas coloreadas según la tendencia interna. Cada alertcondition del original se convierte en una alerta de MT5: ventana, notificación push o correo." },
-      { "id": "modes", "t": "Histórico o Presente, Color o Monocromo", "d": "Los mismos modos de visualización que el original. El modo Presente solo conserva la última estructura, para un gráfico limpio." }
+      {
+        "id": "structure",
+        "t": "Estructura de mercado: BOS y CHoCH",
+        "d": "Break of Structure y Change of Character en dos escalas: estructura interna (swings de 5 velas) para las entradas y estructura swing (50 velas por defecto) para la visión general. Filtro de confluencia opcional."
+      },
+      {
+        "id": "ob",
+        "t": "Order blocks internos y swing",
+        "d": "Order blocks alcistas y bajistas filtrados por ATR o por rango medio acumulado, mitigados por máximo/mínimo o por cierre, cada uno con su propio límite."
+      },
+      {
+        "id": "eq",
+        "t": "Máximos y mínimos iguales",
+        "d": "EQH y EQL: liquidez acumulada en el mismo nivel, con umbral y confirmación ajustables."
+      },
+      {
+        "id": "fvg",
+        "t": "Fair value gaps",
+        "d": "Desequilibrios de tres velas en la temporalidad del gráfico o en una mayor, con umbral automático y extensión ajustable."
+      },
+      {
+        "id": "pd",
+        "t": "Premium, equilibrio, discount",
+        "d": "El rango del swing actual dividido en zonas premium, equilibrio y discount, actualizado cuando el rango crece."
+      },
+      {
+        "id": "sw",
+        "t": "Máximos y mínimos fuertes y débiles",
+        "d": "Los extremos del swing actual, marcados como fuertes o débiles según la tendencia, más los puntos HH, HL, LH y LL."
+      },
+      {
+        "id": "mtf",
+        "t": "Día, semana y mes anteriores",
+        "d": "Niveles PDH y PDL, PWH y PWL, PMH y PML, cada uno con su color y estilo de línea."
+      },
+      {
+        "id": "alerts",
+        "t": "Velas de tendencia y 16 alertas",
+        "d": "Velas coloreadas según la tendencia interna. Cada alertcondition del original se convierte en una alerta de MT5: ventana, notificación push o correo."
+      },
+      {
+        "id": "modes",
+        "t": "Histórico o Presente, Color o Monocromo",
+        "d": "Los mismos modos de visualización que el original. El modo Presente solo conserva la última estructura, para un gráfico limpio."
+      }
     ]
   },
   "eng": {
@@ -77,10 +156,22 @@
     "h2": "Donde MetaTrader obligó a otro mecanismo, nunca a otro resultado",
     "p": "Un port vale lo que valen sus casos límite. Cuatro puntos donde MT5 funciona distinto a Pine, y lo que hace el port al respecto.",
     "items": [
-      { "t": "El retroceso en tiempo real de Pine", "d": "La vela en formación se calcula sobre una copia desechable del estado, que se descarta en el siguiente tick. Solo se graban las velas cerradas, exactamente como Pine en tiempo real." },
-      { "t": "Los límites de objetos de Pine", "d": "Etiquetas, líneas y cajas pasan por una colección en memoria que aplica el límite de 500 de cada tipo de Pine, borrando primero las más antiguas, y luego se reflejan en el gráfico." },
-      { "t": "Transparencia real", "d": "Los objetos de MT5 no tienen canal alfa, así que las cajas se pintan en un lienzo transparente con mezcla alfa real. Cada color.new(c, t) se convierte en un color más una transparencia." },
-      { "t": "La tolerancia numérica de Pine", "d": "Pine compara los números con una tolerancia absoluta de 1e-10, así que 0,1 + 0,2 == 0,3 es verdadero. Sin ella, una vela en la que el filtro de confluencia compara 0,05 con 0,05 generaba un CHoCH de más. El port la reproduce." }
+      {
+        "t": "El retroceso en tiempo real de Pine",
+        "d": "La vela en formación se calcula sobre una copia desechable del estado, que se descarta en el siguiente tick. Solo se graban las velas cerradas, exactamente como Pine en tiempo real."
+      },
+      {
+        "t": "Los límites de objetos de Pine",
+        "d": "Etiquetas, líneas y cajas pasan por una colección en memoria que aplica el límite de 500 de cada tipo de Pine, borrando primero las más antiguas, y luego se reflejan en el gráfico."
+      },
+      {
+        "t": "Transparencia real",
+        "d": "Los objetos de MT5 no tienen canal alfa, así que las cajas se pintan en un lienzo transparente con mezcla alfa real. Cada color.new(c, t) se convierte en un color más una transparencia."
+      },
+      {
+        "t": "La tolerancia numérica de Pine",
+        "d": "Pine compara los números con una tolerancia absoluta de 1e-10, así que 0,1 + 0,2 == 0,3 es verdadero. Sin ella, una vela en la que el filtro de confluencia compara 0,05 con 0,05 generaba un CHoCH de más. El port la reproduce."
+      }
     ],
     "code_title": "Medido en TradingView, reproducido en MQL5"
   },
@@ -100,9 +191,21 @@
     "kicker": "05 · Descargar",
     "h2": "Gratis. Los dos archivos. Sin registro.",
     "p": "El ejecutable para probarlo ya, y el código fuente completo para leerlo, aprender de él y adaptarlo.",
-    "ex5": { "t": "Indicador listo para usar", "d": "Compilado con MetaEditor, 0 errores, 0 advertencias. Colócalo en MQL5/Indicators.", "btn": "Descargar .ex5" },
-    "mq5": { "t": "Código fuente completo", "d": "Un solo archivo de unas 2.300 líneas, sin include ni DLL. Legible y comentado.", "btn": "Descargar .mq5" },
-    "zip": { "t": "Todo en un zip", "d": "El .ex5, el .mq5, la licencia y el README.", "btn": "Descargar .zip" },
+    "ex5": {
+      "t": "Indicador listo para usar",
+      "d": "Compilado con MetaEditor, 0 errores, 0 advertencias. Colócalo en MQL5/Indicators.",
+      "btn": "Descargar .ex5"
+    },
+    "mq5": {
+      "t": "Código fuente completo",
+      "d": "Un solo archivo de unas 2.300 líneas, sin include ni DLL. Legible y comentado.",
+      "btn": "Descargar .mq5"
+    },
+    "zip": {
+      "t": "Todo en un zip",
+      "d": "El .ex5, el .mq5, la licencia y el README.",
+      "btn": "Descargar .zip"
+    },
     "sha": "SHA-256",
     "license": "Obra original © LuxAlgo, con licencia CC BY-NC-SA 4.0. Este port es una obra derivada bajo la misma licencia: conserva la atribución, solo uso no comercial, comparte tus cambios con las mismas condiciones. Proyecto independiente, sin afiliación ni respaldo de LuxAlgo o TradingView.",
     "github": "Todas las versiones en GitHub"
@@ -111,8 +214,16 @@
     "kicker": "06 · Apoyar",
     "h2": "Gratis para todos. Apoyado por quien puede.",
     "p": "Este port, y el banco de pruebas que lo demuestra, costaron mucho trabajo. Sigue siendo gratis. Si te ahorra tiempo o ayuda a tu trading, una donación de cualquier monto es bienvenida, incluso un solo dólar. Es lo que permite que lleguen las próximas herramientas.",
-    "tron": { "t": "USDT en TRON", "net": "Red: TRON (TRC-20)", "warn": "Envía solo activos de la red TRON (USDT TRC-20, TRX). Lo que se envíe desde otra red se pierde." },
-    "bnb": { "t": "BNB Smart Chain", "net": "Red: BNB Smart Chain (BEP-20)", "warn": "Envía BNB o tokens BEP-20 (USDT, USDC…) solo por BNB Smart Chain. Ni Ethereum, ni TRON." },
+    "tron": {
+      "t": "USDT en TRON",
+      "net": "Red: TRON (TRC-20)",
+      "warn": "Envía solo activos de la red TRON (USDT TRC-20, TRX). Lo que se envíe desde otra red se pierde."
+    },
+    "bnb": {
+      "t": "BNB Smart Chain",
+      "net": "Red: BNB Smart Chain (BEP-20)",
+      "warn": "Envía BNB o tokens BEP-20 (USDT, USDC…) solo por BNB Smart Chain. Ni Ethereum, ni TRON."
+    },
     "copy_btn": "Copiar dirección",
     "copied": "Copiada",
     "qr": "Código QR de la dirección",
@@ -121,13 +232,39 @@
   "services": {
     "kicker": "07 · A medida",
     "h2": "¿Necesitas un cambio? Puedo hacerlo por ti.",
-    "p": "Soy <b>Ismael Ladjohounlou</b>, el desarrollador de este port. Si quieres este indicador adaptado a tu trading, o cualquier otra herramienta en MetaTrader, TradingView o Telegram, dime qué necesitas. El presupuesto es gratis.",
+    "p": "Soy <b>Ismaël Ladjohounlou</b>, ingeniero de IA y automatización, y el desarrollador de este port. Si quieres este indicador adaptado a tu trading, un Expert Advisor o cualquier automatización para tu negocio, dime qué necesitas. El presupuesto es gratis y respondo personalmente.",
     "items": [
-      { "id": "custom", "t": "Adaptar este indicador", "d": "Tus propias reglas y filtros, más alertas, etiquetas en tu idioma, vista multitemporal y señales que un Expert Advisor puede leer." },
-      { "id": "pine", "t": "Pine Script de TradingView a MT5", "d": "Cualquier indicador o estrategia de Pine traducido a MQL5 o MQL4, con la misma prueba que aquí: objeto por objeto, sobre las mismas velas.", "link": "Cómo funciona" },
-      { "id": "ea", "t": "Expert Advisors", "d": "Estrategias automáticas para MT4 y MT5: modelos SMC e ICT, entradas multitemporales, reglas de riesgo de prop firms. Código fuente completo incluido." },
-      { "id": "bt", "t": "Backtests fiables", "d": "Pruebas en el Probador de estrategias, una referencia independiente en Python y un veredicto honesto sobre si la ventaja es real." },
-      { "id": "tg", "t": "Bots de Telegram y copiadores", "d": "Bots de señales, copiadores de operaciones y paneles de control en Telegram para tu EA." }
+      {
+        "id": "custom",
+        "t": "Adaptar este indicador",
+        "d": "Tus propias reglas y filtros, más alertas, etiquetas en tu idioma, vista multitemporal y señales que un Expert Advisor puede leer."
+      },
+      {
+        "id": "pine",
+        "t": "Pine Script de TradingView a MT5",
+        "d": "Cualquier indicador o estrategia de Pine traducido a MQL5 o MQL4, con la misma prueba que aquí: objeto por objeto, sobre las mismas velas.",
+        "link": "Cómo funciona"
+      },
+      {
+        "id": "ea",
+        "t": "Expert Advisors",
+        "d": "Estrategias automáticas para MT4 y MT5: modelos SMC e ICT, entradas multitemporales, reglas de riesgo de prop firms. Código fuente completo incluido."
+      },
+      {
+        "id": "auto",
+        "t": "Automatización para tu negocio",
+        "d": "Flujos con n8n y Python, agentes de IA, integraciones de Instagram, WhatsApp y Telegram con las API oficiales, pasarelas de pago (Stripe, Mobile Money)."
+      },
+      {
+        "id": "bt",
+        "t": "Backtests fiables",
+        "d": "Pruebas en el Probador de estrategias, una referencia independiente en Python y un veredicto honesto sobre si la ventaja es real."
+      },
+      {
+        "id": "tg",
+        "t": "Bots de Telegram y copiadores",
+        "d": "Bots de señales, copiadores de operaciones y paneles de control en Telegram para tu EA."
+      }
     ],
     "cta_mail": "Describe tu proyecto",
     "mail_subject": "A medida: Smart Money Concepts MT5",
@@ -135,7 +272,8 @@
     "email": "Correo",
     "linkedin": "LinkedIn",
     "mql5": "Perfil MQL5",
-    "portfolio": "Portafolio"
+    "portfolio": "Portafolio",
+    "telegram": "Telegram"
   },
   "more": {
     "kicker": "08 · Del mismo autor",
@@ -144,29 +282,74 @@
     "badge": "Indicador original · MQL5 Market",
     "t": "Structura: estructura de mercado y order blocks",
     "d": "Diseñado y demostrado de forma independiente de LuxAlgo, con una referencia en Python que coincide con el motor MQL5 en unas 989.000 líneas.",
-    "bullets": ["Order blocks puntuados de 0 a 3 (desplazamiento, FVG, liquidez)", "Breakers, FVG invertidos, barridos de liquidez y zonas OTE", "Panel multitemporal y alertas push", "6 buffers listos para Expert Advisors", "Sin repintado, demostrado"],
+    "bullets": [
+      "Order blocks puntuados de 0 a 3 (desplazamiento, FVG, liquidez)",
+      "Breakers, FVG invertidos, barridos de liquidez y zonas OTE",
+      "Panel multitemporal y alertas push",
+      "6 buffers listos para Expert Advisors",
+      "Sin repintado, demostrado"
+    ],
     "btn_market": "Verlo en el MQL5 Market",
     "btn_video": "Ver la demo de 82 segundos",
     "others_title": "También en el MQL5 Market",
     "others": [
-      { "t": "SnapBack Three Sigma Reversal", "d": "Indicador · reversiones estadísticas", "url": "https://www.mql5.com/es/market/product/200522" },
-      { "t": "Pin Bar Trend Pullback", "d": "Expert Advisor · price action", "url": "https://www.mql5.com/es/market/product/200530" },
-      { "t": "Multi Market RSI Trade Manager", "d": "Expert Advisor · RSI con gestión de operaciones", "url": "https://www.mql5.com/es/market/product/200527" }
+      {
+        "t": "SnapBack Three Sigma Reversal",
+        "d": "Indicador · reversiones estadísticas",
+        "url": "https://www.mql5.com/es/market/product/200522"
+      },
+      {
+        "t": "Pin Bar Trend Pullback",
+        "d": "Expert Advisor · price action",
+        "url": "https://www.mql5.com/es/market/product/200530"
+      },
+      {
+        "t": "Multi Market RSI Trade Manager",
+        "d": "Expert Advisor · RSI con gestión de operaciones",
+        "url": "https://www.mql5.com/es/market/product/200527"
+      }
     ]
   },
   "faq": {
     "kicker": "09 · FAQ",
     "h2": "Lo que preguntan los traders",
     "items": [
-      { "q": "¿De verdad es gratis?", "a": "Sí. El .ex5 compilado y el código fuente .mq5 completo son gratis para descargar, usar y modificar con fines no comerciales. Sin cuenta, sin correo, sin clave de licencia. Las donaciones son opcionales." },
-      { "q": "¿Es el indicador oficial de LuxAlgo?", "a": "No. Es un port a MQL5 independiente y no oficial del script de código abierto Smart Money Concepts de LuxAlgo, publicado con la misma licencia CC BY-NC-SA 4.0 y con atribución. LuxAlgo no lo respalda." },
-      { "q": "¿De verdad es idéntico a TradingView?", "a": "En el conjunto de prueba, sí: el 100 % de etiquetas, líneas, cajas y colores de velas coincidió en cuatro configuraciones y dos repeticiones tick a tick. La única diferencia es el precio de los niveles semanales y mensuales, que TradingView lee de sus propias velas W y M. Puedes comprobarlo en el visor o repetir la prueba desde GitHub." },
-      { "q": "¿Repinta?", "a": "Se comporta exactamente como el original. La estructura se confirma con velas cerradas; la vela en formación se recalcula en cada tick y solo se graba al cerrar. Los swings se confirman tras su longitud, como en Pine, así que sus etiquetas aparecen unas velas después del pivote." },
-      { "q": "¿En qué mercados y temporalidades funciona?", "a": "En cualquier símbolo y temporalidad que MetaTrader 5 pueda mostrar: forex, oro (XAUUSD), índices, cripto y acciones. Los niveles diario, semanal y mensual usan los datos D1, W1 y MN1 de tu bróker." },
-      { "q": "¿Puedo venderlo o publicarlo en el MQL5 Market?", "a": "No. La licencia prohíbe el uso comercial, del original y de este port. Puedes compartirlo, modificarlo y usarlo en tu propio trading, conservando la atribución y la misma licencia." },
-      { "q": "¿Puedo usarlo en un Expert Advisor?", "a": "Sí: con Color Candles activado, un EA puede leer la tendencia del buffer de color (buffer 4) con iCustom. Si necesitas buffers de señales limpios para BOS, CHoCH u order blocks, o un EA completo basado en él, puedo hacerte una versión lista para automatizar." },
-      { "q": "¿Hay versión para MT4?", "a": "Todavía no. Se puede hacer una versión MQL4 por encargo." },
-      { "q": "¿Puedo donar con otra cripto?", "a": "Cualquier activo de la red TRON puede ir a la dirección TRON, y cualquier token BEP-20 de BNB Smart Chain a la dirección BNB. Revisa siempre la red antes de enviar: una red equivocada significa fondos perdidos." }
+      {
+        "q": "¿De verdad es gratis?",
+        "a": "Sí. El .ex5 compilado y el código fuente .mq5 completo son gratis para descargar, usar y modificar con fines no comerciales. Sin cuenta, sin correo, sin clave de licencia. Las donaciones son opcionales."
+      },
+      {
+        "q": "¿Es el indicador oficial de LuxAlgo?",
+        "a": "No. Es un port a MQL5 independiente y no oficial del script de código abierto Smart Money Concepts de LuxAlgo, publicado con la misma licencia CC BY-NC-SA 4.0 y con atribución. LuxAlgo no lo respalda."
+      },
+      {
+        "q": "¿De verdad es idéntico a TradingView?",
+        "a": "En el conjunto de prueba, sí: el 100 % de etiquetas, líneas, cajas y colores de velas coincidió en cuatro configuraciones y dos repeticiones tick a tick. La única diferencia es el precio de los niveles semanales y mensuales, que TradingView lee de sus propias velas W y M. Puedes comprobarlo en el visor o repetir la prueba desde GitHub."
+      },
+      {
+        "q": "¿Repinta?",
+        "a": "Se comporta exactamente como el original. La estructura se confirma con velas cerradas; la vela en formación se recalcula en cada tick y solo se graba al cerrar. Los swings se confirman tras su longitud, como en Pine, así que sus etiquetas aparecen unas velas después del pivote."
+      },
+      {
+        "q": "¿En qué mercados y temporalidades funciona?",
+        "a": "En cualquier símbolo y temporalidad que MetaTrader 5 pueda mostrar: forex, oro (XAUUSD), índices, cripto y acciones. Los niveles diario, semanal y mensual usan los datos D1, W1 y MN1 de tu bróker."
+      },
+      {
+        "q": "¿Puedo venderlo o publicarlo en el MQL5 Market?",
+        "a": "No. La licencia prohíbe el uso comercial, del original y de este port. Puedes compartirlo, modificarlo y usarlo en tu propio trading, conservando la atribución y la misma licencia."
+      },
+      {
+        "q": "¿Puedo usarlo en un Expert Advisor?",
+        "a": "Sí: con Color Candles activado, un EA puede leer la tendencia del buffer de color (buffer 4) con iCustom. Si necesitas buffers de señales limpios para BOS, CHoCH u order blocks, o un EA completo basado en él, puedo hacerte una versión lista para automatizar."
+      },
+      {
+        "q": "¿Hay versión para MT4?",
+        "a": "Todavía no. Se puede hacer una versión MQL4 por encargo."
+      },
+      {
+        "q": "¿Puedo donar con otra cripto?",
+        "a": "Cualquier activo de la red TRON puede ir a la dirección TRON, y cualquier token BEP-20 de BNB Smart Chain a la dirección BNB. Revisa siempre la red antes de enviar: una red equivocada significa fondos perdidos."
+      }
     ]
   },
   "footer": {
@@ -181,8 +364,17 @@
     "source": "Código fuente en GitHub",
     "releases": "Versiones",
     "issues": "Reportar un problema",
-    "legal_license": "Smart Money Concepts original © LuxAlgo, con licencia CC BY-NC-SA 4.0. Port MQL5 © Ismael Ladjohounlou, misma licencia.",
+    "legal_license": "Smart Money Concepts original © LuxAlgo, con licencia CC BY-NC-SA 4.0. Port MQL5 © Ismaël Ladjohounlou, misma licencia.",
     "legal_tm": "Proyecto independiente, sin afiliación, patrocinio ni respaldo de LuxAlgo, TradingView o MetaQuotes. Las marcas pertenecen a sus dueños.",
     "legal_risk": "El trading implica un riesgo considerable de pérdida. Este indicador es una herramienta de análisis, no un consejo financiero."
+  },
+  "after": {
+    "title": "Tu descarga ha comenzado",
+    "text": "Gracias por probarlo. ¿Una pregunta, una versión a medida, un Expert Advisor o un proyecto de automatización para tu negocio? Escríbeme sin compromiso, respondo personalmente.",
+    "telegram": "Telegram",
+    "email": "Correo",
+    "linkedin": "LinkedIn",
+    "donate": "Apoyar con una donación",
+    "close": "Cerrar"
   }
 }

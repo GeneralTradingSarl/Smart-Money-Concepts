@@ -232,7 +232,7 @@
   "services": {
     "kicker": "07 · Sob medida",
     "h2": "Precisa de uma mudança? Eu faço para você.",
-    "p": "Sou <b>Ismael Ladjohounlou</b>, o desenvolvedor deste port. Se você quer este indicador adaptado ao seu trading, ou qualquer outra ferramenta no MetaTrader, TradingView ou Telegram, me diga do que precisa. O orçamento é grátis.",
+    "p": "Sou <b>Ismaël Ladjohounlou</b>, engenheiro de IA e automação, e o desenvolvedor deste port. Se você quer este indicador adaptado ao seu trading, um Expert Advisor ou qualquer automação para o seu negócio, me diga do que precisa. O orçamento é grátis e eu respondo pessoalmente.",
     "items": [
       {
         "id": "custom",
@@ -251,6 +251,11 @@
         "d": "Estratégias automáticas para MT4 e MT5: modelos SMC e ICT, entradas multitempo, regras de risco de mesas proprietárias. Código-fonte completo entregue."
       },
       {
+        "id": "auto",
+        "t": "Automação para o seu negócio",
+        "d": "Fluxos com n8n e Python, agentes de IA, integrações de Instagram, WhatsApp e Telegram pelas APIs oficiais, meios de pagamento (Stripe, Mobile Money)."
+      },
+      {
         "id": "bt",
         "t": "Backtests confiáveis",
         "d": "Testes no Testador de estratégia, uma referência independente em Python e um veredito honesto sobre se a vantagem é real."
@@ -267,7 +272,8 @@
     "email": "E-mail",
     "linkedin": "LinkedIn",
     "mql5": "Perfil MQL5",
-    "portfolio": "Portfólio"
+    "portfolio": "Portfólio",
+    "telegram": "Telegram"
   },
   "more": {
     "kicker": "08 · Do mesmo autor",
@@ -358,8 +364,17 @@
     "source": "Código-fonte no GitHub",
     "releases": "Versões",
     "issues": "Relatar um problema",
-    "legal_license": "Smart Money Concepts original © LuxAlgo, licenciado CC BY-NC-SA 4.0. Port MQL5 © Ismael Ladjohounlou, mesma licença.",
+    "legal_license": "Smart Money Concepts original © LuxAlgo, licenciado CC BY-NC-SA 4.0. Port MQL5 © Ismaël Ladjohounlou, mesma licença.",
     "legal_tm": "Projeto independente, sem afiliação, patrocínio ou endosso da LuxAlgo, do TradingView ou da MetaQuotes. As marcas pertencem aos seus donos.",
     "legal_risk": "Operar no mercado envolve risco considerável de perda. Este indicador é uma ferramenta de análise, não uma recomendação financeira."
+  },
+  "after": {
+    "title": "Seu download começou",
+    "text": "Obrigado por testar. Uma dúvida, uma versão sob medida, um Expert Advisor ou um projeto de automação para o seu negócio? Fique à vontade para me chamar, eu respondo pessoalmente.",
+    "telegram": "Telegram",
+    "email": "E-mail",
+    "linkedin": "LinkedIn",
+    "donate": "Apoiar com uma doação",
+    "close": "Fechar"
   }
 }

@@ -46,9 +46,10 @@
       {% for q, a in service_faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><div class="a"><p>{{ a }}</p></div></details>{% endfor %}
     </div>
     <div class="cta-band">
-      <div><h2>Send me your script</h2><p>{{ site.email }}, or open an issue on GitHub. The quote is free.</p></div>
+      <div><h2>Send me your script</h2><p>{{ site.email }}, Telegram {{ site.telegram_handle }}, or an issue on GitHub. The quote is free.</p></div>
       <div class="cta-row" style="margin:0">
         <a class="btn btn-primary" href="mailto:{{ site.email }}?subject={{ 'Pine Script to MQL5 quote'|urlencode }}">{{ icon('mail') }}Email me</a>
+        <a class="btn btn-ghost" href="{{ site.telegram }}" rel="noopener">{{ icon('send') }}Telegram</a>
         <a class="btn btn-ghost" href="{{ site.linkedin }}" rel="noopener">{{ icon('linkedin') }}LinkedIn</a>
         <a class="btn btn-ghost" href="{{ site.mql5 }}" rel="noopener">{{ icon('chart') }}MQL5 profile</a>
       </div>

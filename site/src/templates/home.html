@@ -182,10 +182,12 @@
       <h2 id="services-h">{{ t.services.h2 }}</h2>
       <p style="margin-top:16px">{{ t.services.p|safe }}</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="mailto:{{ site.email }}?subject={{ t.services.mail_subject|urlencode }}">{{ icon('send') }}{{ t.services.cta_mail }}</a>
+        <a class="btn btn-primary" href="mailto:{{ site.email }}?subject={{ t.services.mail_subject|urlencode }}">{{ icon('mail') }}{{ t.services.cta_mail }}</a>
+        <a class="btn btn-ghost" href="{{ site.telegram }}" rel="noopener">{{ icon('send') }}{{ t.services.telegram }}</a>
         <a class="btn btn-ghost" href="{{ site.repo }}/issues/new" rel="noopener">{{ icon('github') }}{{ t.services.cta_issue }}</a>
       </div>
       <ul class="contact-list">
+        <li><a href="{{ site.telegram }}" rel="noopener">{{ icon('send') }}{{ t.services.telegram }} {{ site.telegram_handle }}</a></li>
         <li><a href="mailto:{{ site.email }}">{{ icon('mail') }}{{ site.email }}</a></li>
         <li><a href="{{ site.linkedin }}" rel="noopener">{{ icon('linkedin') }}{{ t.services.linkedin }}</a></li>
         <li><a href="{{ site.mql5 }}" rel="noopener">{{ icon('chart') }}{{ t.services.mql5 }}</a></li>
@@ -193,7 +195,7 @@
       </ul>
     </div>
     <div class="svc">
-      {% set svc_icons = {'custom': 'sliders', 'pine': 'swap', 'ea': 'bot', 'bt': 'flask', 'tg': 'send'} %}
+      {% set svc_icons = {'custom': 'sliders', 'pine': 'swap', 'ea': 'bot', 'auto': 'flow', 'bt': 'flask', 'tg': 'send'} %}
       {% for s in t.services['items'] %}
       <article class="card{% if loop.first %} hl{% endif %}">
         <span class="ico">{{ icon(svc_icons[s.id]) }}</span>

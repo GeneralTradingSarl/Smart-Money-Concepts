@@ -99,14 +99,15 @@ Check the network before sending: anything sent on the wrong network is lost. QR
 
 ## Custom work
 
-I’m **Ismael Ladjohounlou**, the developer behind this port. I can adapt this indicator to your trading (your rules, extra alerts, labels in your language, multi-timeframe view, signal buffers for an Expert Advisor) or build anything else for MetaTrader, TradingView or Telegram:
+I’m **Ismaël Ladjohounlou**, AI and automation engineer, and the developer behind this port. Downloaded it? Feel free to contact me, I reply personally. I can adapt this indicator to your trading (your rules, extra alerts, labels in your language, multi-timeframe view, signal buffers for an Expert Advisor) or build anything else for MetaTrader, TradingView, Telegram or your business:
 
 - **TradingView Pine Script to MQL5 / MQL4**, with the same object-by-object parity report as here ([how it works](https://smart-money-concepts-mt5.vercel.app/pine-script-to-mql5/))
 - **Expert Advisors** for MT4 / MT5 (SMC and ICT models, multi-timeframe entries, prop-firm risk rules), full source delivered
 - **Backtests you can trust**, with an independent Python reference
+- **Automation for your business**: n8n and Python workflows, AI agents, Instagram, WhatsApp and Telegram pipelines on the official APIs, payment integrations (Stripe, Mobile Money)
 - **Telegram** signal bots, trade copiers and EA control panels
 
-Email **general.trading.bot.2025@gmail.com**, open an [issue](https://github.com/GeneralTradingSarl/Smart-Money-Concepts/issues/new), or find me on [LinkedIn](https://www.linkedin.com/in/ismaelladjohounlou) and [MQL5](https://www.mql5.com/en/users/ismael_financial_bot). The quote is free.
+Telegram **[@botaccount77](https://t.me/botaccount77)**, email **general.trading.bot.2025@gmail.com**, open an [issue](https://github.com/GeneralTradingSarl/Smart-Money-Concepts/issues/new), or find me on [LinkedIn](https://www.linkedin.com/in/ismaelladjohounlou) and [MQL5](https://www.mql5.com/en/users/ismael_financial_bot). The quote is free.
 
 Want more than the original? **[Structura](https://www.mql5.com/en/market/product/201556)** is my own Smart Money engine for MT5, written from scratch: order blocks scored 0 to 3, breakers, inverse FVGs, liquidity sweeps, OTE zones, multi-timeframe dashboard, 6 EA buffers, proven non-repainting ([82-second demo](https://youtu.be/x35L5b2P_xY)).
 
@@ -134,6 +135,6 @@ Want more than the original? **[Structura](https://www.mql5.com/en/market/produc
 ## Licence and attribution
 
 Original work: **Smart Money Concepts (SMC) [LuxAlgo]** © LuxAlgo, licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-This MQL5 port © 2026 Ismael Ladjohounlou is a derivative work under the same licence: keep the attribution, non-commercial use only, share your changes under the same terms. See [LICENSE](LICENSE).
+This MQL5 port © 2026 Ismaël Ladjohounlou is a derivative work under the same licence: keep the attribution, non-commercial use only, share your changes under the same terms. See [LICENSE](LICENSE).
 
 Independent project, not affiliated with, sponsored or endorsed by LuxAlgo, TradingView or MetaQuotes. Trading involves a substantial risk of loss; this indicator is an analysis tool, not financial advice.

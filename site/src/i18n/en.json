@@ -232,7 +232,7 @@
   "services": {
     "kicker": "07 · Custom work",
     "h2": "Need it changed? I can build it for you.",
-    "p": "I’m <b>Ismael Ladjohounlou</b>, the developer behind this port. If you want this indicator adapted to your trading, or anything else built on MetaTrader, TradingView or Telegram, tell me what you need. The quote is free.",
+    "p": "I’m <b>Ismaël Ladjohounlou</b>, AI and automation engineer, and the developer behind this port. If you want this indicator adapted to your trading, an Expert Advisor, or any automation for your business, tell me what you need. The quote is free and I reply personally.",
     "items": [
       {
         "id": "custom",
@@ -251,6 +251,11 @@
         "d": "Automated strategies for MT4 and MT5: SMC and ICT models, multi-timeframe entries, prop-firm risk rules. Full source delivered."
       },
       {
+        "id": "auto",
+        "t": "Automation for your business",
+        "d": "n8n and Python workflows, AI agents, Instagram, WhatsApp and Telegram pipelines on the official APIs, payment integrations (Stripe, Mobile Money)."
+      },
+      {
         "id": "bt",
         "t": "Backtests you can trust",
         "d": "Strategy Tester runs, an independent Python reference and an honest verdict on whether the edge is real."
@@ -267,7 +272,8 @@
     "email": "Email",
     "linkedin": "LinkedIn",
     "mql5": "MQL5 profile",
-    "portfolio": "Portfolio"
+    "portfolio": "Portfolio",
+    "telegram": "Telegram"
   },
   "more": {
     "kicker": "08 · More from the author",
@@ -358,8 +364,17 @@
     "source": "Source code on GitHub",
     "releases": "Releases",
     "issues": "Report a problem",
-    "legal_license": "Original Smart Money Concepts © LuxAlgo, licensed CC BY-NC-SA 4.0. MQL5 port © Ismael Ladjohounlou, same licence.",
+    "legal_license": "Original Smart Money Concepts © LuxAlgo, licensed CC BY-NC-SA 4.0. MQL5 port © Ismaël Ladjohounlou, same licence.",
     "legal_tm": "Independent project, not affiliated with, sponsored or endorsed by LuxAlgo, TradingView or MetaQuotes. All trademarks belong to their owners.",
     "legal_risk": "Trading involves a substantial risk of loss. This indicator is an analysis tool, not financial advice."
+  },
+  "after": {
+    "title": "Your download has started",
+    "text": "Thank you for trying it. A question, a custom version, an Expert Advisor or an automation project for your business? Feel free to contact me, I reply personally.",
+    "telegram": "Telegram",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "donate": "Support with a donation",
+    "close": "Close"
   }
 }

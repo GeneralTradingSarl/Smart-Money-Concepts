@@ -7,21 +7,45 @@
     "locale": "zh_CN",
     "keywords": "smart money concepts mt5, smc 指标 mt5, luxalgo mt5, luxalgo mql5, 聪明钱概念 指标, 订单块 指标 mt5, bos choch 指标, 公允价值缺口 mt5, smc mq5 源码, 免费 smc 指标"
   },
-  "nav": { "proof": "证明", "guide": "指南", "features": "功能", "install": "安装", "download": "下载", "support": "支持", "services": "定制开发", "faq": "常见问题", "menu": "菜单", "github": "GitHub", "language": "语言" },
+  "nav": {
+    "proof": "证明",
+    "guide": "指南",
+    "features": "功能",
+    "install": "安装",
+    "download": "下载",
+    "support": "支持",
+    "services": "定制开发",
+    "faq": "常见问题",
+    "menu": "菜单",
+    "github": "GitHub",
+    "language": "语言"
+  },
   "hero": {
-    "pills": ["免费开源", "MetaTrader 5", "v1.0.0"],
+    "pills": [
+      "免费开源",
+      "MetaTrader 5",
+      "v1.0.0"
+    ],
     "h1": "Smart Money Concepts MetaTrader 5 版",
     "h1_sub": "LuxAlgo 的 SMC 指标，逐行移植到 MQL5，<b>并经证明与 TradingView 完全一致</b>。",
     "lead": "TradingView 上最受欢迎的 SMC 脚本的免费 MQL5 移植版：内部结构与波段结构（<b>BOS</b>、<b>CHoCH</b>）、<b>订单块</b>、等高点与等低点、<b>公允价值缺口</b>（FVG）、溢价区与折价区，以及前一日、前一周、前一月的高低点。在 5,044 根K线上与原版逐个对象比对：每个标签、线条和方框都一致。",
     "cta_ex5": "下载 .ex5",
     "cta_mq5": "获取 .mq5 源码",
     "cta_proof": "查看证明",
-    "meta": ["88 KB", "0 错误，0 警告", "无 DLL，无需注册", "CC BY-NC-SA 4.0"]
+    "meta": [
+      "88 KB",
+      "0 错误，0 警告",
+      "无 DLL，无需注册",
+      "CC BY-NC-SA 4.0"
+    ]
   },
   "viewer": {
-    "tv": "TradingView", "tv_small": "LuxAlgo Pine",
-    "mt5": "MetaTrader 5", "mt5_small": "本移植版",
-    "blink": "闪烁对比", "diff": "差异",
+    "tv": "TradingView",
+    "tv_small": "LuxAlgo Pine",
+    "mt5": "MetaTrader 5",
+    "mt5_small": "本移植版",
+    "blink": "闪烁对比",
+    "diff": "差异",
     "stat": "屏幕上 {n} 个对象 · {same} 个完全一致",
     "price": "{n} 个周/月水平价差不到 1 美分（数据源）",
     "legend_tv": "Smart Money Concepts [LuxAlgo] · TradingView",
@@ -36,12 +60,31 @@
     "h2": "不是“相似”，而是逐个对象完全一致。",
     "p": "LuxAlgo 的脚本在 TradingView 上运行，同样的 5,044 根K线载入 MetaTrader 5。两个平台的每个绘图都被导出，并按时间、价格、文本、颜色、样式和大小逐一比对。共四种配置，另外还逐笔回放了最后 44 根K线。",
     "stats": [
-      { "v": "2,535", "l": "个绘图对象比对，全部一致" },
-      { "v": "20,176", "l": "根K线的趋势颜色，全部一致" },
-      { "v": "4 + 2", "l": "种配置，外加两次逐笔回放" },
-      { "v": "0", "l": "处逻辑差异" }
+      {
+        "v": "2,535",
+        "l": "个绘图对象比对，全部一致"
+      },
+      {
+        "v": "20,176",
+        "l": "根K线的趋势颜色，全部一致"
+      },
+      {
+        "v": "4 + 2",
+        "l": "种配置，外加两次逐笔回放"
+      },
+      {
+        "v": "0",
+        "l": "处逻辑差异"
+      }
     ],
-    "th": ["配置", "设置", "标签", "线条", "方框", "趋势色"],
+    "th": [
+      "配置",
+      "设置",
+      "标签",
+      "线条",
+      "方框",
+      "趋势色"
+    ],
     "rows": {
       "A": "默认设置",
       "B": "全部功能：波段点、波段订单块、FVG、日/周/月水平、溢价折价区",
@@ -61,15 +104,51 @@
     "h2": "完整脚本。每个参数，每个警报。",
     "p": "没有任何简化。参数名称、默认值和分组都与 TradingView 原版相同。",
     "items": [
-      { "id": "structure", "t": "市场结构：BOS 与 CHoCH", "d": "在两个尺度上识别结构突破（BOS）与性质转变（CHoCH）：内部结构（5 根K线的波段）用于入场，波段结构（默认 50 根K线）用于把握大方向。可选共振过滤。" },
-      { "id": "ob", "t": "内部与波段订单块", "d": "看涨与看跌订单块，可按 ATR 或累积平均波幅过滤，按最高/最低价或收盘价判定失效，各有独立的数量上限。" },
-      { "id": "eq", "t": "等高点与等低点", "d": "EQH 与 EQL：停留在同一价位的流动性，阈值和确认长度均可调。" },
-      { "id": "fvg", "t": "公允价值缺口（FVG）", "d": "三根K线形成的失衡区，可取当前周期或更高周期，带自动阈值和可调延伸。" },
-      { "id": "pd", "t": "溢价区、均衡区、折价区", "d": "将当前波段区间划分为溢价区、均衡区和折价区，随区间扩大而更新。" },
-      { "id": "sw", "t": "强/弱高点与低点", "d": "当前波段的极值，按趋势标为强或弱，并标出 HH、HL、LH、LL 波段点。" },
-      { "id": "mtf", "t": "前一日、前一周、前一月", "d": "PDH 与 PDL、PWH 与 PWL、PMH 与 PML 水平线，各有独立的颜色和线型。" },
-      { "id": "alerts", "t": "趋势K线与 16 种警报", "d": "K线按内部趋势着色。原版的每个 alertcondition 都变成 MT5 警报：弹窗、推送通知或电子邮件。" },
-      { "id": "modes", "t": "Historical / Present，Colored / Monochrome", "d": "与原版相同的显示模式。Present 模式只保留最新的结构，图表更清爽。" }
+      {
+        "id": "structure",
+        "t": "市场结构：BOS 与 CHoCH",
+        "d": "在两个尺度上识别结构突破（BOS）与性质转变（CHoCH）：内部结构（5 根K线的波段）用于入场，波段结构（默认 50 根K线）用于把握大方向。可选共振过滤。"
+      },
+      {
+        "id": "ob",
+        "t": "内部与波段订单块",
+        "d": "看涨与看跌订单块，可按 ATR 或累积平均波幅过滤，按最高/最低价或收盘价判定失效，各有独立的数量上限。"
+      },
+      {
+        "id": "eq",
+        "t": "等高点与等低点",
+        "d": "EQH 与 EQL：停留在同一价位的流动性，阈值和确认长度均可调。"
+      },
+      {
+        "id": "fvg",
+        "t": "公允价值缺口（FVG）",
+        "d": "三根K线形成的失衡区，可取当前周期或更高周期，带自动阈值和可调延伸。"
+      },
+      {
+        "id": "pd",
+        "t": "溢价区、均衡区、折价区",
+        "d": "将当前波段区间划分为溢价区、均衡区和折价区，随区间扩大而更新。"
+      },
+      {
+        "id": "sw",
+        "t": "强/弱高点与低点",
+        "d": "当前波段的极值，按趋势标为强或弱，并标出 HH、HL、LH、LL 波段点。"
+      },
+      {
+        "id": "mtf",
+        "t": "前一日、前一周、前一月",
+        "d": "PDH 与 PDL、PWH 与 PWL、PMH 与 PML 水平线，各有独立的颜色和线型。"
+      },
+      {
+        "id": "alerts",
+        "t": "趋势K线与 16 种警报",
+        "d": "K线按内部趋势着色。原版的每个 alertcondition 都变成 MT5 警报：弹窗、推送通知或电子邮件。"
+      },
+      {
+        "id": "modes",
+        "t": "Historical / Present，Colored / Monochrome",
+        "d": "与原版相同的显示模式。Present 模式只保留最新的结构，图表更清爽。"
+      }
     ]
   },
   "eng": {
@@ -77,10 +156,22 @@
     "h2": "MetaTrader 要求换一种机制，但结果从不改变",
     "p": "移植的质量取决于边界情况。以下是 MT5 与 Pine 运行方式不同的四个地方，以及移植版的处理方式。",
     "items": [
-      { "t": "Pine 的实时回滚", "d": "正在形成的K线在一份临时状态副本上计算，下一个跳动时丢弃。只有已收盘的K线才会被写入，与 Pine 的实时行为完全一致。" },
-      { "t": "Pine 的对象上限", "d": "标签、线条和方框先经过内存中的集合，执行 Pine 每类 500 个的上限，最旧的先删除，然后同步到图表上。" },
-      { "t": "真正的透明度", "d": "MT5 对象没有 Alpha 通道，因此方框绘制在透明画布上并进行真正的 Alpha 混合。每个 color.new(c, t) 变成一个颜色参数加一个透明度参数。" },
-      { "t": "Pine 的浮点容差", "d": "Pine 比较数字时使用 1e-10 的绝对容差，所以 0.1 + 0.2 == 0.3 为真。没有它，有一根共振过滤比较 0.05 与 0.05 的K线会多出一个 CHoCH。移植版完整重现了这一点。" }
+      {
+        "t": "Pine 的实时回滚",
+        "d": "正在形成的K线在一份临时状态副本上计算，下一个跳动时丢弃。只有已收盘的K线才会被写入，与 Pine 的实时行为完全一致。"
+      },
+      {
+        "t": "Pine 的对象上限",
+        "d": "标签、线条和方框先经过内存中的集合，执行 Pine 每类 500 个的上限，最旧的先删除，然后同步到图表上。"
+      },
+      {
+        "t": "真正的透明度",
+        "d": "MT5 对象没有 Alpha 通道，因此方框绘制在透明画布上并进行真正的 Alpha 混合。每个 color.new(c, t) 变成一个颜色参数加一个透明度参数。"
+      },
+      {
+        "t": "Pine 的浮点容差",
+        "d": "Pine 比较数字时使用 1e-10 的绝对容差，所以 0.1 + 0.2 == 0.3 为真。没有它，有一根共振过滤比较 0.05 与 0.05 的K线会多出一个 CHoCH。移植版完整重现了这一点。"
+      }
     ],
     "code_title": "在 TradingView 上实测，在 MQL5 中重现"
   },
@@ -100,9 +191,21 @@
     "kicker": "05 · 下载",
     "h2": "免费。两个文件。无需注册。",
     "p": "可执行文件让您立即试用，完整源代码让您阅读、学习和修改。",
-    "ex5": { "t": "即装即用的指标", "d": "由 MetaEditor 编译，0 错误、0 警告。放入 MQL5/Indicators 即可。", "btn": "下载 .ex5" },
-    "mq5": { "t": "完整源代码", "d": "单个文件，约 2,300 行，无 include、无 DLL，清晰并带注释。", "btn": "下载 .mq5" },
-    "zip": { "t": "全部打包成 zip", "d": ".ex5、.mq5、许可证和 README。", "btn": "下载 .zip" },
+    "ex5": {
+      "t": "即装即用的指标",
+      "d": "由 MetaEditor 编译，0 错误、0 警告。放入 MQL5/Indicators 即可。",
+      "btn": "下载 .ex5"
+    },
+    "mq5": {
+      "t": "完整源代码",
+      "d": "单个文件，约 2,300 行，无 include、无 DLL，清晰并带注释。",
+      "btn": "下载 .mq5"
+    },
+    "zip": {
+      "t": "全部打包成 zip",
+      "d": ".ex5、.mq5、许可证和 README。",
+      "btn": "下载 .zip"
+    },
     "sha": "SHA-256",
     "license": "原作 © LuxAlgo，采用 CC BY-NC-SA 4.0 许可。本移植版是同一许可下的衍生作品：请保留署名，仅限非商业用途，修改后须以相同条款分享。独立项目，与 LuxAlgo 或 TradingView 无关联，亦未获其认可。",
     "github": "GitHub 上的全部版本"
@@ -111,8 +214,16 @@
     "kicker": "06 · 支持",
     "h2": "人人免费，量力支持。",
     "p": "这个移植版以及证明它的测试平台花费了大量心血。它会一直免费。如果它为您节省了时间或帮助了您的交易，任何金额的捐赠都非常欢迎，哪怕只有一美元。正是这些支持让下一批工具得以诞生。",
-    "tron": { "t": "TRON 链上的 USDT", "net": "网络：TRON（TRC-20）", "warn": "只发送 TRON 网络资产（USDT TRC-20、TRX）。从其他网络发送的资产将会丢失。" },
-    "bnb": { "t": "BNB Smart Chain", "net": "网络：BNB Smart Chain（BEP-20）", "warn": "只通过 BNB Smart Chain 发送 BNB 或 BEP-20 代币（USDT、USDC…）。不要用以太坊或 TRON。" },
+    "tron": {
+      "t": "TRON 链上的 USDT",
+      "net": "网络：TRON（TRC-20）",
+      "warn": "只发送 TRON 网络资产（USDT TRC-20、TRX）。从其他网络发送的资产将会丢失。"
+    },
+    "bnb": {
+      "t": "BNB Smart Chain",
+      "net": "网络：BNB Smart Chain（BEP-20）",
+      "warn": "只通过 BNB Smart Chain 发送 BNB 或 BEP-20 代币（USDT、USDC…）。不要用以太坊或 TRON。"
+    },
     "copy_btn": "复制地址",
     "copied": "已复制",
     "qr": "地址二维码",
@@ -121,13 +232,39 @@
   "services": {
     "kicker": "07 · 定制开发",
     "h2": "需要修改？我可以为您开发。",
-    "p": "我是 <b>Ismael Ladjohounlou</b>，本移植版的开发者。如果您想让这个指标适配您的交易方式，或需要 MetaTrader、TradingView、Telegram 上的任何其他工具，请告诉我您的需求。报价免费。",
+    "p": "我是 <b>Ismaël Ladjohounlou</b>，AI 与自动化工程师，也是本移植版的开发者。如果您想让这个指标适配您的交易方式，需要 EA，或需要为您的业务实现任何自动化，请告诉我您的需求。报价免费，我会亲自回复。",
     "items": [
-      { "id": "custom", "t": "定制本指标", "d": "您自己的规则和过滤条件、更多警报、中文标签、多周期视图、可供 EA 读取的信号缓冲区。" },
-      { "id": "pine", "t": "TradingView Pine 脚本转 MT5", "d": "任何 Pine 指标或策略移植到 MQL5 或 MQL4，并提供与本站相同的证明：在相同K线上逐个对象比对。", "link": "了解流程" },
-      { "id": "ea", "t": "智能交易系统（EA）", "d": "MT4 与 MT5 的自动化策略：SMC 与 ICT 模型、多周期入场、自营交易公司风控规则。交付完整源代码。" },
-      { "id": "bt", "t": "可信的回测", "d": "策略测试器回测、独立的 Python 参考实现，以及关于优势是否真实存在的诚实结论。" },
-      { "id": "tg", "t": "Telegram 机器人与跟单工具", "d": "信号机器人、跟单工具，以及用于控制 EA 的 Telegram 面板。" }
+      {
+        "id": "custom",
+        "t": "定制本指标",
+        "d": "您自己的规则和过滤条件、更多警报、中文标签、多周期视图、可供 EA 读取的信号缓冲区。"
+      },
+      {
+        "id": "pine",
+        "t": "TradingView Pine 脚本转 MT5",
+        "d": "任何 Pine 指标或策略移植到 MQL5 或 MQL4，并提供与本站相同的证明：在相同K线上逐个对象比对。",
+        "link": "了解流程"
+      },
+      {
+        "id": "ea",
+        "t": "智能交易系统（EA）",
+        "d": "MT4 与 MT5 的自动化策略：SMC 与 ICT 模型、多周期入场、自营交易公司风控规则。交付完整源代码。"
+      },
+      {
+        "id": "auto",
+        "t": "为您的业务实现自动化",
+        "d": "n8n 与 Python 工作流、AI 智能体、基于官方 API 的 Instagram、WhatsApp 和 Telegram 流程，以及支付集成（Stripe、Mobile Money）。"
+      },
+      {
+        "id": "bt",
+        "t": "可信的回测",
+        "d": "策略测试器回测、独立的 Python 参考实现，以及关于优势是否真实存在的诚实结论。"
+      },
+      {
+        "id": "tg",
+        "t": "Telegram 机器人与跟单工具",
+        "d": "信号机器人、跟单工具，以及用于控制 EA 的 Telegram 面板。"
+      }
     ],
     "cta_mail": "描述您的项目",
     "mail_subject": "定制开发：Smart Money Concepts MT5",
@@ -135,7 +272,8 @@
     "email": "电子邮件",
     "linkedin": "LinkedIn",
     "mql5": "MQL5 主页",
-    "portfolio": "作品集"
+    "portfolio": "作品集",
+    "telegram": "Telegram"
   },
   "more": {
     "kicker": "08 · 作者的其他作品",
@@ -144,29 +282,74 @@
     "badge": "原创指标 · MQL5 Market",
     "t": "Structura：市场结构与订单块",
     "d": "独立于 LuxAlgo 设计并验证，其 Python 参考实现与 MQL5 引擎在约 989,000 行数据上完全一致。",
-    "bullets": ["订单块 0 到 3 分评分（位移、FVG、流动性）", "Breaker、反向 FVG、流动性扫荡与 OTE 区", "多周期仪表盘与推送警报", "6 个可供 EA 使用的缓冲区", "经证明不重绘"],
+    "bullets": [
+      "订单块 0 到 3 分评分（位移、FVG、流动性）",
+      "Breaker、反向 FVG、流动性扫荡与 OTE 区",
+      "多周期仪表盘与推送警报",
+      "6 个可供 EA 使用的缓冲区",
+      "经证明不重绘"
+    ],
     "btn_market": "在 MQL5 Market 查看",
     "btn_video": "观看 82 秒演示",
     "others_title": "MQL5 Market 上的其他产品",
     "others": [
-      { "t": "SnapBack Three Sigma Reversal", "d": "指标 · 统计反转", "url": "https://www.mql5.com/zh/market/product/200522" },
-      { "t": "Pin Bar Trend Pullback", "d": "EA · 价格行为", "url": "https://www.mql5.com/zh/market/product/200530" },
-      { "t": "Multi Market RSI Trade Manager", "d": "EA · RSI 与仓位管理", "url": "https://www.mql5.com/zh/market/product/200527" }
+      {
+        "t": "SnapBack Three Sigma Reversal",
+        "d": "指标 · 统计反转",
+        "url": "https://www.mql5.com/zh/market/product/200522"
+      },
+      {
+        "t": "Pin Bar Trend Pullback",
+        "d": "EA · 价格行为",
+        "url": "https://www.mql5.com/zh/market/product/200530"
+      },
+      {
+        "t": "Multi Market RSI Trade Manager",
+        "d": "EA · RSI 与仓位管理",
+        "url": "https://www.mql5.com/zh/market/product/200527"
+      }
     ]
   },
   "faq": {
     "kicker": "09 · 常见问题",
     "h2": "交易者常问的问题",
     "items": [
-      { "q": "真的免费吗？", "a": "是的。编译好的 .ex5 和完整的 .mq5 源代码都可以免费下载、使用和修改，仅限非商业用途。无需账户、无需邮箱、无需许可证密钥。捐赠完全自愿。" },
-      { "q": "这是 LuxAlgo 官方指标吗？", "a": "不是。这是 LuxAlgo 开源脚本 Smart Money Concepts 的独立非官方 MQL5 移植版，以相同的 CC BY-NC-SA 4.0 许可发布并保留署名。LuxAlgo 并未认可它。" },
-      { "q": "真的和 TradingView 完全一样吗？", "a": "在测试数据上是的：四种配置和两次逐笔回放中，100% 的标签、线条、方框和K线颜色都一致。唯一的差别是周线和月线水平的价格，因为 TradingView 读取的是它自己的 W 与 M K线。您可以在对比查看器中检查，或在 GitHub 上重跑测试。" },
-      { "q": "会重绘吗？", "a": "行为与原版完全相同。结构在K线收盘后确认；正在形成的K线每个跳动都会重算，只在收盘时写入。波段点在其回看长度之后才确认，与 Pine 一样，所以标签会在枢轴点之后几根K线才出现。" },
-      { "q": "适用于哪些市场和周期？", "a": "MetaTrader 5 能显示的任何品种和周期：外汇、黄金（XAUUSD）、指数、加密货币和股票。日、周、月水平使用您经纪商的 D1、W1 和 MN1 数据。" },
-      { "q": "我可以出售它或发布到 MQL5 Market 吗？", "a": "不可以。许可证禁止商业用途，原版和本移植版都一样。您可以分享、修改并用于自己的交易，但须保留署名并使用相同许可。" },
-      { "q": "可以在 EA 中使用吗？", "a": "可以：开启 Color Candles 后，EA 可以通过 iCustom 从颜色缓冲区（缓冲区 4）读取趋势。如果您需要 BOS、CHoCH 或订单块的干净信号缓冲区，或基于它的完整 EA，我可以为您制作适合自动交易的版本。" },
-      { "q": "有 MT4 版本吗？", "a": "暂时没有。可以按需定制 MQL4 版本。" },
-      { "q": "可以用其他币种捐赠吗？", "a": "TRON 网络上的任何资产都可以发到 TRON 地址，BNB Smart Chain 上的任何 BEP-20 代币都可以发到 BNB 地址。发送前务必确认网络：选错网络意味着资金丢失。" }
+      {
+        "q": "真的免费吗？",
+        "a": "是的。编译好的 .ex5 和完整的 .mq5 源代码都可以免费下载、使用和修改，仅限非商业用途。无需账户、无需邮箱、无需许可证密钥。捐赠完全自愿。"
+      },
+      {
+        "q": "这是 LuxAlgo 官方指标吗？",
+        "a": "不是。这是 LuxAlgo 开源脚本 Smart Money Concepts 的独立非官方 MQL5 移植版，以相同的 CC BY-NC-SA 4.0 许可发布并保留署名。LuxAlgo 并未认可它。"
+      },
+      {
+        "q": "真的和 TradingView 完全一样吗？",
+        "a": "在测试数据上是的：四种配置和两次逐笔回放中，100% 的标签、线条、方框和K线颜色都一致。唯一的差别是周线和月线水平的价格，因为 TradingView 读取的是它自己的 W 与 M K线。您可以在对比查看器中检查，或在 GitHub 上重跑测试。"
+      },
+      {
+        "q": "会重绘吗？",
+        "a": "行为与原版完全相同。结构在K线收盘后确认；正在形成的K线每个跳动都会重算，只在收盘时写入。波段点在其回看长度之后才确认，与 Pine 一样，所以标签会在枢轴点之后几根K线才出现。"
+      },
+      {
+        "q": "适用于哪些市场和周期？",
+        "a": "MetaTrader 5 能显示的任何品种和周期：外汇、黄金（XAUUSD）、指数、加密货币和股票。日、周、月水平使用您经纪商的 D1、W1 和 MN1 数据。"
+      },
+      {
+        "q": "我可以出售它或发布到 MQL5 Market 吗？",
+        "a": "不可以。许可证禁止商业用途，原版和本移植版都一样。您可以分享、修改并用于自己的交易，但须保留署名并使用相同许可。"
+      },
+      {
+        "q": "可以在 EA 中使用吗？",
+        "a": "可以：开启 Color Candles 后，EA 可以通过 iCustom 从颜色缓冲区（缓冲区 4）读取趋势。如果您需要 BOS、CHoCH 或订单块的干净信号缓冲区，或基于它的完整 EA，我可以为您制作适合自动交易的版本。"
+      },
+      {
+        "q": "有 MT4 版本吗？",
+        "a": "暂时没有。可以按需定制 MQL4 版本。"
+      },
+      {
+        "q": "可以用其他币种捐赠吗？",
+        "a": "TRON 网络上的任何资产都可以发到 TRON 地址，BNB Smart Chain 上的任何 BEP-20 代币都可以发到 BNB 地址。发送前务必确认网络：选错网络意味着资金丢失。"
+      }
     ]
   },
   "footer": {
@@ -181,8 +364,17 @@
     "source": "GitHub 源代码",
     "releases": "版本发布",
     "issues": "报告问题",
-    "legal_license": "原版 Smart Money Concepts © LuxAlgo，采用 CC BY-NC-SA 4.0 许可。MQL5 移植版 © Ismael Ladjohounlou，相同许可。",
+    "legal_license": "原版 Smart Money Concepts © LuxAlgo，采用 CC BY-NC-SA 4.0 许可。MQL5 移植版 © Ismaël Ladjohounlou，相同许可。",
     "legal_tm": "独立项目，与 LuxAlgo、TradingView 或 MetaQuotes 无关联，亦未获其赞助或认可。所有商标归其各自所有者。",
     "legal_risk": "交易存在重大亏损风险。本指标是分析工具，不构成投资建议。"
+  },
+  "after": {
+    "title": "下载已开始",
+    "text": "感谢试用。有问题、需要定制版本、EA，或想为您的业务做自动化？欢迎随时联系我，我会亲自回复。",
+    "telegram": "Telegram",
+    "email": "电子邮件",
+    "linkedin": "LinkedIn",
+    "donate": "捐赠支持",
+    "close": "关闭"
   }
 }

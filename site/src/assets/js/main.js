@@ -126,5 +126,25 @@
     a.addEventListener('click', function () { document.body.classList.remove('nav-open'); });
   });
 
+  // after a download starts, invite the visitor to get in touch (once per visit)
+  var after = document.getElementById('after');
+  function closeAfter() {
+    if (!after) return;
+    after.classList.remove('in');
+    setTimeout(function () { after.hidden = true; }, 350);
+  }
+  document.addEventListener('click', function (e) {
+    var dl = e.target.closest('[data-dl]');
+    if (dl && after && after.hidden && !window.__afterShown) {
+      window.__afterShown = true;
+      setTimeout(function () {
+        after.hidden = false;
+        requestAnimationFrame(function () { after.classList.add('in'); });
+      }, 900);
+    }
+    if (e.target.closest('[data-after-close]')) closeAfter();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAfter(); });
+
   lazyViewers();
 })();

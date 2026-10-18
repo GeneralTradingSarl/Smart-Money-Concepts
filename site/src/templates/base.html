@@ -9,7 +9,7 @@
 {% endif %}<meta name="robots" content="{{ robots }}">
 <link rel="canonical" href="{{ canonical }}">
 {% for a in alternates %}<link rel="alternate" hreflang="{{ a.hreflang }}" href="{{ a.href }}">
-{% endfor %}<meta name="author" content="Ismael Ladjohounlou">
+{% endfor %}<meta name="author" content="Ismaël Ladjohounlou">
 <meta name="theme-color" content="#07090d">
 <meta name="color-scheme" content="dark">
 {% if site.google_verification %}<meta name="google-site-verification" content="{{ site.google_verification }}">
@@ -98,6 +98,7 @@
       <div>
         <h4>{{ t.footer.col_author }}</h4>
         <ul>
+          <li><a href="{{ site.telegram }}" rel="noopener">{{ t.services.telegram }} {{ site.telegram_handle }}</a></li>
           <li><a href="{{ site.portfolio }}" rel="noopener">{{ t.services.portfolio }}</a></li>
           <li><a href="{{ site.linkedin }}" rel="noopener">{{ t.services.linkedin }}</a></li>
           <li><a href="{{ site.mql5 }}" rel="noopener">{{ t.services.mql5 }}</a></li>
@@ -112,6 +113,17 @@
     </div>
   </div>
 </footer>
+<aside class="after" id="after" role="dialog" aria-modal="false" aria-labelledby="after-h" hidden>
+  <button type="button" class="after-x" data-after-close aria-label="{{ t.after.close }}">×</button>
+  <p class="after-k">{{ icon('download') }}<span id="after-h">{{ t.after.title }}</span></p>
+  <p class="after-t">{{ t.after.text }}</p>
+  <div class="after-b">
+    <a class="btn btn-primary btn-s" href="{{ site.telegram }}" rel="noopener">{{ icon('send') }}{{ t.after.telegram }}</a>
+    <a class="btn btn-ghost btn-s" href="mailto:{{ site.email }}?subject={{ t.services.mail_subject|urlencode }}">{{ icon('mail') }}{{ t.after.email }}</a>
+    <a class="btn btn-ghost btn-s" href="{{ site.linkedin }}" rel="noopener">{{ icon('linkedin') }}{{ t.after.linkedin }}</a>
+  </div>
+  <a class="after-d" href="{{ home_url }}#support" data-after-close>{{ t.after.donate }} →</a>
+</aside>
 <script src="/assets/js/chart.js?v={{ v }}" defer></script>
 <script src="/assets/js/main.js?v={{ v }}" defer></script>
 </body>
