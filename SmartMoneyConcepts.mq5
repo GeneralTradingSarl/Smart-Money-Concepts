@@ -132,6 +132,8 @@ input color               swingBullishOrderBlockColor      = C'24,72,204';   // 
 input int                 swingBullishOrderBlockTransp     = 80;             // Bullish OB transparency (0-100)
 input color               swingBearishOrderBlockColor      = C'178,40,51';   // Bearish OB
 input int                 swingBearishOrderBlockTransp     = 80;             // Bearish OB transparency (0-100)
+input bool                showOrderBlockLabelsInput        = true;           // Show Order Block labels
+input ENUM_SMC_SIZE       orderBlockLabelSizeInput         = TINY;           // Order Block label size
 
 input group "EQH/EQL"
 input bool                showEqualHighsLowsInput          = true;           // Equal High/Low
@@ -232,7 +234,8 @@ enum ENUM_SMC_TEXT
    TX_NONE, TX_BOS, TX_CHOCH, TX_HH, TX_LH, TX_HL, TX_LL, TX_EQH, TX_EQL,
    TX_STRONG_HIGH, TX_WEAK_HIGH, TX_STRONG_LOW, TX_WEAK_LOW,
    TX_PREMIUM, TX_EQUILIBRIUM, TX_DISCOUNT,
-   TX_PDH, TX_PDL, TX_PWH, TX_PWL, TX_PMH, TX_PML
+   TX_PDH, TX_PDL, TX_PWH, TX_PWL, TX_PMH, TX_PML,
+   TX_INTERNAL_BULLISH_OB, TX_INTERNAL_BEARISH_OB, TX_BULLISH_OB, TX_BEARISH_OB
   };
 
 // @type UDT representing last swing extremes (top & bottom)
@@ -474,6 +477,7 @@ public:
    // @variable storage for orderBlock UDTs (swing / internal order blocks) and their boxes
    orderBlock        swingOrderBlocks[], internalOrderBlocks[];
    int               swingOrderBlocksBoxes[], internalOrderBlocksBoxes[];
+   int               swingOrderBlocksLabels[], internalOrderBlocksLabels[];
    // @variable alerts in current bar
    bool              currentAlerts[ALERT_COUNT];
    // series state of ta.atr(200), ta.cum(ta.tr) and the FVG ta.cum()
@@ -504,6 +508,7 @@ public:
    void              LabelDelete(const int id);
    void              LabelSetPoint(const int id, const long x, const double y);
    void              LabelSetText(const int id, const int text);
+   void              LabelSetColor(const int id, const color textColor);
    int               LineNew(const bool keep, const long x1, const double y1, const long x2, const double y2, const color lineColor, const int style);
    void              LineDelete(const int id);
    void              LineSetPoints(const int id, const long x1, const double y1, const long x2, const double y2);
@@ -525,7 +530,7 @@ private:
    void              drawStructure(const int site, const pivot &p, const int tag, const color structureColor, const int lineStyle, const int labelStyle, const int labelSize, const int i);
    void              deleteOrderBlocks(orderBlock &orderBlocks[], const int i, const bool internal);
    void              storeOrdeBlock(const pivot &p, const bool internal, const int bias, const int i);
-   void              drawOrderBlocks(const orderBlock &orderBlocks[], const int &b_oxes[], const bool internal);
+   void              drawOrderBlocks(const orderBlock &orderBlocks[], const int &b_oxes[], const int &l_abels[], const bool internal);
    void              displayStructure(const int i, const bool internal);
    void              bullishBreak(pivot &p, int &bias, const int i, const bool internal, const bool extraCondition, const color structureColor);
    void              bearishBreak(pivot &p, int &bias, const int i, const bool internal, const bool extraCondition, const color structureColor);
@@ -578,6 +583,8 @@ void CSmartMoneyConcepts::Reset(void)
    ArrayResize(internalOrderBlocks, 0, 128);
    ArrayResize(swingOrderBlocksBoxes, 0, 32);
    ArrayResize(internalOrderBlocksBoxes, 0, 32);
+   ArrayResize(swingOrderBlocksLabels, 0, 32);
+   ArrayResize(internalOrderBlocksLabels, 0, 32);
    for(int k = 0; k < ALERT_COUNT; k++)
       currentAlerts[k] = false;
    atrMeasure   = NA;
@@ -635,6 +642,8 @@ void CSmartMoneyConcepts::CopyFrom(const CSmartMoneyConcepts &o)
    CopyArray(internalOrderBlocks, o.internalOrderBlocks);
    CopyArray(swingOrderBlocksBoxes, o.swingOrderBlocksBoxes);
    CopyArray(internalOrderBlocksBoxes, o.internalOrderBlocksBoxes);
+   CopyArray(swingOrderBlocksLabels, o.swingOrderBlocksLabels);
+   CopyArray(internalOrderBlocksLabels, o.internalOrderBlocksLabels);
    CopyFixed(currentAlerts, o.currentAlerts);
    atrMeasure       = o.atrMeasure;
    atrSum           = o.atrSum;
@@ -704,6 +713,12 @@ void CSmartMoneyConcepts::LabelSetText(const int id, const int text)
    int k = id < 0 ? -1 : FindById(labels, id);
    if(k >= 0)
       labels[k].text = text;
+  }
+void CSmartMoneyConcepts::LabelSetColor(const int id, const color textColor)
+  {
+   int k = id < 0 ? -1 : FindById(labels, id);
+   if(k >= 0)
+      labels[k].textColor = textColor;
   }
 int CSmartMoneyConcepts::LineNew(const bool keep, const long x1, const double y1, const long x2, const double y2, const color lineColor, const int style)
   {
@@ -1055,7 +1070,7 @@ void CSmartMoneyConcepts::storeOrdeBlock(const pivot &p_ivot, const bool interna
   }
 
 // @function draw order blocks as boxes
-void CSmartMoneyConcepts::drawOrderBlocks(const orderBlock &orderBlocks[], const int &b_oxes[], const bool internal)
+void CSmartMoneyConcepts::drawOrderBlocks(const orderBlock &orderBlocks[], const int &b_oxes[], const int &l_abels[], const bool internal)
   {
    int orderBlocksSize = ArraySize(orderBlocks);
    if(orderBlocksSize > 0)
@@ -1072,6 +1087,19 @@ void CSmartMoneyConcepts::drawOrderBlocks(const orderBlock &orderBlocks[], const
          BoxSetTopLeft(b_ox, eachOrderBlock.barTime, eachOrderBlock.barHigh);
          BoxSetBottomRight(b_ox, (long)gLastTime, eachOrderBlock.barLow);
          BoxSetColors(b_ox, internal ? (uint)0 : orderBlockColor, orderBlockColor);
+         // MetaTrader addition: name the order block beside its box, right of the last bar
+         if(index < ArraySize(l_abels))
+           {
+            bool  bearish   = eachOrderBlock.bias == BEARISH;
+            color textColor = gMono ? (bearish ? MONO_BEARISH : MONO_BULLISH)
+                              : internal ? (bearish ? internalBearishOrderBlockColor : internalBullishOrderBlockColor)
+                              : (bearish ? swingBearishOrderBlockColor : swingBullishOrderBlockColor);
+            int   text      = internal ? (bearish ? TX_INTERNAL_BEARISH_OB : TX_INTERNAL_BULLISH_OB)
+                              : (bearish ? TX_BEARISH_OB : TX_BULLISH_OB);
+            LabelSetPoint(l_abels[index], (long)gLastTime + 3 * PeriodSeconds(), (eachOrderBlock.barHigh + eachOrderBlock.barLow) / 2);
+            LabelSetText(l_abels[index], text);
+            LabelSetColor(l_abels[index], textColor);
+           }
         }
      }
   }
@@ -1453,12 +1481,22 @@ void CSmartMoneyConcepts::OnBar(const int i, const bool lastConfirmedHistory, co
            {
             int b_ox = BoxNew(true, NA_TIME, NA, NA_TIME, NA, blue, blue, true);
             ArrayPush(swingOrderBlocksBoxes, b_ox);
+            if(showOrderBlockLabelsInput)
+              {
+               int l_abel = LabelNew(true, true, NA_TIME, NA, TX_BULLISH_OB, swingBullishOrderBlockColor, LABEL_LEFT, orderBlockLabelSizeInput);
+               ArrayPush(swingOrderBlocksLabels, l_abel);
+              }
            }
       if(showInternalOrderBlocksInput)
          for(int index = 1; index <= gInternalOBSize; index++)
            {
             int b_ox = BoxNew(true, NA_TIME, NA, NA_TIME, NA, blue, blue, true);
             ArrayPush(internalOrderBlocksBoxes, b_ox);
+            if(showOrderBlockLabelsInput)
+              {
+               int l_abel = LabelNew(true, true, NA_TIME, NA, TX_INTERNAL_BULLISH_OB, internalBullishOrderBlockColor, LABEL_LEFT, orderBlockLabelSizeInput);
+               ArrayPush(internalOrderBlocksLabels, l_abel);
+              }
            }
      }
 
@@ -1519,9 +1557,9 @@ void CSmartMoneyConcepts::OnBar(const int i, const bool lastConfirmedHistory, co
    if(lastConfirmedHistory || isLast)
      {
       if(showInternalOrderBlocksInput)
-         drawOrderBlocks(internalOrderBlocks, internalOrderBlocksBoxes, true);
+         drawOrderBlocks(internalOrderBlocks, internalOrderBlocksBoxes, internalOrderBlocksLabels, true);
       if(showSwingOrderBlocksInput)
-         drawOrderBlocks(swingOrderBlocks, swingOrderBlocksBoxes, false);
+         drawOrderBlocks(swingOrderBlocks, swingOrderBlocksBoxes, swingOrderBlocksLabels, false);
      }
   }
 
@@ -1582,6 +1620,10 @@ string TextOf(const int code)
       case TX_PWL:         return "PWL";
       case TX_PMH:         return "PMH";
       case TX_PML:         return "PML";
+      case TX_INTERNAL_BULLISH_OB: return "Internal Bullish OB";
+      case TX_INTERNAL_BEARISH_OB: return "Internal Bearish OB";
+      case TX_BULLISH_OB:  return "Bullish OB";
+      case TX_BEARISH_OB:  return "Bearish OB";
      }
    return "";
   }
